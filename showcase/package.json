@@ -4,7 +4,7 @@
   "description": "showcase content for the sprotty website",
   "private": "true",
   "scripts": {
-    "build": "esbuild ./src/index.ts --bundle --minify --sourcemap " 
+    "build": "esbuild ./src/index.ts --bundle --minify --sourcemap --outfile=dist/out.js" 
   },
   "dependencies": {
     "typescript": "4.9.5",
