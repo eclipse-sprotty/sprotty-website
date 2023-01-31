@@ -1,0 +1,14 @@
+{
+  "name": "sprotty-showcase",
+  "version": "0.0.1",
+  "description": "showcase content for the sprotty website",
+  "private": "true",
+  "scripts": {
+    "build": "esbuild ./src/index.ts --bundle --minify --sourcemap " 
+  },
+  "dependencies": {
+    "typescript": "4.9.5",
+    "sprotty": "0.13.0",
+    "esbuild": "0.17.5"
+  }
+}

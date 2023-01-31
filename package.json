@@ -1,0 +1,14 @@
+{
+  "name": "sprotty-website",
+  "version": "0.0.1",
+  "description": "the sprotty website",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server ./static-dev"
+  },
+  "devDependencies": {
+    "http-server": "14.1.1"
+  },
+  "author": "",
+  "license": "ISC"
+}
