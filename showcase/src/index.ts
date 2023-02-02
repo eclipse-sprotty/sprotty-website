@@ -18,6 +18,7 @@ export default function runExample() {
                 sourceId: 'target_pos',
                 targetId: 'AddOperand',
                 routerKind: 'manhattan',
+                children: generateArrow()
             },
             <SEdge> {
                 id: 'MaxPosEdge',
@@ -26,6 +27,7 @@ export default function runExample() {
                 targetId: 'limiter',
                 routerKind: 'manhattan',
                 routingPoints: [{x: 260, y: 207}],
+                children: generateArrow()
             },
             <SEdge> {
                 id: 'AddLimiterEdge',
@@ -33,6 +35,7 @@ export default function runExample() {
                 sourceId: 'AddOperand',
                 targetId: 'limiter',
                 routerKind: 'manhattan',
+                children: generateArrow()
             },
             <SEdge> {
                 id: 'OffsetPosEdge',
@@ -41,6 +44,7 @@ export default function runExample() {
                 targetId: 'AddOperand',
                 routerKind: 'manhattan',
                 routingPoints: [{x: 145, y: 367}],
+                children: generateArrow()
             },
             <SEdge> {
                 id: 'limiterEdge',
@@ -48,6 +52,7 @@ export default function runExample() {
                 sourceId: 'limiter',
                 targetId: 'SubOperand',
                 routerKind: 'manhattan',
+                children: generateArrow()
             },
             <SEdge> {
                 id: 'actualPosEdge',
@@ -56,6 +61,7 @@ export default function runExample() {
                 targetId: 'SubOperand',
                 routerKind: 'manhattan',
                 routingPoints: [{x: 335, y: 407}],
+                children: generateArrow()
 
             },
             <SEdge> {
@@ -64,6 +70,7 @@ export default function runExample() {
                 sourceId: 'SubOperand',
                 targetId: 'DivOperand',
                 routerKind: 'manhattan',
+                children: generateArrow()
             },
             <SEdge> {
                 id: 'DivToPIDTEdge',
@@ -71,6 +78,7 @@ export default function runExample() {
                 sourceId: 'DivOperand',
                 targetId: 'pidt',
                 routerKind: 'manhattan',
+                children: generateArrow()
             },
             <SEdge> {
                 id: 'outputEdge',
@@ -78,6 +86,7 @@ export default function runExample() {
                 sourceId: 'pidt',
                 targetId: 'new_pos',
                 routerKind: 'manhattan',
+                children: generateArrow()
             },
             <SEdge> {
                 id: 'T_lEdge',
@@ -86,6 +95,7 @@ export default function runExample() {
                 targetId: 'pidt',
                 routerKind: 'manhattan',
                 routingPoints: [{x: 660, y: 37}],
+                children: generateArrow()
             },
             <SEdge> {
                 id: 'T_dEdge',
@@ -94,6 +104,7 @@ export default function runExample() {
                 targetId: 'pidt',
                 routerKind: 'manhattan',
                 routingPoints: [{x: 630, y: 77}],
+                children: generateArrow()
             },
             <SEdge> {
                 id: 'T_iEdge',
@@ -102,6 +113,7 @@ export default function runExample() {
                 targetId: 'pidt',
                 routerKind: 'manhattan',
                 routingPoints: [{x: 590, y: 117}],
+                children: generateArrow()
             },
             <SEdge> {
                 id: 'P_GainEdge',
@@ -109,6 +121,7 @@ export default function runExample() {
                 sourceId: 'P_Gain',
                 targetId: 'MNOperand',
                 routerKind: 'manhattan',
+                children: generateArrow()
             },
             <SEdge> {
                 id: 'P_MaxEdge',
@@ -116,6 +129,7 @@ export default function runExample() {
                 sourceId: 'P_max',
                 targetId: 'MNOperand',
                 routerKind: 'manhattan',
+                children: generateArrow()
             },
             <SEdge> {
                 id: 'MNOperandEdge',
@@ -124,6 +138,7 @@ export default function runExample() {
                 targetId: 'pidt',
                 routerKind: 'manhattan',
                 routingPoints: [{x: 560, y: 190}],
+                children: generateArrow()
             },
             <SEdge> {
                 id: 'cf_Degree2RadEdge',
@@ -132,6 +147,7 @@ export default function runExample() {
                 targetId: 'DivOperand',
                 routerKind: 'manhattan',
                 routingPoints: [{x: 475, y: 357}],
+                children: generateArrow()
             },
             // controller
             <SNode & LabelNode>{
@@ -269,4 +285,21 @@ export default function runExample() {
         ]
     })
 }
+
+let arrowIdCounter = 0;
+function generateArrow() {
+    return [
+        <SLabel>{
+            id: 'arrow' + arrowIdCounter++,
+            type: 'label:arrow',
+            text: '',
+            edgePlacement:  {
+                position: 1,
+                side: 'on',
+                rotate: true
+            }
+        }
+    ]
+} 
+
 document.addEventListener("DOMContentLoaded", () => runExample());

@@ -1,6 +1,6 @@
 import { Container, ContainerModule } from "inversify";
 import { configureModelElement, configureViewerOptions, ConsoleLogger, loadDefaultModules, LocalModelSource, LogLevel, PolylineEdgeView, RectangularNode, RectangularNodeView, SEdge, SGraph, SGraphView, SLabel, SLabelView, SRoutingHandle, SRoutingHandleView, TYPES } from "sprotty";
-import { ControllerView, InputView, OperandView } from "./views";
+import { ControllerView, EdgeArrow, InputView, OperandView } from "./views";
 
 
 export default (containerId: string) => {
@@ -15,8 +15,9 @@ export default (containerId: string) => {
         configureModelElement(context, 'node:controller', RectangularNode, ControllerView);
         configureModelElement(context, 'node:operand', RectangularNode, OperandView);
         configureModelElement(context, 'edge:straight', SEdge, PolylineEdgeView);
-        configureModelElement(context, 'label:text', SLabel, SLabelView);
-        configureModelElement(context, 'routing-point', SRoutingHandle, SRoutingHandleView);
+        configureModelElement(context, 'label:arrow', SLabel, EdgeArrow);
+        configureModelElement(context, 'label:text', SLabel, SLabelView)
+        configureModelElement(context, 'routing-point', SRoutingHandle, SRoutingHandleView)
         configureModelElement(context, 'volatile-routing-point', SRoutingHandle, SRoutingHandleView);
 
         configureViewerOptions(context, {

@@ -3,9 +3,16 @@ import { svg } from 'sprotty/lib/lib/jsx';
 
 import { injectable } from 'inversify';
 import { VNode } from "snabbdom";
-import { IViewArgs, RectangularNodeView, RenderingContext, SNode } from "sprotty";
+import { IViewArgs, RectangularNodeView, RenderingContext, SEdge, ShapeView, SLabel, SNode } from "sprotty";
 import { ArrowType, InputNode, LabelNode, OperandNode, OperandType } from './models';
 
+
+@injectable()
+export class EdgeArrow extends ShapeView {
+    override render(node: Readonly<SLabel>, context: RenderingContext, args?: IViewArgs): VNode {
+        return <polygon points={`-6,-4 0,0 -6,4`} style={{fill: "black"}}></polygon>
+    }
+}
 
 @injectable()
 export class InputView extends RectangularNodeView {
@@ -17,7 +24,7 @@ export class InputView extends RectangularNodeView {
             </rect>
             <rect class-input-back={true} width="10" height={node.size.height}></rect>
             {node.arrow !== ArrowType.NONE && <polygon class-input-arrow-full={node.arrow === ArrowType.FULL} class-input-arrow-stroke={node.arrow === ArrowType.STROKE}
-                points={(node.size.width - 10) + ',0 ' + (node.size.width) + ',' + (node.size.height / 2) + ' ' + (node.size.width - 10) + ',' + node.size.height} /> }
+                points={`${node.size.width - 10},0 ${node.size.width},${node.size.height / 2} ${node.size.width - 10},${node.size.height}`}/> }
             <text x="0" y={node.size.height + 15} class-sprotty-text={true}>{node.text}</text>
         </g>
     }
