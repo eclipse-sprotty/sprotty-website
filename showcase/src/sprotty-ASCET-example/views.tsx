@@ -4,7 +4,7 @@ import { svg } from 'sprotty/lib/lib/jsx';
 import { injectable } from 'inversify';
 import { VNode } from "snabbdom";
 import { IViewArgs, RectangularNodeView, RenderingContext, SNode } from "sprotty";
-import { ArrowType, InputNode, LabelNode, OperandNode } from './models';
+import { ArrowType, InputNode, LabelNode, OperandNode, OperandType } from './models';
 
 
 @injectable()
@@ -45,7 +45,18 @@ export class OperandView extends RectangularNodeView {
                 class-mouseover={node.hoverFeedback} class-selected={node.selected}
                 width={node.size.width} height={node.size.height}>
             </rect>
-            <text x={2} y={node.size.height} w class-operand-symbol={true}>{node.operand}</text>
+            {
+                node.operand === OperandType.ADD && <text x={2} y={node.size.height + 1} w class-operand-symbol={true} style={{fontSize: "45"}}>{node.operand}</text>
+            }
+            {
+                node.operand === OperandType.DIVIDE && <text x={3} y={node.size.height} w class-operand-symbol={true} style={{fontSize: "45"}}>{node.operand}</text>
+            }
+            {
+                node.operand === OperandType.SUBSTRACT && <text x={5} y={30} w class-operand-symbol={true} style={{fontSize: "54"}}>{node.operand}</text>
+            }
+            {
+                node.operand === OperandType.MN && <text x={2} y={35} w class-operand-symbol={true} style={{fontSize: "30", transform: "scaleX(0.8)"}}>{node.operand}</text>
+            }
             </g>
     }
 }

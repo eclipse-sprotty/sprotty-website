@@ -49,9 +49,9 @@ h1 {
 }
 
 .operand-symbol {
-    font-size: 45;
     font-weight: bold;
-    fill: lightblue;
+    fill: rgb(138, 133, 214);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .sprotty-text {
