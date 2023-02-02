@@ -25,6 +25,7 @@ export class InputView extends RectangularNodeView {
             <rect class-input-back={true} width="10" height={node.size.height}></rect>
             {node.arrow !== ArrowType.NONE && <polygon class-input-arrow-full={node.arrow === ArrowType.FULL} class-input-arrow-stroke={node.arrow === ArrowType.STROKE}
                 points={`${node.size.width - 10},0 ${node.size.width},${node.size.height / 2} ${node.size.width - 10},${node.size.height}`}/> }
+            <g transform={`translate(${node.size.width / 2 + (node.arrow !== ArrowType.NONE ? 0 : 5)},${node.size.height / 2})`} >{context.renderChildren(node, args)}</g>
             <text x="0" y={node.size.height + 15} class-sprotty-text={true}>{node.text}</text>
         </g>
     }
@@ -65,5 +66,48 @@ export class OperandView extends RectangularNodeView {
                 node.operand === OperandType.MN && <text x={2} y={35} w class-operand-symbol={true} style={{fontSize: "30", transform: "scaleX(0.8)"}}>{node.operand}</text>
             }
             </g>
+    }
+}
+
+// input icons
+
+@injectable()
+export class Icon1 extends ShapeView {
+    override render(node: Readonly<SNode>, context: RenderingContext, args?: IViewArgs): VNode {
+        const parentSize = (node.parent as SNode).size
+        return <polygon points="0,4 4,0 0,-4 -4,0" style={{stroke: "lightgrey", fill: "lightblue"}}/>
+    }
+}
+
+@injectable()
+export class Icon2 extends ShapeView {
+    override render(node: Readonly<SNode>, context: RenderingContext, args?: IViewArgs): VNode {
+        const parentSize = (node.parent as SNode).size
+        return <g>
+            <polygon points="-4,-4 4,-4 4,4" style={{stroke: "lightgrey", fill: "none"}}/>
+            <polygon points="-4,-4 -4,4 4,4" style={{stroke: "lightgrey", fill: "orange"}}/>
+        </g>
+    }
+}
+
+@injectable()
+export class Icon3 extends ShapeView {
+    override render(node: Readonly<SNode>, context: RenderingContext, args?: IViewArgs): VNode {
+        const parentSize = (node.parent as SNode).size
+        return <g>
+            <polygon points="0,4 4,0 0,-4 -4,0" style={{stroke: "lightgrey", fill: "lightblue"}}/>
+            <text transform="translate(-2.8, 3.2)" style={{fontSize: "10", fontWeight: "bold"}}>=</text>
+        </g>
+    }
+}
+
+@injectable()
+export class Icon4 extends ShapeView {
+    override render(node: Readonly<SNode>, context: RenderingContext, args?: IViewArgs): VNode {
+        const parentSize = (node.parent as SNode).size
+        return <g>
+            <polygon points="0,4 4,0 0,-4 -4,0" style={{stroke: "lightgrey", fill: "lightblue"}}/>
+            <text transform="translate(-2.8, 3.2)" style={{fontSize: "10", fontWeight: "bold"}}>+</text>
+        </g>
     }
 }

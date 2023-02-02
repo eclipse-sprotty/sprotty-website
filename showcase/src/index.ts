@@ -171,7 +171,13 @@ export default function runExample() {
                 text: 'MaxPosition',
                 arrow: ArrowType.STROKE,
                 position: {x: 100, y: 200},
-                size: {width: 40, height: 15}
+                size: {width: 40, height: 15},
+                children: [
+                    {
+                        id: "MaxPositionIcon",
+                        type: "label:icon3"
+                    }
+                ]
             },
             <SNode & InputNode>{
                 id: 'target_pos',
@@ -179,7 +185,13 @@ export default function runExample() {
                 text: 'target_pos',
                 arrow: ArrowType.FULL,
                 position: {x: 0, y: 307.5},
-                size: {width: 40, height: 15}
+                size: {width: 40, height: 15},
+                children: [
+                    {
+                        id: "target_posIcon",
+                        type: "label:icon2"
+                    }
+                ]
             },
             <SNode & InputNode>{
                 id: 'offset_pos',
@@ -187,7 +199,13 @@ export default function runExample() {
                 text: 'offset_pos',
                 arrow: ArrowType.NONE,
                 position: {x: 50, y: 360},
-                size: {width: 40, height: 15}
+                size: {width: 40, height: 15},
+                children: [
+                    {
+                        id: "offset_posIcon",
+                        type: "label:icon1"
+                    }
+                ]
             },
             <SNode & InputNode>{
                 id: 'actual_pos',
@@ -195,7 +213,13 @@ export default function runExample() {
                 text: 'actual_position',
                 arrow: ArrowType.FULL,
                 position: {x: 0, y: 400},
-                size: {width: 40, height: 15}
+                size: {width: 40, height: 15},
+                children: [
+                    {
+                        id: "actual_posIcon",
+                        type: "label:icon2"
+                    }
+                ]
             },
             <SNode & InputNode>{
                 id: 'new_pos',
@@ -203,7 +227,13 @@ export default function runExample() {
                 text: 'new_position',
                 arrow: ArrowType.FULL,
                 position: {x: 700, y: 307.5},
-                size: {width: 40, height: 15}
+                size: {width: 40, height: 15},
+                children: [
+                    {
+                        id: "new_posIcon",
+                        type: "label:icon2"
+                    }
+                ]
             },
             <SNode & InputNode>{
                 id: 'T_l',
@@ -211,7 +241,13 @@ export default function runExample() {
                 text: 'T_l',
                 arrow: ArrowType.NONE,
                 position: {x: 350, y: 30},
-                size: {width: 40, height: 15}
+                size: {width: 40, height: 15},
+                children: [
+                    {
+                        id: "T_lIcon",
+                        type: "label:icon1"
+                    }
+                ]
             },
             <SNode & InputNode>{
                 id: 'T_d',
@@ -219,7 +255,13 @@ export default function runExample() {
                 text: 'T_d',
                 arrow: ArrowType.NONE,
                 position: {x: 350, y: 70},
-                size: {width: 40, height: 15}
+                size: {width: 40, height: 15},
+                children: [
+                    {
+                        id: "T_dIcon",
+                        type: "label:icon1"
+                    }
+                ]
             },
             <SNode & InputNode>{
                 id: 'T_i',
@@ -227,7 +269,13 @@ export default function runExample() {
                 text: 'T_i',
                 arrow: ArrowType.NONE,
                 position: {x: 350, y: 110},
-                size: {width: 40, height: 15}
+                size: {width: 40, height: 15},
+                children: [
+                    {
+                        id: "T_iIcon",
+                        type: "label:icon1"
+                    }
+                ]
             },
             <SNode & InputNode>{
                 id: 'P_Gain',
@@ -235,7 +283,13 @@ export default function runExample() {
                 text: 'P_Gain',
                 arrow: ArrowType.NONE,
                 position: {x: 350, y: 150},
-                size: {width: 40, height: 15}
+                size: {width: 40, height: 15},
+                children: [
+                    {
+                        id: "P_GainsIcon",
+                        type: "label:icon1"
+                    }
+                ]
             },
             <SNode & InputNode>{
                 id: 'P_max',
@@ -243,7 +297,13 @@ export default function runExample() {
                 text: 'P_max',
                 arrow: ArrowType.STROKE,
                 position: {x: 350, y: 190},
-                size: {width: 40, height: 15}
+                size: {width: 40, height: 15},
+                children: [
+                    {
+                        id: "P_maxIcon",
+                        type: "label:icon3"
+                    }
+                ]
             },
             <SNode & InputNode>{
                 id: 'cf_Degree2Rad',
@@ -251,7 +311,13 @@ export default function runExample() {
                 text: 'cf_Degree2Rad',
                 arrow: ArrowType.STROKE,
                 position: {x: 380, y: 350},
-                size: {width: 40, height: 15}
+                size: {width: 40, height: 15},
+                children: [
+                    {
+                        id: "cf_Degree2RadIcon",
+                        type: "label:icon4"
+                    }
+                ]
             },
             // operands
             <SNode & OperandNode>{

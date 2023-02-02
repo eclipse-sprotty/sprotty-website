@@ -1,6 +1,6 @@
 import { Container, ContainerModule } from "inversify";
-import { configureModelElement, configureViewerOptions, ConsoleLogger, loadDefaultModules, LocalModelSource, LogLevel, PolylineEdgeView, RectangularNode, RectangularNodeView, SEdge, SGraph, SGraphView, SLabel, SLabelView, SRoutingHandle, SRoutingHandleView, TYPES } from "sprotty";
-import { ControllerView, EdgeArrow, InputView, OperandView } from "./views";
+import { configureModelElement, configureViewerOptions, ConsoleLogger, loadDefaultModules, LocalModelSource, LogLevel, PolylineEdgeView, RectangularNode, RectangularNodeView, SChildElement, SEdge, SGraph, SGraphView, SLabel, SLabelView, SModelElement, SRoutingHandle, SRoutingHandleView, SShapeElement, TYPES } from "sprotty";
+import { ControllerView, EdgeArrow, Icon1, Icon2, Icon3, Icon4, InputView, OperandView } from "./views";
 
 
 export default (containerId: string) => {
@@ -19,6 +19,12 @@ export default (containerId: string) => {
         configureModelElement(context, 'label:text', SLabel, SLabelView)
         configureModelElement(context, 'routing-point', SRoutingHandle, SRoutingHandleView)
         configureModelElement(context, 'volatile-routing-point', SRoutingHandle, SRoutingHandleView);
+        // icons
+        configureModelElement(context, 'label:icon1', SChildElement, Icon1);
+        configureModelElement(context, 'label:icon2', SChildElement, Icon2);
+        configureModelElement(context, 'label:icon3', SChildElement, Icon3);
+        configureModelElement(context, 'label:icon4', SChildElement, Icon4);
+
 
         configureViewerOptions(context, {
             needsClientLayout: false,
