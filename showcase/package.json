@@ -4,11 +4,12 @@
   "description": "showcase content for the sprotty website",
   "private": "true",
   "scripts": {
-    "build": "esbuild ./src/index.ts --bundle --minify --sourcemap --outfile=dist/out.js" 
+    "build": "esbuild ./src/index.ts --bundle --minify --sourcemap --outfile=../static-dev/bundle.js" 
   },
   "dependencies": {
     "typescript": "4.9.5",
     "sprotty": "0.13.0",
+    "reflect-metadata": "^0.1.13",
     "esbuild": "0.17.5"
   }
 }

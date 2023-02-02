@@ -1,0 +1,59 @@
+h1 {
+    text-align: center;
+}
+
+#sprotty-showcase {
+    width: 800px;
+    height: 500px;
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.sprotty-graph {
+    width: 100%;
+    height: 100%;
+}
+
+.sprotty-edge {
+    fill: none;
+    stroke: black;
+    stroke-width: 1px;
+}
+
+.sprotty-routing-handle {
+    fill: black
+}
+
+.sprotty-edge.mouseover,.sprotty-edge.selected {
+    stroke-width: 2px;
+}
+
+.sprotty-node {
+    fill: white;
+    stroke: black;
+}
+.controller-marker {
+    stroke: lightblue;
+    stroke-width: 1px;
+    fill: orange;
+}
+
+.class-input-back, .input-arrow-full {
+    fill: black;
+}
+
+.input-arrow-stroke {
+    fill: white;
+    stroke: black;
+}
+
+.operand-symbol {
+    font-size: 45;
+    font-weight: bold;
+    fill: lightblue;
+}
+
+.sprotty-text {
+    font-family: monospace
+}

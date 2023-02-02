@@ -1,11 +1,15 @@
 {
-    "compilerOptions": {
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "target": "ES2019",
     "module": "commonjs",
+    "types": [
+      "reflect-metadata"
+    ],
     "esModuleInterop": true,
-    "target": "es6",
-    "moduleResolution": "node",
     "sourceMap": true,
-    "outDir": "dist"
+    "experimentalDecorators": true,
+    "jsx": "react"
   },
-  "lib": ["ES2017"]
+  "lib": ["ES2019","DOM"]
 }
