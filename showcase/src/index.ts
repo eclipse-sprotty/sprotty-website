@@ -94,8 +94,8 @@ export default function runExample() {
                         type: 'label:text',
                         text: 'in',
                         edgePlacement:  {
-                            position: 1,
-                            side: 'bottom',
+                            position: 0.8,
+                            side: 'top',
                             rotate: false
                         }
                     }
@@ -215,6 +215,16 @@ export default function runExample() {
                         text: 'K',
                         edgePlacement:  {
                             position: 1,
+                            side: 'bottom',
+                            rotate: false
+                        },
+                    },
+                    <SLabel> {
+                        id: 'computeNormalLabel',
+                        type: 'label:text',
+                        text: 'compute\n________\n/1/normal',
+                        edgePlacement:  {
+                            position: 0.15,
                             side: 'bottom',
                             rotate: false
                         }
