@@ -18,7 +18,7 @@ export default function runExample() {
                 sourceId: 'target_pos',
                 targetId: 'AddOperand',
                 routerKind: 'manhattan',
-                children: generateArrow()
+                children: [generateArrow()]
             },
             <SEdge> {
                 id: 'MaxPosEdge',
@@ -26,8 +26,17 @@ export default function runExample() {
                 sourceId: 'MaxPosition',
                 targetId: 'limiter',
                 routerKind: 'manhattan',
-                routingPoints: [{x: 260, y: 207}],
-                children: generateArrow()
+                routingPoints: [{x: 252, y: 207}],
+                children: [generateArrow()]
+            },
+            <SEdge> {
+                id: 'zero_inputEdge',
+                type: 'edge:straight',
+                sourceId: 'zero_input',
+                targetId: 'limiter',
+                routerKind: 'manhattan',
+                routingPoints: [{x: 215, y: 257}],
+                children: [generateArrow()]
             },
             <SEdge> {
                 id: 'AddLimiterEdge',
@@ -35,7 +44,7 @@ export default function runExample() {
                 sourceId: 'AddOperand',
                 targetId: 'limiter',
                 routerKind: 'manhattan',
-                children: generateArrow()
+                children: [generateArrow()]
             },
             <SEdge> {
                 id: 'OffsetPosEdge',
@@ -44,7 +53,7 @@ export default function runExample() {
                 targetId: 'AddOperand',
                 routerKind: 'manhattan',
                 routingPoints: [{x: 145, y: 367}],
-                children: generateArrow()
+                children: [generateArrow()]
             },
             <SEdge> {
                 id: 'limiterEdge',
@@ -52,7 +61,7 @@ export default function runExample() {
                 sourceId: 'limiter',
                 targetId: 'SubOperand',
                 routerKind: 'manhattan',
-                children: generateArrow()
+                children: [generateArrow()]
             },
             <SEdge> {
                 id: 'actualPosEdge',
@@ -61,7 +70,7 @@ export default function runExample() {
                 targetId: 'SubOperand',
                 routerKind: 'manhattan',
                 routingPoints: [{x: 335, y: 407}],
-                children: generateArrow()
+                children: [generateArrow()]
 
             },
             <SEdge> {
@@ -70,7 +79,7 @@ export default function runExample() {
                 sourceId: 'SubOperand',
                 targetId: 'DivOperand',
                 routerKind: 'manhattan',
-                children: generateArrow()
+                children: [generateArrow()]
             },
             <SEdge> {
                 id: 'DivToPIDTEdge',
@@ -78,7 +87,19 @@ export default function runExample() {
                 sourceId: 'DivOperand',
                 targetId: 'pidt',
                 routerKind: 'manhattan',
-                children: generateArrow()
+                children: [
+                    generateArrow(),
+                    <SLabel> {
+                        id: 'inLabel',
+                        type: 'label:text',
+                        text: 'in',
+                        edgePlacement:  {
+                            position: 1,
+                            side: 'bottom',
+                            rotate: false
+                        }
+                    }
+                ]
             },
             <SEdge> {
                 id: 'outputEdge',
@@ -86,7 +107,19 @@ export default function runExample() {
                 sourceId: 'pidt',
                 targetId: 'new_pos',
                 routerKind: 'manhattan',
-                children: generateArrow()
+                children: [
+                    generateArrow(),
+                    <SLabel> {
+                        id: 'outLabel',
+                        type: 'label:text',
+                        text: 'out',
+                        edgePlacement:  {
+                            position: 0,
+                            side: 'left',
+                            rotate: false
+                        }
+                    }
+                ]
             },
             <SEdge> {
                 id: 'T_lEdge',
@@ -95,7 +128,19 @@ export default function runExample() {
                 targetId: 'pidt',
                 routerKind: 'manhattan',
                 routingPoints: [{x: 660, y: 37}],
-                children: generateArrow()
+                children: [
+                    generateArrow(),
+                    <SLabel> {
+                        id: 'TvLabel',
+                        type: 'label:text',
+                        text: 'Tv',
+                        edgePlacement:  {
+                            position: 1,
+                            side: 'bottom',
+                            rotate: false
+                        }
+                    }
+                ]
             },
             <SEdge> {
                 id: 'T_dEdge',
@@ -104,7 +149,19 @@ export default function runExample() {
                 targetId: 'pidt',
                 routerKind: 'manhattan',
                 routingPoints: [{x: 630, y: 77}],
-                children: generateArrow()
+                children: [
+                    generateArrow(),
+                    <SLabel> {
+                        id: 'TdLabel',
+                        type: 'label:text',
+                        text: 'Td',
+                        edgePlacement:  {
+                            position: 1,
+                            side: 'bottom',
+                            rotate: false
+                        }
+                    }
+                ]
             },
             <SEdge> {
                 id: 'T_iEdge',
@@ -113,7 +170,19 @@ export default function runExample() {
                 targetId: 'pidt',
                 routerKind: 'manhattan',
                 routingPoints: [{x: 590, y: 117}],
-                children: generateArrow()
+                children: [
+                    generateArrow(),
+                    <SLabel> {
+                        id: 'TiLabel',
+                        type: 'label:text',
+                        text: 'Ti',
+                        edgePlacement:  {
+                            position: 1,
+                            side: 'bottom',
+                            rotate: false
+                        }
+                    }
+                ]
             },
             <SEdge> {
                 id: 'P_GainEdge',
@@ -121,7 +190,7 @@ export default function runExample() {
                 sourceId: 'P_Gain',
                 targetId: 'MNOperand',
                 routerKind: 'manhattan',
-                children: generateArrow()
+                children: [generateArrow()]
             },
             <SEdge> {
                 id: 'P_MaxEdge',
@@ -129,7 +198,7 @@ export default function runExample() {
                 sourceId: 'P_max',
                 targetId: 'MNOperand',
                 routerKind: 'manhattan',
-                children: generateArrow()
+                children: [generateArrow()]
             },
             <SEdge> {
                 id: 'MNOperandEdge',
@@ -138,7 +207,18 @@ export default function runExample() {
                 targetId: 'pidt',
                 routerKind: 'manhattan',
                 routingPoints: [{x: 560, y: 190}],
-                children: generateArrow()
+                children: [
+                    generateArrow(),
+                    <SLabel> {
+                        id: 'KLabel',
+                        type: 'label:text',
+                        text: 'K',
+                        edgePlacement:  {
+                            position: 1,
+                            side: 'bottom',
+                            rotate: false
+                        }
+                    }]
             },
             <SEdge> {
                 id: 'cf_Degree2RadEdge',
@@ -147,21 +227,21 @@ export default function runExample() {
                 targetId: 'DivOperand',
                 routerKind: 'manhattan',
                 routingPoints: [{x: 475, y: 357}],
-                children: generateArrow()
+                children: [generateArrow()]
             },
             // controller
             <SNode & LabelNode>{
                 id: 'limiter',
                 text: 'limiter',
                 type: 'node:controller',
-                position: {x: 200, y: 285},
-                size: {width: 80, height: 60},
+                position: {x: 200, y: 292.5},
+                size: {width: 65, height: 45},
             },
             <SNode & LabelNode>{
                 id: 'pidt',
                 text: 'pidt1',
                 type: 'node:controller',
-                position: {x: 550, y: 275},
+                position: {x: 555, y: 275},
                 size: {width: 120, height: 80},
             },
             // in/outputs
@@ -176,6 +256,22 @@ export default function runExample() {
                     {
                         id: "MaxPositionIcon",
                         type: "label:icon3"
+                    }
+                ]
+            },
+            <SNode>{
+                id: 'zero_input',
+                type: 'node:rect',
+                text: '0.0',
+                arrow: ArrowType.STROKE,
+                position: {x: 100, y: 250},
+                size: {width: 40, height: 15},
+                children: [
+                    <SLabel>{
+                        id: '0.0Label',
+                        type: 'label:text',
+                        text: '0.0',
+                        position: {x: 10, y: 12}
                     }
                 ]
             },
@@ -353,9 +449,8 @@ export default function runExample() {
 }
 
 let arrowIdCounter = 0;
-function generateArrow() {
-    return [
-        <SLabel>{
+function generateArrow(): SLabel {
+    return <SLabel> {
             id: 'arrow' + arrowIdCounter++,
             type: 'label:arrow',
             text: '',
@@ -365,7 +460,6 @@ function generateArrow() {
                 rotate: true
             }
         }
-    ]
 } 
 
 document.addEventListener("DOMContentLoaded", () => runExample());

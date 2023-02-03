@@ -14,6 +14,7 @@ export default (containerId: string) => {
         configureModelElement(context, 'node:input', RectangularNode, InputView);
         configureModelElement(context, 'node:controller', RectangularNode, ControllerView);
         configureModelElement(context, 'node:operand', RectangularNode, OperandView);
+        configureModelElement(context, 'node:rect', RectangularNode, RectangularNodeView);
         configureModelElement(context, 'edge:straight', SEdge, PolylineEdgeView);
         configureModelElement(context, 'label:arrow', SLabel, EdgeArrow);
         configureModelElement(context, 'label:text', SLabel, SLabelView)

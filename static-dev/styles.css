@@ -30,9 +30,10 @@ h1 {
 }
 
 .sprotty-node {
-    fill: white;
+    fill: none;
     stroke: black;
 }
+
 .controller-marker {
     stroke: lightblue;
     stroke-width: 1px;
@@ -54,6 +55,13 @@ h1 {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.sprotty-text {
+.sprotty-text, .sprotty-label {
     font-family: monospace
+}
+
+.sprotty-label {
+    font-size: 10;
+    font-weight: 100;
+    fill: black;
+    stroke: none;
 }
