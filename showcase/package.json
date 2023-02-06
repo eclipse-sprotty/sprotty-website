@@ -6,10 +6,12 @@
   "scripts": {
     "build": "esbuild ./src/index.ts --bundle --minify --sourcemap --outfile=../static-dev/bundle.js" 
   },
+  "devDependencies": {
+    "esbuild": "0.17.5"
+  },
   "dependencies": {
     "typescript": "4.9.5",
     "sprotty": "0.13.0",
-    "reflect-metadata": "^0.1.13",
-    "esbuild": "0.17.5"
+    "reflect-metadata": "^0.1.13"
   }
 }
