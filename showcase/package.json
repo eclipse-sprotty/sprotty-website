@@ -4,7 +4,7 @@
   "description": "showcase content for the sprotty website",
   "private": "true",
   "scripts": {
-    "build": "esbuild ./src/index.ts --bundle --minify --sourcemap --outfile=../static-dev/bundle.js" 
+    "build": "esbuild ./src/index.ts --bundle --minify --sourcemap --outfile=../static-dev/bundle.js --loader:.ttf=file",
   },
   "devDependencies": {
     "esbuild": "0.17.5"
@@ -12,6 +12,11 @@
   "dependencies": {
     "typescript": "4.9.5",
     "sprotty": "0.13.0",
-    "reflect-metadata": "^0.1.13"
+    "reflect-metadata": "^0.1.13",
+    "esbuild": "0.17.5",
+    "monaco-editor-workers": "0.34.2",
+    "monaco-editor-wrapper": "1.3.2",
+    "langium": "1.0.1",
+    "langium-sprotty": "1.0.0"
   }
 }
