@@ -1,0 +1,10 @@
+{
+  "name": "sprotty-website",
+  "version": "0.0.1",
+  "devDependencies": {
+    "hugo-extended": "0.110.0"
+  },
+  "workspaces": [
+    "hugo"
+  ]
+}
