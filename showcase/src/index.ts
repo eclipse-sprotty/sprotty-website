@@ -1,78 +1,22 @@
 import "reflect-metadata";
-import { LocalModelSource, RectangularNode, SCompartment, TYPES } from "sprotty";
-import { SNode, SEdge, SLabel } from "sprotty-protocol";
-import createContainer from "./sprotty-ASCET-example/di.config";
-import { model } from "./sprotty-ASCET-example/model-source";
-import { ArrowType, InputNode, LabelNode, OperandNode, OperandType } from "./sprotty-ASCET-example/models";
+import { LocalModelSource, TYPES } from "sprotty";
+import createASCETContainer from "./sprotty-ASCET-example/di.config";
+import createLangiumSprottyContainer from "./interactive-example/diagram-frontend/di.config";
+import { model } from "./sprotty-ASCET-example/model-sournce";
+import { createMonacoEditor } from './interactive-example/monaco-config';
+import { SprottyStarter } from "./interactive-example/diagram-frontend/SprottyStarter";
 
 export default function runExample() {
-    const container = createContainer('sprotty-showcase');
-    const modelSource = container.get<LocalModelSource>(TYPES.ModelSource);
-    modelSource.setModel(model);
-//     modelSource.setModel({
-//         type: 'graph',
-//         id: 'graph',
-//         children: [
-//             // edges
-//             <SEdge> {
-//                 id: 'targetPosEdge',
-//                 type: 'edge:straight',
-//                 sourceId: 'target_pos',
-//                 targetId: 'AddOperand',
-//                 routerKind: 'manhattan',
-//                 children: [generateArrow()]
-//             },
-//             <SEdge> {
-//                 id: 'MaxPosEdge',
-//                 type: 'edge:straight',
-//                 sourceId: 'MaxPosition',
-//                 targetId: 'limiter',
-//                 routerKind: 'manhattan',
-//                 routingPoints: [{x: 252, y: 207}],
-//                 children: [generateArrow()]
-//             },
-//             <SEdge> {
-//                 id: 'zero_inputEdge',
-//                 type: 'edge:straight',
-//                 sourceId: 'zero_input',
-//                 targetId: 'limiter',
-//                 routerKind: 'manhattan',
-//                 routingPoints: [{x: 215, y: 257}],
-//                 children: [generateArrow()]
-//             },
-//             <SEdge> {
-//                 id: 'AddLimiterEdge',
-//                 type: 'edge:straight',
-//                 sourceId: 'AddOperand',
-//                 targetId: 'limiter',
-//                 routerKind: 'manhattan',
-//                 children: [generateArrow()]
-//             },
-//             <SEdge> {
-//                 id: 'OffsetPosEdge',
-//                 type: 'edge:straight',
-//                 sourceId: 'offset_pos',
-//                 targetId: 'AddOperand',
-//                 routerKind: 'manhattan',
-//                 routingPoints: [{x: 145, y: 367}],
-//                 children: [generateArrow()]
-//             },
-//             <SEdge> {
-//                 id: 'limiterEdge',
-//                 type: 'edge:straight',
-//                 sourceId: 'limiter',
-//                 targetId: 'SubOperand',
-//                 routerKind: 'manhattan',
-//                 children: [generateArrow()]
-//             },
-//             <SEdge> {
-//                 id: 'actualPosEdge',
-//                 type: 'edge:straight',
-//                 sourceId: 'actual_pos',
-//                 targetId: 'SubOperand',
-//                 routerKind: 'manhattan',
-//                 routingPoints: [{x: 335, y: 407}],
-//                 children: [generateArrow()]
+    if (location.pathname.startsWith('/showcase')) {
+        const client = createMonacoEditor('monaco-editor');
+        const container = createLangiumSprottyContainer('sprotty-showcase');
+        new SprottyStarter(client, container, 'sprotty-showcase').start();
+    } else {
+        const container = createASCETContainer('sprotty-showcase');
+        const modelSource = container.get<LocalModelSource>(TYPES.ModelSource);
+        modelSource.setModel(model);
+    }
+}
 
 //             },
 //             <SEdge> {

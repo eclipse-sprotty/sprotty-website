@@ -1,7 +1,10 @@
+import { addDiagramHandler } from "langium-sprotty";
 import { buildWorkerDefinition } from "monaco-editor-workers";
 import { MonacoEditorLanguageClientWrapper } from "monaco-editor-wrapper";
+import { CloseAction, ErrorAction, MessageType, MonacoLanguageClient, MonacoServices, ProtocolNotificationType0 } from "monaco-languageclient";
+import { BrowserMessageReader, BrowserMessageWriter } from "vscode-languageserver-protocol/browser";
 
-export function createMonacoEditor(containerId: string) {
+export function createMonacoEditor(containerId: string): MonacoEditorLanguageClientWrapper {
     buildWorkerDefinition('/node_modules/monaco-editor-workers/dist/workers', new URL('../', window.location.href).href, false);
 
     MonacoEditorLanguageClientWrapper.addMonacoStyles('monaco-editor-styles');
@@ -64,20 +67,18 @@ state GreenLight
     switchCapacity => PowerOff
     next => YellowLight
 end`);
-    config.setTheme('vs-dark');
 
     config.setUseLanguageClient(true);
     config.setUseWebSocket(false);
 
-    const workerURL = new URL('/languageServer.js',  new URL('../', window.location.href).href);
+    const workerURL = new URL('../language-server.js',  window.location.href);
 
-    const lsWorker = new Worker(workerURL.href, {
-        type: 'classic',
-        name: 'LS'
-    });
+    const lsWorker = new Worker(workerURL, {type: 'classic'});
     client.setWorker(lsWorker);
 
     client.startEditor(document.getElementById(containerId));
 
     window.addEventListener("resize", () => client.updateLayout());
+
+    return client;
 }

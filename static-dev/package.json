@@ -5,7 +5,8 @@
     "private": "true",
 
     "dependencies": {
-        "monaco-editor-workers": "0.34.2"
+        "monaco-editor-workers": "0.34.2",
+        "sprotty-elk": "0.13.1"
     }
   }
   
