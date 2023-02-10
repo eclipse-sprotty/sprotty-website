@@ -21,6 +21,10 @@ h1 {
     stroke-width: 1px;
 }
 
+#sprotty-showcase_Tqs_flgTorqueRegOverride-\>Relais > path {
+    stroke-dasharray: 5;
+}
+
 .sprotty-routing-handle {
     fill: black
 }

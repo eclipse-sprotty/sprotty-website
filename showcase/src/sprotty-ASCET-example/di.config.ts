@@ -1,6 +1,6 @@
 import { Container, ContainerModule } from "inversify";
-import { configureModelElement, configureViewerOptions, ConsoleLogger, loadDefaultModules, LocalModelSource, LogLevel, PolylineEdgeView, RectangularNode, RectangularNodeView, SChildElement, SEdge, SGraph, SGraphView, SLabel, SLabelView, SModelElement, SRoutingHandle, SRoutingHandleView, SShapeElement, TYPES } from "sprotty";
-import { ComponentView, EdgeArrow, Icon1, Icon2, Icon3, Icon4, InputView, OperandView } from "./views";
+import { configureModelElement, configureViewerOptions, ConsoleLogger, edgeIntersectionModule, JumpingPolylineEdgeView, loadDefaultModules, LocalModelSource, LogLevel, PolylineEdgeView, RectangularNode, RectangularNodeView, SChildElement, SEdge, SGraph, SGraphView, SLabel, SLabelView, SModelElement, SRoutingHandle, SRoutingHandleView, SShapeElement, TYPES } from "sprotty";
+import { ComponentView, ControllerView, EdgeArrow, Icon1, Icon2, InputView, OperandView, RelaisView, SplitMarkedEdgeView } from "./views";
 
 
 export default (containerId: string) => {
@@ -14,8 +14,9 @@ export default (containerId: string) => {
         configureModelElement(context, 'node:input', RectangularNode, InputView);
         configureModelElement(context, 'node:component', RectangularNode, ComponentView);
         configureModelElement(context, 'node:operand', RectangularNode, OperandView);
-        configureModelElement(context, 'node:rect', RectangularNode, RectangularNodeView);
-        configureModelElement(context, 'edge:straight', SEdge, PolylineEdgeView);
+        configureModelElement(context, 'node:controller', RectangularNode, ControllerView);
+        configureModelElement(context, 'node:relais', RectangularNode, RelaisView);
+        configureModelElement(context, 'edge:straight', SEdge, SplitMarkedEdgeView);
         configureModelElement(context, 'label:arrow', SLabel, EdgeArrow);
         configureModelElement(context, 'label:text', SLabel, SLabelView)
         configureModelElement(context, 'routing-point', SRoutingHandle, SRoutingHandleView)
@@ -23,8 +24,6 @@ export default (containerId: string) => {
         // icons
         configureModelElement(context, 'label:icon1', SChildElement, Icon1);
         configureModelElement(context, 'label:icon2', SChildElement, Icon2);
-        configureModelElement(context, 'label:icon3', SChildElement, Icon3);
-        configureModelElement(context, 'label:icon4', SChildElement, Icon4);
 
 
         configureViewerOptions(context, {
@@ -37,6 +36,7 @@ export default (containerId: string) => {
     const container = new Container();
     loadDefaultModules(container);
     container.load(ASCETExamleModule);
+    container.load(edgeIntersectionModule)
     return container;
 
 }

@@ -3,8 +3,9 @@ import { svg } from 'sprotty/lib/lib/jsx';
 
 import { injectable } from 'inversify';
 import { VNode } from "snabbdom";
-import { IViewArgs, RectangularNodeView, RenderingContext, SEdge, ShapeView, SLabel, SNode } from "sprotty";
+import { IntersectionFinder, isIntersectingRoutedPoint, IViewArgs, PolylineEdgeView, RectangularNodeView, RenderingContext, SEdge, ShapeView, SLabel, SNode } from "sprotty";
 import { ArrowType, ComponentNode, InputNode, LabelNode, OperandNode, OperandType } from './models';
+import { Point } from 'sprotty-protocol';
 
 
 @injectable()
@@ -48,6 +49,17 @@ export class ComponentView extends RectangularNodeView {
 }
 
 @injectable()
+export class ControllerView extends RectangularNodeView {
+    override render(node: Readonly<SNode & ComponentNode>, context: RenderingContext, args?: IViewArgs): VNode {
+        return <g>
+            <rect width={node.size.width} height={node.size.height} class-sprotty-node={true}></rect>
+            <rect x="4" y="4" width={node.size.width - 8} height={node.size.height - 8} class-sprotty-node={true}></rect>
+            <text x={node.size.width / 2} y="30" class-sprotty-text={true}>EngSpdControl</text>
+            </g>
+    }
+}
+
+@injectable()
 export class OperandView extends RectangularNodeView {
     override render(node: Readonly<SNode & OperandNode>, context: RenderingContext, args?: IViewArgs): VNode {
         return <g>
@@ -71,6 +83,39 @@ export class OperandView extends RectangularNodeView {
     }
 }
 
+@injectable()
+export class RelaisView extends RectangularNodeView {
+    override render(node: Readonly<SNode & LabelNode>, context: RenderingContext, args?: IViewArgs): VNode {
+        return <g>
+            <rect width={node.size.width} height={node.size.height} class-sprotty-node={true}></rect>
+            <image href={`images/Relais.png`} x="1" width={node.size.width - 2} height={node.size.height - 2}></image>
+        </g>
+    }
+}
+
+// Edges
+
+@injectable()
+export class SplitMarkedEdgeView extends PolylineEdgeView {
+
+    protected renderAdditionals(edge: SEdge, segments: Point[], context: RenderingContext): VNode[] {
+        const splitMarkers: VNode[] = [];
+        for (const segment of segments) {
+            if(isIntersectingRoutedPoint(segment)) {
+                for(const intersection of segment.intersections) {
+                    if(intersection.routable1.split('->')[0] === intersection.routable2.split('->')[0]) {
+                        // if intersection from two routable of the same start node add a
+                        splitMarkers.push(<g transform={`translate(${intersection.intersectionPoint.x},${intersection.intersectionPoint.y})`}><polygon points="0,4 4,0 0,-4 -4,0"  style={{fill: "black"}}></polygon></g>)
+                        break;
+                    }
+                }
+            }
+        }
+        return splitMarkers;
+    }
+
+}
+
 // input icons
 
 @injectable()
@@ -88,28 +133,6 @@ export class Icon2 extends ShapeView {
         return <g>
             <polygon points="-4,-4 4,-4 4,4" style={{stroke: "lightgrey", fill: "none"}}/>
             <polygon points="-4,-4 -4,4 4,4" style={{stroke: "lightgrey", fill: "orange"}}/>
-        </g>
-    }
-}
-
-@injectable()
-export class Icon3 extends ShapeView {
-    override render(node: Readonly<SNode>, context: RenderingContext, args?: IViewArgs): VNode {
-        const parentSize = (node.parent as SNode).size
-        return <g>
-            <polygon points="0,4 4,0 0,-4 -4,0" style={{stroke: "lightgrey", fill: "lightblue"}}/>
-            <text transform="translate(-2.8, 3.2)" style={{fontSize: "10", fontWeight: "bold"}}>=</text>
-        </g>
-    }
-}
-
-@injectable()
-export class Icon4 extends ShapeView {
-    override render(node: Readonly<SNode>, context: RenderingContext, args?: IViewArgs): VNode {
-        const parentSize = (node.parent as SNode).size
-        return <g>
-            <polygon points="0,4 4,0 0,-4 -4,0" style={{stroke: "lightgrey", fill: "lightblue"}}/>
-            <text transform="translate(-2.8, 3.2)" style={{fontSize: "10", fontWeight: "bold"}}>+</text>
         </g>
     }
 }
