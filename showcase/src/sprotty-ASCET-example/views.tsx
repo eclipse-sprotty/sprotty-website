@@ -4,7 +4,7 @@ import { svg } from 'sprotty/lib/lib/jsx';
 import { injectable } from 'inversify';
 import { VNode } from "snabbdom";
 import { IViewArgs, RectangularNodeView, RenderingContext, SEdge, ShapeView, SLabel, SNode } from "sprotty";
-import { ArrowType, InputNode, LabelNode, OperandNode, OperandType } from './models';
+import { ArrowType, ComponentNode, InputNode, LabelNode, OperandNode, OperandType } from './models';
 
 
 @injectable()
@@ -26,21 +26,23 @@ export class InputView extends RectangularNodeView {
             {node.arrow !== ArrowType.NONE && <polygon class-input-arrow-full={node.arrow === ArrowType.FULL} class-input-arrow-stroke={node.arrow === ArrowType.STROKE}
                 points={`${node.size.width - 10},0 ${node.size.width},${node.size.height / 2} ${node.size.width - 10},${node.size.height}`}/> }
             <g transform={`translate(${node.size.width / 2 + (node.arrow !== ArrowType.NONE ? 0 : 5)},${node.size.height / 2})`} >{context.renderChildren(node, args)}</g>
-            <text x="0" y={node.size.height + 15} class-sprotty-text={true}>{node.text}</text>
+            <text x={node.size.width / 2} y={node.size.height + 15} class-sprotty-text={true}>{node.text}</text>
         </g>
     }
 }
 
 @injectable()
-export class ControllerView extends RectangularNodeView {
-    override render(node: Readonly<SNode & LabelNode>, context: RenderingContext, args?: IViewArgs): VNode {
+export class ComponentView extends RectangularNodeView {
+    override render(node: Readonly<SNode & ComponentNode>, context: RenderingContext, args?: IViewArgs): VNode {
         return <g>
             <rect class-sprotty-node={true}
                 class-mouseover={node.hoverFeedback} class-selected={node.selected}
                 width={Math.max(node.size.width, 0)} height={Math.max(node.size.height, 0)}>
             </rect>
-            <rect class-controller-marker={true} width="10" height="10" x={node.size.width / 2 - 5} y="-5"></rect>
-            <text x="0" y={node.size.height + 20} class-sprotty-text={true}>{node.text}</text>
+            <image href={`images/${node.image}`} width={node.size.width - 10} height={node.size.height - 10} x="5" y="5"></image >
+            <rect width="10" height={node.size.height} x="0" y="0" class-input-back={true}></rect>
+            <rect class-component-marker={true} width="10" height="10" x={node.size.width / 2 - 5} y="-5"></rect>
+            <text x={node.size.width / 2} y={node.size.height + 20} class-sprotty-text={true}>{node.text}</text>
             </g>
     }
 }
@@ -63,7 +65,7 @@ export class OperandView extends RectangularNodeView {
                 node.operand === OperandType.SUBSTRACT && <text x={5} y={30} w class-operand-symbol={true} style={{fontSize: "54"}}>{node.operand}</text>
             }
             {
-                node.operand === OperandType.MN && <text x={2} y={35} w class-operand-symbol={true} style={{fontSize: "30", transform: "scaleX(0.8)"}}>{node.operand}</text>
+                node.operand === OperandType.MULTIPLY && <text x={4} y={node.size.height - 5} w class-operand-symbol={true} style={{fontSize: "40"}}>{node.operand}</text>
             }
             </g>
     }

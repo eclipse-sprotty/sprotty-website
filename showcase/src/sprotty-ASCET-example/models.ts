@@ -14,11 +14,15 @@ export interface LabelNode extends SNode {
     text: string;
 }
 
+export interface ComponentNode extends LabelNode {
+    image: string
+}
+
 export enum OperandType {
     ADD = "+",
     SUBSTRACT = "-",
     DIVIDE = "÷",
-    MN = "MN"
+    MULTIPLY = "x"
 }
 
 export interface OperandNode {

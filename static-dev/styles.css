@@ -3,8 +3,8 @@ h1 {
 }
 
 #sprotty-showcase {
-    width: 800px;
-    height: 500px;
+    width: 1400px;
+    height: 700px;
     margin: auto;
     border: 1px solid black;
     border-radius: 5px;
@@ -34,10 +34,10 @@ h1 {
     stroke: black;
 }
 
-.controller-marker {
-    stroke: lightblue;
+.component-marker {
+    stroke: lightgray;
     stroke-width: 1px;
-    fill: orange;
+    fill: lightblue;
 }
 
 .class-input-back, .input-arrow-full {
@@ -51,12 +51,14 @@ h1 {
 
 .operand-symbol {
     font-weight: bold;
-    fill: rgb(138, 133, 214);
+    fill: #8585EB;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .sprotty-text, .sprotty-label {
-    font-family: monospace
+    font-family: monospace;
+    text-anchor: middle;
+    fill: blue;
 }
 
 .sprotty-label {
