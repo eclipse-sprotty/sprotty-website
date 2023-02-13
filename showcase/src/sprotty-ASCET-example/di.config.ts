@@ -1,6 +1,6 @@
 import { Container, ContainerModule } from "inversify";
 import { configureModelElement, configureViewerOptions, ConsoleLogger, edgeIntersectionModule, JumpingPolylineEdgeView, loadDefaultModules, LocalModelSource, LogLevel, PolylineEdgeView, RectangularNode, RectangularNodeView, SChildElement, SEdge, SGraph, SGraphView, SLabel, SLabelView, SModelElement, SRoutingHandle, SRoutingHandleView, SShapeElement, TYPES } from "sprotty";
-import { ComponentView, ControllerView, EdgeArrow, Icon1, Icon2, InputView, OperandView, RelaisView, SplitMarkedEdgeView } from "./views";
+import { ComponentView, ControllerView, EdgeArrow, Icon1, Icon2, Icon3, InputView, OperandView, RelaisView, SplitMarkedEdgeView } from "./views";
 
 
 export default (containerId: string) => {
@@ -24,6 +24,7 @@ export default (containerId: string) => {
         // icons
         configureModelElement(context, 'label:icon1', SChildElement, Icon1);
         configureModelElement(context, 'label:icon2', SChildElement, Icon2);
+        configureModelElement(context, 'label:icon3', SChildElement, Icon3);
 
 
         configureViewerOptions(context, {

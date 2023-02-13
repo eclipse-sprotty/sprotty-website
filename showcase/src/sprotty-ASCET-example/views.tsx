@@ -42,7 +42,10 @@ export class ComponentView extends RectangularNodeView {
             </rect>
             <image href={`images/${node.image}`} width={node.size.width - 10} height={node.size.height - 10} x="5" y="5"></image >
             <rect width="10" height={node.size.height} x="0" y="0" class-input-back={true}></rect>
-            <rect class-component-marker={true} width="10" height="10" x={node.size.width / 2 - 5} y="-5"></rect>
+            <g transform={`translate(${node.size.width / 2},0)`}>
+                <polygon points="0,-4 4,0 2,2 -2,-2" style={{stroke: "lightgrey", fill: "lightblue"}}/>
+                <polygon points="-2,-2 2,2 0,4 -4,0" style={{stroke: "lightgrey", fill: "white"}}/>
+            </g>            
             <text x={node.size.width / 2} y={node.size.height + 20} class-sprotty-text={true}>{node.text}</text>
             </g>
     }
@@ -122,7 +125,10 @@ export class SplitMarkedEdgeView extends PolylineEdgeView {
 export class Icon1 extends ShapeView {
     override render(node: Readonly<SNode>, context: RenderingContext, args?: IViewArgs): VNode {
         const parentSize = (node.parent as SNode).size
-        return <polygon points="0,4 4,0 0,-4 -4,0" style={{stroke: "lightgrey", fill: "lightblue"}}/>
+        return <g>
+            <polygon points="0,-4 4,0 2,2 -2,-2" style={{stroke: "lightgrey", fill: "lightblue"}}/>
+            <polygon points="-2,-2 2,2 0,4 -4,0" style={{stroke: "lightgrey", fill: "white"}}/>
+        </g>
     }
 }
 
@@ -133,6 +139,17 @@ export class Icon2 extends ShapeView {
         return <g>
             <polygon points="-4,-4 4,-4 4,4" style={{stroke: "lightgrey", fill: "none"}}/>
             <polygon points="-4,-4 -4,4 4,4" style={{stroke: "lightgrey", fill: "orange"}}/>
+        </g>
+    }
+}
+
+@injectable()
+export class Icon3 extends ShapeView {
+    override render(node: Readonly<SNode>, context: RenderingContext, args?: IViewArgs): VNode {
+        const parentSize = (node.parent as SNode).size
+        return <g>
+            <polygon points="-4,-4 4,-4 4,4" style={{stroke: "lightgrey", fill: "orange"}}/>
+            <polygon points="-4,-4 -4,4 4,4" style={{stroke: "lightgrey", fill: "none"}}/>
         </g>
     }
 }

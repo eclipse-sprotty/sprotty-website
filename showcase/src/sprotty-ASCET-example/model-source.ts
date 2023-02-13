@@ -109,7 +109,7 @@ export const model = {
             children: [
                 {
                     id: "Tqs_facEgasFiltIcon",
-                    type: "label:icon2"
+                    type: "label:icon3"
                 }
             ]
         },
@@ -123,7 +123,7 @@ export const model = {
             children: [
                 {
                     id: "Tqs_tqMaxIcon",
-                    type: "label:icon2"
+                    type: "label:icon3"
                 }
             ]
         },
@@ -137,7 +137,7 @@ export const model = {
             children: [
                 {
                     id: "Tqs_tqDragIcon",
-                    type: "label:icon2"
+                    type: "label:icon3"
                 }
             ]
         },
@@ -151,7 +151,7 @@ export const model = {
             children: [
                 {
                     id: "Tqs_tqMinIcon",
-                    type: "label:icon2"
+                    type: "label:icon3"
                 }
             ]
         },
@@ -179,7 +179,7 @@ export const model = {
             children: [
                 {
                     id: "Tqs_tqReqCalcIcon",
-                    type: "label:icon2"
+                    type: "label:icon3"
                 }
             ]
         },
@@ -197,12 +197,6 @@ export const model = {
                 }
             ]
         },
-        <SNode>{
-            id: 'Relais',
-            type: 'node:relais',
-            position: {x: 1150, y: 107.5},
-            size: {width: 30, height: 50},
-        },
         <SNode & InputNode>{
             id: 'Tqs_tqReq',
             type: 'node:input',
@@ -213,7 +207,7 @@ export const model = {
             children: [
                 {
                     id: "Tqs_tqReqIcon",
-                    type: "label:icon2"
+                    type: "label:icon3"
                 }
             ]
         },
@@ -295,23 +289,79 @@ export const model = {
         },
         // Other nodes
         <SNode & ComponentNode>{
-            id: 'bigController',
+            id: 'subController',
             type: 'node:controller',
             size: {width: 180, height: 120},
             position: {x: 250, y: 20}
+        },
+        <SNode>{
+            id: 'Relais',
+            type: 'node:relais',
+            position: {x: 1150, y: 107.5},
+            size: {width: 30, height: 50},
+        },
+        // Labels
+        <SLabel> {
+            id: '/3/Tqs_calc',
+            type: 'label:text',
+            text: '/3/Tqs_calc',
+            position: {x: 550, y: 180}
+        },
+        <SLabel> {
+            id: '/4/Tqs_calc',
+            type: 'label:text',
+            text: '/4/Tqs_calc',
+            position: {x: 550, y: 280}
+        },
+        <SLabel> {
+            id: '/5/Tqs_calc',
+            type: 'label:text',
+            text: '/5/Tqs_calc',
+            position: {x: 550, y: 380}
+        },
+        <SLabel> {
+            id: '/7/Tqs_calc',
+            type: 'label:text',
+            text: '/7/Tqs_calc',
+            position: {x: 920, y: 380}
+        },
+        <SLabel> {
+            id: '/8/Tqs_calc',
+            type: 'label:text',
+            text: '/8/Tqs_calc',
+            position: {x: 970, y: 90}
+        },
+        <SLabel> {
+            id: '/9/Tqs_calc',
+            type: 'label:text',
+            text: '/9/Tqs_calc',
+            position: {x: 1270, y: 110}
         },
         
         
         
         // Edges
         <SEdge> {
-            id: 'Epm_rpmEngSpd->BigController',
+            id: 'Epm_rpmEngSpd->subController',
             type: 'edge:straight',
             sourceId: 'Epm_rpmEngSpd',
-            targetId: 'bigController',
+            targetId: 'subController',
             routerKind: 'manhattan',
             routingPoints: [{x:165.01, y: 157}, {x: 165,y: 80}],
-            children: [generateArrow()]
+            children: [
+                generateArrow(),
+                <SLabel> {
+                    id: 'controllerInputLabel1',
+                    text: 'Epm_rpmEngSpd',
+                    type: 'label:text',
+                    cssClasses: ['inputOutputLabel'],
+                    edgePlacement: {
+                        position: 0.8,
+                        side: 'top',
+                        rotate: false
+                    }
+                }
+            ]
         },
         <SEdge> {
             id: 'Epm_rpmEngSpd->Tqs_rpmEngSpdfacEgas2facEgasFilt_MAP',
@@ -341,13 +391,26 @@ export const model = {
             children: [generateArrow()]
         },
         <SEdge> {
-            id: 'Egc_facEgas->BigController',
+            id: 'Egc_facEgas->subController',
             type: 'edge:straight',
             sourceId: 'Egc_facEgas',
-            targetId: 'bigController',
+            targetId: 'subController',
             routerKind: 'manhattan',
             routingPoints: [{x: 180, y: 212.5}, {x: 180, y: 95}],
-            children: [generateArrow()]
+            children: [
+                generateArrow(),
+                <SLabel> {
+                    id: 'controllerInputLabel2',
+                    text: 'Epm_facEgas',
+                    type: 'label:text',
+                    cssClasses: ['inputOutputLabel'],
+                    edgePlacement: {
+                        position: 0.85,
+                        side: 'bottom',
+                        rotate: false
+                    }
+                }
+            ]
         },
         <SEdge> {
             id: 'Egc_facEgas->Tqs_rpmEngSpdfacEgas2facEgasFilt_MAP',
@@ -498,12 +561,25 @@ export const model = {
             children: [generateArrow()]
         },
         <SEdge> {
-            id: 'bigController->AddOpCalcReq',
+            id: 'subController->AddOpCalcReq',
             type: 'edge:straight',
-            sourceId: 'bigController',
+            sourceId: 'subController',
             targetId: 'AddOpCalcReq',
             routerKind: 'manhattan',
-            children: [generateArrow()]
+            children: [
+                generateArrow(),
+                <SLabel> {
+                    id: 'controllerOutputLabel',
+                    text: 'Tqs_tqIdleSpdCtrlCorr',
+                    type: 'label:text',
+                    cssClasses: ['inputOutputLabel'],
+                    edgePlacement: {
+                        position: 0.15,
+                        side: 'left',
+                        rotate: false
+                    }
+                }
+            ]
         },
         <SEdge> {
             id: 'AddOpCalcReq->Tqs_tqReqCalc',
