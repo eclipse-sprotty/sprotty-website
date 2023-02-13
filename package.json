@@ -2,16 +2,21 @@
   "name": "sprotty-website",
   "version": "0.0.1",
   "description": "the sprotty website",
-  "main": "index.html",
+  "devDependencies": {
+    "hugo-extended": "0.110.0",
+    "concurrently": "^7.6.0",
+    "shx": "^0.3.4",
+    "cross-env": "^7.0.3"
+  },
   "scripts": {
+    "watch": "concurrently -c gray,blue -k -n hugo \"npm run watch --workspace hugo\"",
+    "watch:gitpod": "concurrently -c gray,blue -k -n hugo \"npm run watch:gitpod --workspace hugo\"",
+    "build": "npm run clean && npm run build --workspaces",
+    "clean": "shx rm -rf public && npm run clean --workspaces",
     "start": "http-server ./static-dev"
   },
-  "devDependencies": {
-    "http-server": "14.1.1"
-  },
-  "author": "",
-  "license": "ISC",
   "workspaces": [
+    "hugo",
     "showcase"
   ]
 }

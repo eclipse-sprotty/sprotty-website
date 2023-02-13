@@ -1,7 +1,9 @@
+node_modules
+public
 .idea/
 .nyc_output/
 node_modules/
 npm-debug.log
 yarn-error.log
 .DS_Store
-dist/
+
