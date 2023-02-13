@@ -71,16 +71,16 @@ export class OperandView extends RectangularNodeView {
                 width={node.size.width} height={node.size.height}>
             </rect>
             {
-                node.operand === OperandType.ADD && <text x={2} y={node.size.height + 1} w class-operand-symbol={true} style={{fontSize: "45"}}>{node.operand}</text>
+                node.operand === OperandType.ADD && <text x={2} y={node.size.height + 1} w class-operand-symbol={true} style={{fontSize: "45px"}}>{node.operand}</text>
             }
             {
-                node.operand === OperandType.DIVIDE && <text x={3} y={node.size.height} w class-operand-symbol={true} style={{fontSize: "45"}}>{node.operand}</text>
+                node.operand === OperandType.DIVIDE && <text x={3} y={node.size.height} w class-operand-symbol={true} style={{fontSize: "45px"}}>{node.operand}</text>
             }
             {
-                node.operand === OperandType.SUBSTRACT && <text x={5} y={30} w class-operand-symbol={true} style={{fontSize: "54"}}>{node.operand}</text>
+                node.operand === OperandType.SUBSTRACT && <text x={5} y={30} w class-operand-symbol={true} style={{fontSize: "54px"}}>{node.operand}</text>
             }
             {
-                node.operand === OperandType.MULTIPLY && <text x={4} y={node.size.height - 5} w class-operand-symbol={true} style={{fontSize: "40"}}>{node.operand}</text>
+                node.operand === OperandType.MULTIPLY && <text x={4} y={node.size.height - 5} w class-operand-symbol={true} style={{fontSize: "40px"}}>{node.operand}</text>
             }
             </g>
     }
