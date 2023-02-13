@@ -2,10 +2,13 @@
 import { svg } from 'sprotty/lib/lib/jsx';
 
 import { VNode } from "snabbdom";
-import { Hoverable, IViewArgs, RectangularNodeView, RenderingContext, Selectable, SShapeElement } from "sprotty";
+import { Hoverable, IViewArgs, PolylineEdgeView, RectangularNodeView, RenderingContext, SEdge, Selectable, ShapeView, SLabel, SShapeElement } from "sprotty";
+import { Point } from 'sprotty-protocol';
+import {injectable} from 'inversify'
 
-export class StateNodeView extends RectangularNodeView {
-    render(node: Readonly<SShapeElement & Hoverable & Selectable>, context: RenderingContext, args?: IViewArgs): VNode {
-        return <rect></rect>
+@injectable()
+export class EdgeArrow extends ShapeView {
+    override render(node: Readonly<SLabel>, context: RenderingContext, args?: IViewArgs): VNode {
+        return <polygon points={`-6,-4 0,0 -6,4`} style={{fill: "black"}}></polygon>
     }
 }

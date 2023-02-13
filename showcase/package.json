@@ -4,7 +4,8 @@
   "description": "showcase content for the sprotty website",
   "private": "true",
   "scripts": {
-    "build": "esbuild ./src/index.ts --bundle --minify --sourcemap --outfile=../static-dev/bundle.js --loader:.ttf=file",
+    "build": "npm run build-examples & npm run build-language-server",
+    "build-examples": "esbuild ./src/index.ts --bundle --minify --sourcemap --outfile=../static-dev/bundle.js --loader:.ttf=file",
     "build-language-server": "esbuild ./src/interactive-example/language-server/main-browser.ts --bundle --minify --sourcemap --outfile=../static-dev/language-server.js --loader:.ttf=file",
     "langium:generate": "langium generate"
   },

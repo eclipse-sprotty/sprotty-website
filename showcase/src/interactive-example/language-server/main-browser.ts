@@ -7,7 +7,8 @@ import 'reflect-metadata'
 import { createConnection, BrowserMessageReader, BrowserMessageWriter } from 'vscode-languageserver/browser.js';
 import { startLanguageServer, EmptyFileSystem } from 'langium';
 import { createStatemachineServices } from './statemachine-module';
-import { addDiagramHandler } from 'langium-sprotty';
+import { addDiagramHandler, DiagramActionNotification } from 'langium-sprotty';
+import { ServerReadyAction, serverReadyKind } from '../protocol/handshake';
 
 /* browser specific setup code */
 const messageReader = new BrowserMessageReader(self);
@@ -23,3 +24,7 @@ console.log("starting language server");
 startLanguageServer(shared);
 
 addDiagramHandler(connection, shared);
+
+shared.workspace.TextDocuments.onDidOpen(e => {
+    connection.sendNotification(DiagramActionNotification.type, {clientId: 'sprotty-showcase', action: {kind: serverReadyKind, uri: e.document.uri} as ServerReadyAction})
+})

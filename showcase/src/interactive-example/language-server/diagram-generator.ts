@@ -38,13 +38,13 @@ export class StatesDiagramGenerator extends LangiumDiagramGenerator {
         return {
             type: 'node',
             id: nodeId,
-            size: {width: 80, height: 50},
+            size: {width: 100, height: 30},
             children: [
                 <SLabel>{
                     type: 'label',
                     id: idCache.uniqueId(nodeId + '.label'),
                     text: state.name,
-                    position: {x:40, y: 25}
+                    position: {x:50, y: 15}
                 },
                 <SPort>{
                     type: 'port',
@@ -78,6 +78,16 @@ export class StatesDiagramGenerator extends LangiumDiagramGenerator {
                     text: transition.event?.ref?.name,
                     edgePlacement:  {
                         position: 0.5,
+                        rotate: true
+                    }
+                },
+                <SLabel> {
+                    id: idCache.uniqueId(edgeId + '.arrow'),
+                    type: 'label:arrow',
+                    text: '',
+                    edgePlacement:  {
+                        position: 1,
+                        side: 'on',
                         rotate: true
                     }
                 }
