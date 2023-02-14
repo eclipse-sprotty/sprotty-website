@@ -7,3 +7,8 @@ npm-debug.log
 yarn-error.log
 .DS_Store
 dist/
+
+#static-dev files
+static-dev/bundle.*
+static-dev/language-server.js
+static-dev/language-server.js.map
