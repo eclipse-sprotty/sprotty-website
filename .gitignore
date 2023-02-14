@@ -12,3 +12,4 @@ dist/
 static-dev/bundle.*
 static-dev/language-server.js
 static-dev/language-server.js.map
+static-dev/*.ttf
