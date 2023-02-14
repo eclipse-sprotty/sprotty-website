@@ -1,3 +1,19 @@
+/********************************************************************************
+ * Copyright (c) 2023 TypeFox and others.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License v. 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0.
+ *
+ * This Source Code may also be made available under the following Secondary
+ * Licenses when the conditions for such availability set forth in the Eclipse
+ * Public License v. 2.0 are satisfied: GNU General Public License, version 2
+ * with the GNU Classpath Exception which is available at
+ * https://www.gnu.org/software/classpath/license.html.
+ *
+ * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+ ********************************************************************************/
+
 import { Container, ContainerModule } from "inversify";
 import { configureModelElement, configureViewerOptions, ConsoleLogger, edgeIntersectionModule, JumpingPolylineEdgeView, loadDefaultModules, LocalModelSource, LogLevel, PolylineEdgeView, RectangularNode, RectangularNodeView, SChildElement, SEdge, SGraph, SGraphView, SLabel, SLabelView, SModelElement, SRoutingHandle, SRoutingHandleView, SShapeElement, TYPES } from "sprotty";
 import { ComponentView, ControllerView, EdgeArrow, Icon1, Icon2, Icon3, InputView, OperandView, RelaisView, SplitMarkedEdgeView } from "./views";
