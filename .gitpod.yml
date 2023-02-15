@@ -1,5 +1,6 @@
 tasks:
-  - init: npm install
+  - before: npm install
+    init: npm run build --workspaces
     command: npm run watch:gitpod
 ports:
   - port: 1313

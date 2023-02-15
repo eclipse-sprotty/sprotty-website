@@ -2,7 +2,7 @@ import { Container, ContainerModule } from "inversify";
 import { MonacoLanguageClient } from "monaco-languageclient";
 import { configureModelElement, configureViewerOptions, ConsoleLogger, 
     loadDefaultModules, LocalModelSource, LogLevel, TYPES, PolylineEdgeView, RectangularNode, 
-    RectangularNodeView, SEdge, SGraph, SGraphView, SLabel, SLabelView, SRoutingHandle, SRoutingHandleView, RectangularPort, popupFeature, creatingOnDragFeature } from "sprotty";
+    RectangularNodeView, SEdge, SGraph, SGraphView, SLabel, SLabelView, SRoutingHandle, SRoutingHandleView, RectangularPort, popupFeature, creatingOnDragFeature, editFeature, moveFeature, selectFeature } from "sprotty";
 import { LSWorkerDiagramServerProxy } from "./ls-worker-proxy";
 import { EdgeArrow } from "./views";
 
@@ -17,8 +17,12 @@ export default (containerId: string, client: MonacoLanguageClient) => {
         
         const context = { bind, unbind, isBound, rebind };
         configureModelElement(context, 'graph', SGraph, SGraphView);
-        configureModelElement(context, 'node', RectangularNode, RectangularNodeView);
-        configureModelElement(context, 'edge', SEdge, PolylineEdgeView);
+        configureModelElement(context, 'node', RectangularNode, RectangularNodeView, {
+            disable: [moveFeature, selectFeature]
+        });
+        configureModelElement(context, 'edge', SEdge, PolylineEdgeView, {
+            disable: [editFeature]
+        });
         configureModelElement(context, 'label', SLabel, SLabelView);
         configureModelElement(context, 'label:xref', SLabel, SLabelView);
         configureModelElement(context, 'label:arrow', SLabel, EdgeArrow);
