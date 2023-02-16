@@ -3,7 +3,7 @@ title: 'Sprotty configuration and dependency injection'
 Weight: 300
 --- 
 
-As seen in the [getting started](../getting_started) guide Sprotty relies heavily on dependency injection (DI) through [InversifyJs](https://inversify.io/) for configuration of its various components. This chapter will take a closer look at how to work with this.
+As seen in the [getting started](../getting_started) guide Sprotty relies heavily on dependency injection (DI) through [InversifyJs](https://inversify.io/) for the configuration of its various components. This chapter will take a closer look at how to work with this.
 
 ## Why dependency injection?
 DI allows us to
@@ -49,9 +49,9 @@ Through `configureModelElement` we can link our model to specific view component
             ...
 }
 ```
-in our model, Sprotty will try to convert this datastructure to an instance of the actual `SNode` class and render it with the `TaskNodeView`.
+in our model, Sprotty will try to convert this data structure to an instance of the actual `SNode` class and render it with the `TaskNodeView`.
 
-Lastly we configure our viewer options. Here we configure all the dom elements needed by Sprotty, for example example the base div inside of which our diagram is rendered or the hidden div used by the first render cycle for determining micro layout. Another thing configured here is layouting. Specifically if layouting should be done on client-side, server-side or both. This also determines the protocol spoken by client and server. 
+Lastly, we configure our viewer options. Here we configure all the dom elements needed by Sprotty for example the base div inside of which our diagram is rendered or the hidden div used by the first render cycle for determining micro layout. Another thing configured here is layouting. Specifically, if layouting should be done on client-side, server-side or both. This also determines the protocol spoken by client and server. 
 
 ## Features
 Model elements can further be configured through features. 
@@ -61,12 +61,12 @@ configureModelElement(context, 'task', SNode, TaskNodeView, {
     disable: [moveFeature]
 });
 ```
-the `configureModelElement` method takes as an optional last paramter an object containing arrays for `enabled` and `disabled` features containing Symbols representing representing those features. Through this we can disable default functionality like dragging or selecting nodes and add functionality, either custom or loaded through other non default modules.
+the `configureModelElement` method takes as an optional last parameter an object containing arrays for `enabled` and `disabled` features containing Symbols representing those features. Through this, we can disable default functionality like dragging or selecting nodes and add functionality, either custom or loaded through other non-default modules.
 
-## Dependency Injection specialities
+## Dependency Injection specialties
 
 ### Multi bindings
-Sometimes there is more than one implementation bound to a specific interface in Sprotty. This is when we use multi-bindings. Here is an example for the VNodeDecorators.
+Sometimes there is more than one implementation bound to a specific interface in Sprotty. This is when we use multi-bindings. Here is an example of the VNodeDecorators.
 ```Typescript
 @multiInject(TYPES.VNodePostprocessor)@optional() protected postprocessors: VNodePostprocessor[]
 ```
