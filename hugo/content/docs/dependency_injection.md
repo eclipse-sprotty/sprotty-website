@@ -61,7 +61,7 @@ configureModelElement(context, 'task', SNode, TaskNodeView, {
     disable: [moveFeature]
 });
 ```
-the `configureModelElement` method takes an optional last paramter of an object containing arrays for `enabled` and `disabled` features containing Symbols representing representing those features. Through this we can disable default functionality like dragging or selecting nodes and add functionality, either custom or loaded through other non default modules.
+the `configureModelElement` method takes as an optional last paramter an object containing arrays for `enabled` and `disabled` features containing Symbols representing representing those features. Through this we can disable default functionality like dragging or selecting nodes and add functionality, either custom or loaded through other non default modules.
 
 ## Dependency Injection specialities
 
