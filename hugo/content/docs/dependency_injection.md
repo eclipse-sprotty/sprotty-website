@@ -3,9 +3,9 @@ title: 'Sprotty configuration and dependency injection'
 Weight: 300
 --- 
 
-As seen in the [getting started](../getting_started) guide sprotty relies heavily on dependency injection (DI) through [InversifyJs](https://inversify.io/) for configuration of its varous components. This chapter will take a closer look at how to work with this.
+As seen in the [getting started](../getting_started) guide Sprotty relies heavily on dependency injection (DI) through [InversifyJs](https://inversify.io/) for configuration of its various components. This chapter will take a closer look at how to work with this.
 
-## Why dependency injection
+## Why dependency injection?
 DI allows us to
 - not care about the instantiation and life-cycle of service components,
 - manage singletons like the various registries without using the global scope,
@@ -14,7 +14,7 @@ DI allows us to
 - modularize the configuration of specific features and scenarios and merge these modules for the final application
 
 ## The container
-The DI-container is the main point of configuration. The standard in sprotty is naming the file containing the container `di.config.ts`.
+The DI-container is the main point of configuration. The standard in Sprotty is naming the file containing the container `di.config.ts`.
 
 ```typescript
 export const createContainer = (containerId: string) => {
@@ -35,9 +35,9 @@ export const createContainer = (containerId: string) => {
     return container;
 };
 ```
-The container is build from multiple modules. Through `loadDefaultModules()` all modules are loaded for default sprotty functionality. we can of course also load other non default modules like the `edgeIntersectionModule` for extra functionality.
+The container is built from multiple modules. Through `loadDefaultModules()` all modules are loaded for default Sprotty functionalities. we can of course also load other optional modules like the `edgeIntersectionModule` for extra functionality.
 
-Most important is our own module where the core of the configuration happens. Here we can configure singleton scope classes like our [datasource](../datasources) or rebind default default sprotty components like for example the logger to a custom implementation. We use Symbols for bindings instead of using classes directly. All Symbols can be found in the `TYPES` object.
+Most important is our own module where the core of the configuration happens. Here we can configure singleton scope classes like our [datasource](../datasources) or rebind default Sprotty components, for example the logger, to a custom implementation. We use Symbols for bindings instead of using classes directly. All Symbols can be found in the `TYPES` object.
 
 Through `configureModelElement` we can link our model to specific view components through the type property. Meaning if we have 
 ```Typescript
@@ -49,9 +49,9 @@ Through `configureModelElement` we can link our model to specific view component
             ...
 }
 ```
-in our model, sprotty will try to convert this datastructure to an instance of the actual `SNode` class and render it with the `TaskNodeView`.
+in our model, Sprotty will try to convert this datastructure to an instance of the actual `SNode` class and render it with the `TaskNodeView`.
 
-lastly we configure our viewer options. Here we configure all the dom elements needed by sprotty like for example the base div where our Diagram is rendered or the hidden div used by the first render cycle for determining micro layout. Another thing configured here is layouting. Specificily should layouting be done on client or servreside or both. This also determines the protocol spoken by client and server. 
+Lastly we configure our viewer options. Here we configure all the dom elements needed by Sprotty, for example example the base div inside of which our diagram is rendered or the hidden div used by the first render cycle for determining micro layout. Another thing configured here is layouting. Specifically if layouting should be done on client-side, server-side or both. This also determines the protocol spoken by client and server. 
 
 ## Features
 Model elements can further be configured through features. 
