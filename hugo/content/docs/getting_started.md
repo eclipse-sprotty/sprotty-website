@@ -14,75 +14,81 @@ The main steps to integrate Sprotty into our application are as follows:
 ## Setting-up our application
 Our example application is based on TypeScript. In the following we will set up our project to be ready for receiving Sprotty.
 1. Create a new directory and navigate to it
-2. Install TypeScript
+2. Initialize the project by running
     ```shell
-    npm i typescript --save-dev
+    npm init -y
     ```
-3. Initialize the TypeScript project
+    This will create a `package.json` file.
+3. Modify `package.json` to add a build script and necessary dependencies
+    ```json
+    {
+        "scripts": {
+        "build": "esbuild ./index.ts --bundle --sourcemap --outfile=./out/index.js"
+        },
+        "devDependencies": {
+            "esbuild": "^0.17.8",
+            "typescript": "^4.9.5"
+        },
+        "dependencies": {
+            "reflect-metadata": "^0.1.13",
+            "sprotty": "^0.13.0"
+        }
+    }
+    ```
+4. Initialize the TypeScript project
     ```shell
     npx tsc --init
     ```
     This will create `tsconfig.json` file at the root of your project. You should overwrite this files with the following:
     ```json
     {
-      "$schema": "https://json.schemastore.org/tsconfig",
-      "compilerOptions": {
-      "target": "ES2019",
-      "module": "commonjs",
-      "esModuleInterop": true,
-      "sourceMap": true,
-      "experimentalDecorators": true,
-      "jsx": "react",
-      "types": [
-        "reflect-metadata"
-      ]
-      },
-      "lib": [
-        "ES2019",
-        "DOM"
-      ]
+        "$schema": "https://json.schemastore.org/tsconfig",
+        "compilerOptions": {
+        "target": "ES2019",
+        "module": "commonjs",
+        "esModuleInterop": true,
+        "sourceMap": true,
+        "experimentalDecorators": true,
+        "jsx": "react",
+        "types": [
+            "reflect-metadata"
+        ]
+        },
+        "lib": [
+            "ES2019",
+            "DOM"
+        ]
     }
     ```
-4. Modify `package.json` to add a build script and necessary dependencies
-```json
-{
-  "scripts": {
-    "build": "esbuild ./index.ts --bundle --sourcemap --outfile=./out/index.js"
-  },
-  "devDependencies": {
-    "esbuild": "^0.17.8",
-    "typescript": "^4.9.5"
-  },
-  "dependencies": {
-    "reflect-metadata": "^0.1.13",
-    "sprotty": "^0.13.0"
-  }
-}
-```
 5. Install dependencies running `npm i`
 6. Create a `index.html` file at the root of your project
-```html
-<head>
-  <script src="./out/index.js" type="text/javascript"></script>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <div id="sprotty-container"></div>
-</body>
-```
-7. Add some default CSS styles by creating a `styles.css` file at the root of the project
-```css
-.sprotty-graph {
-  width: 100%;
-  height: 100%;
-}
-```
+    ```html
+    <head>
+        <script src="./out/index.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div id="sprotty-container"></div>
+    </body>
+    ```
+7. Add some default CSS styles by creating a `styles.css` file at the root of the project:
+    ```css
+    .sprotty-graph {
+        width: 100%;
+        height: 100%;
+    }
+    .sprotty-edge {
+        fill: none;
+        stroke: black;
+        stroke-width: 1px;
+    }
+    ```
 Our project is now set-up and ready for integrating Sprotty diagrams.
 
 ## Define your model
 Sprotty comes with a set of model classes that you can reuse for your application. e.g. `SNode` and `SEdge` for graphs and `SChildElement` for other views. However, it is often necessary to add application-specific properties to model elements, so their graphical views can be parameterized.
 
-We will define a new interface for our nodes called `TaskNode`, extending Sprotty's `SNode` with application-specific properties:
+We will define a new interface for our nodes called `TaskNode`, extending Sprotty's `SNode` with application-specific properties. Create a new file `models.ts` at the root of the project:
 ```typescript
 import { SNode } from "sprotty-protocol"
 
@@ -96,7 +102,7 @@ export interface TaskNode extends SNode {
 ## Implement views
 A view maps a model element to its graphical representation. You can create your own views by creating a class implementing `IView` or extending a view already available in Sprotty.
 
-In the following example we use the JSX syntax to create a SVG group with a `rect` and a `text` element.
+In the following example we use the JSX syntax to create a SVG group with a `rect` and a `text` element. Add a new file `view.tsx` (note the `tsx` extension) at the root of the project:
 ```typescript
 /** @jsx svg */
 import { svg } from 'sprotty/lib/lib/jsx';
@@ -108,8 +114,6 @@ import { TaskNode } from './models';
 @injectable()
 export class TaskNodeView implements IView {
     render(node: Readonly<SNode & TaskNode>, context: RenderingContext): VNode {
-        const width = 100;
-        const height = 100;
         const position = 50;
         return <g>
             <rect class-sprotty-node={true} class-task={true}
@@ -192,7 +196,7 @@ In this example, we consider the local variant. To enable the model source, we a
 ```ts
 bind(TYPES.ModelSource).to(LocalModelSource).inSingletonScope()
 ```
-Afterwards you can use the LocalModelSource to initialize and update the model. For example, the following `graph` consists of three task nodes with a connection between the first two:
+Afterwards you can use the LocalModelSource to initialize and update the model. For example, the following `graph` consists of three task nodes with a connection between the first two. Create a new file `model-source.ts` at the root of the project:
 ```typescript
 import { SGraph, SEdge, SNode } from "sprotty-protocol";
 import { TaskNode } from "./models";
@@ -255,5 +259,5 @@ export default function run() {
 document.addEventListener("DOMContentLoaded", () => run());
 ```
 
-That's it! Run `npm run build` and open your HTML file, you should see the following diagram!
+That's it! Run `npm run build` and open your HTML file, you should see the following diagram! There is some level of interactivity by default, try it out! Select nodes by clicking on them and move them around by dragging, adjust the zoom-level with the mouse wheel, navigate the diagram by panning via left-click and drag outside of a node.
 ![Getting started diagram](/getting-started-diagram.png)
