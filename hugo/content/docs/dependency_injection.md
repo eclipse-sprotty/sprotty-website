@@ -64,8 +64,8 @@ configureModelElement(context, 'task', SNode, TaskNodeView, {
 the `configureModelElement` method takes as an optional last parameter an object containing arrays for `enabled` and `disabled` features containing Symbols representing those features. Through this, we can disable default functionality like dragging or selecting nodes and add functionality, either custom or loaded through other non-default modules.
 
 ## Creating custom components
-As described previously Sprotty uses inversifyJs for dependency injection. That means when creating own feature, views, etc. we have to use it too.
-As an example lets look at Sprottys `PolylineEdgeView`.
+As described previously Sprotty uses inversifyJs for dependency injection. That means that when creating custom features, views, etc. we have to use it too.
+As an example let's look at Sprotty's `PolylineEdgeView`.
 
 ```Typescript
 @injectable()
@@ -75,9 +75,9 @@ export class PolylineEdgeView extends RoutableView {
     ...
 }
 ```
-The most important thing for our component to available in Sprotty is annotating it with `@injectable()`. Otherwise the dependency injection won't work.
+The most important thing for our component to be available in Sprotty is annotating it with `@injectable()`. Otherwise the dependency injection won't work.
 
-Now as seen in the example [above](#the-container), we can just bind it in the container like this:
+Now, as seen in the example [above](#the-container), we can just bind it in the container like this:
 ```Typescript
 configureModelElement(context, 'edge', SEdge, PolylineEdgeView);
 ```
