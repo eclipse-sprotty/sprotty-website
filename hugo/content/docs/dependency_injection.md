@@ -51,7 +51,7 @@ Through `configureModelElement` we can link our model to specific view component
 ```
 in our model, Sprotty will try to convert this data structure to an instance of the actual `SNode` class and render it with the `TaskNodeView`.
 
-Lastly, we configure our viewer options. Here we configure all the dom elements needed by Sprotty for example the base div inside of which our diagram is rendered or the hidden div used by the first render cycle for determining micro layout. Another thing configured here is layouting. Specifically, if layouting should be done on client-side, server-side or both. This also determines the protocol spoken by client and server. 
+Lastly, we configure our viewer options. Here we configure all the DOM elements needed by Sprotty for example the base `div` inside of which our diagram is rendered or the hidden `div` used by the first render cycle for determining micro layout. Another thing configured here is layouting. Specifically, if layouting should be done on client-side, server-side or both. This also determines the protocol spoken by client and server. 
 
 ## Features
 Model elements can further be configured through features. 
