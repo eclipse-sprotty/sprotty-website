@@ -1,0 +1,85 @@
+h1 {
+    text-align: center;
+}
+
+#sprotty-showcase {
+    min-width: 800px;
+    width: 100%;
+    height: 800px;
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#monaco-editor {
+    width: 100%;
+}
+
+.sprotty-graph {
+    width: 100%;
+    height: 100%;
+}
+
+.sprotty-edge {
+    fill: none;
+    stroke: #3B5E8C;
+    stroke-width: 2px;
+}
+
+.sprotty-routing-handle {
+    fill: black
+}
+
+.sprotty-edge.mouseover,.sprotty-edge.selected {
+    stroke-width: 4px;
+}
+
+.sprotty-node {
+    fill: #e0f6ff;
+    stroke: #47778C;
+    stroke-width: 2px;
+    stroke-linejoin: round;
+}
+.sprotty-node.mouseover {
+    fill: #A7BDE0;
+    stroke: #3B5E8C;
+}
+
+.sprotty-routing-handle {
+    fill: white;
+}
+
+.controller-marker {
+    stroke: lightblue;
+    stroke-width: 1px;
+    fill: orange;
+}
+
+.class-input-back, .input-arrow-full {
+    fill: black;
+}
+
+.input-arrow-stroke {
+    fill: white;
+    stroke: black;
+}
+
+.operand-symbol {
+    font-weight: bold;
+    fill: rgb(138, 133, 214);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.sprotty-text, .sprotty-label {
+    font-family: monospace
+}
+
+.sprotty-label {
+    font-size: 10;
+    font-weight: 100;
+    fill: black;
+    stroke: none;
+    white-space: pre-line;
+    text-anchor: middle;
+    dominant-baseline: middle;
+}

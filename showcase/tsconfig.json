@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "target": "ES2019",
+    "target": "ES2022",
     "module": "commonjs",
     "types": [
       "reflect-metadata"
@@ -11,5 +11,5 @@
     "experimentalDecorators": true,
     "jsx": "react"
   },
-  "lib": ["ES2019","DOM"]
+  "lib": ["ES2022","DOM"]
 }

@@ -14,33 +14,11 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
 
-import { SNode } from "sprotty-protocol";
+import { Action } from "sprotty-protocol";
 
-export enum ArrowType {
-    NONE,
-    FULL,
-    STROKE
-}
+export const serverReadyKind = 'document_ready'
 
-export interface InputNode extends LabelNode {
-    arrow: ArrowType;
-}
-
-export interface LabelNode extends SNode {
-    text: string;
-}
-
-export interface ComponentNode extends LabelNode {
-    image: string
-}
-
-export enum OperandType {
-    ADD = "+",
-    SUBSTRACT = "-",
-    DIVIDE = "÷",
-    MULTIPLY = "x"
-}
-
-export interface OperandNode {
-    operand: OperandType
+export interface ServerReadyAction extends Action {
+    kind: typeof serverReadyKind;
+    uri: string;
 }
