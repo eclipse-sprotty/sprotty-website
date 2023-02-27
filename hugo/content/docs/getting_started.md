@@ -11,7 +11,7 @@ The main steps to integrate Sprotty into our application are as follows:
 4. [Configure the diagram](#configure-the-diagram) through dependency injection.
 5. [Connect to a model source](#connect-to-a-model-source), either local or remote
 
-## Setting-up our application
+## Setting-up Our Application
 Our example application is based on TypeScript. In this application we will set up our project to be ready for receiving Sprotty.
 1. Create a new directory and navigate to it
 2. Initialize the project by running
@@ -85,7 +85,7 @@ Our example application is based on TypeScript. In this application we will set 
     ```
 Our project is now set-up and ready for integrating Sprotty diagrams.
 
-## Define your model
+## Define Your Model
 Sprotty comes with a set of model classes that you can reuse for your application. e.g. `SNode` and `SEdge` for graphs and `SChildElement` for other views. However, it is often necessary to add application-specific properties to model elements, so their graphical views can be parameterized.
 
 We will define a new interface for our nodes called `TaskNode`, extending Sprotty's `SNode` with application-specific properties. Create a new file `models.ts` at the root of the project:
@@ -99,7 +99,7 @@ export interface TaskNode extends SNode {
 }
 ```
 
-## Implement views
+## Implement Views
 A view maps a model element to its graphical representation. You can create your own views by creating a class implementing `IView` or extending a view already available in Sprotty.
 
 In the following example we use the JSX syntax to create a SVG group with a `rect` and a `text` element. Add a new file `view.tsx` (note the `tsx` extension) at the root of the project:
@@ -154,7 +154,7 @@ text {
     text-anchor: middle;
 }
 ```
-## Configure the diagram
+## Configure the Diagram
 The configuration of our Sprotty application is done via Dependency Injection using [InversifyJS](https://inversify.io/). We recommend defining your InversifyJS container in a file named `di.config.ts` which could look like this:
 
 ```typescript
@@ -186,7 +186,7 @@ export const createContainer = (containerId: string) => {
 Views are registered using `configureModelElement` which takes a `context`, a type, an element class, and a view.
 `loadDefaultModules` is used to include Sprotty's default modules, while `container.load` can be used to include extra modules required by our application.
 
-## Connect to a model source
+## Connect to a Model Source
 Sprotty supports two kinds of model sources:
 
 * `LocalModelSource` allows to create models directly in TypeScript or JavaScript
