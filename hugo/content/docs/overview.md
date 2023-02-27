@@ -40,7 +40,7 @@ The `CommandStack` executes the commands it receives from the [`ActionDispatcher
 `Command`s describe the behavior of their corresponding [`Action`](#action). They have the typical methods `execute()`, `undo()`and `redo()`, each of which take the current model and a command execution context as parameter, and return the new model or a promise for it. The latter serves to chain asynchronous commands such as animations.
 
 ### SModel (SprottyModel)
-The diagram is stored in an internal model called `SModel`. The root of the diagram is always an instance of `SModelRoot` and holds an index of the model to allow fast lookup of elements by ID. All elements of a diagram inherit `SModelElement` which has a unique ID and a mandatory type referring to its [`View`](#view). The model elements are organized in a tree derived from the `children` and `parent` properties of each `SModelElement`. It can be useful to introduce domain-specific information into the `SModel`. This can be achieved via creating new element classes that inherits from any related `SModelElement`.
+The diagram is stored in an internal model called `SModel`. The root of the diagram is always an instance of `SModelRoot` and holds an index of the model to allow fast lookup of elements by ID. All elements of a diagram inherit `SModelElement` which has a unique ID and a mandatory type referring to its [`View`](#view). The model elements are organized in a tree derived from the `children` and `parent` properties of each `SModelElement`. It can be useful to introduce domain-specific information into the `SModel`. This can be achieved via creating new element classes that inherit from any related `SModelElement`.
 
 {{< mermaid class="text-center">}}
 flowchart BT;
