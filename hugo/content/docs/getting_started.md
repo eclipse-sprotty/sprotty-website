@@ -189,8 +189,8 @@ Views are registered using `configureModelElement` which takes a `context`, a ty
 ## Connect to a model source
 Sprotty supports two kinds of model sources:
 
-* LocalModelSource allows to create models directly in TypeScript or JavaScript.
-* WebSocketDiagramServer delegates to a remote source that is connected via web socket.
+* `LocalModelSource` allows to create models directly in TypeScript or JavaScript
+* `WebSocketDiagramServer` delegates to a remote source that is connected via a web socket
 
 In this example, we consider the local variant. To enable the model source, we add the following line to our module definition (see previous section):
 ```ts
