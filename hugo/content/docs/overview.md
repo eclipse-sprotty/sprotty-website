@@ -68,7 +68,7 @@ CustomLabel -.-> SLabel
 ## Viewer
 The `Viewer` is responsible for turning the internal model into its representation in the DOM. The conversion from an `SModel` to its representation in the DOM is not direct. Instead, Sprotty first creates a `VirtualDOM` and uses it to patch the actual DOM. This approach saves on expensive modification of the DOM by applying only the minimum amount of modification to it. 
 The `Viewer` receives an [`SModel`](#sprottymodel) from the [`CommandStack`](#command-stack) and traverses it to apply a corresponding [`View`](#view) to every element.
-The viewer is also responsible to add event listeners and animations using its `Decorator`s. The received events should be converted to [`Action`](#action)s and transferred to the [`ActionDispatcher`](#action-dispatcher)
+The viewer is also responsible to add event listeners and animations using its `Decorator`s. The received events should be converted to [`Action`](#action)s and transferred to the [`ActionDispatcher`](#action-dispatcher).
 
 {{< mermaid class="text-center">}}
 flowchart LR;
