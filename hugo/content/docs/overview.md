@@ -28,7 +28,7 @@ ActionDispatcher -->|Action| ModelSource
 {{< /mermaid>}}
 
 ### Action
-`Action`s are objects without behavior, JSON structures that describe what should happen but not how it should happen. As such, they can be serialized and serve as protocol messages that are exchanged between the client and the server. In actions, model elements are referred to by ID.
+`Action`s are objects without behavior, JSON structures that describe what should happen but not *how* it should happen. As such, they can be serialized and serve as protocol messages that are exchanged between the client and the server. In actions, model elements are referred to by their IDs.
 
 ### Model Source
 There are two different `ModelSource`s: the `LocalModelSource` offers an API to control the model directly in the client, while the `DiagramServer` delegates to a remote source, e.g. through a WebSocket or a VSCode extension.
