@@ -155,7 +155,7 @@ text {
 }
 ```
 ## Configure the Diagram
-The configuration of our Sprotty application is done via Dependency Injection using [InversifyJS](https://inversify.io/). We recommend defining your InversifyJS container in a file named `di.config.ts` which could look like this:
+The configuration of our Sprotty application is done via Dependency Injection using [InversifyJS](https://inversify.io/). We recommend defining your InversifyJS container in a file named `di.config.ts` at the root of the project which could look like this:
 
 ```typescript
 import { Container, ContainerModule } from 'inversify';
