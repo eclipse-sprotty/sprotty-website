@@ -183,7 +183,7 @@ export const createContainer = (containerId: string) => {
     return container;
 };
 ```
-Views are registerd using `configureModelElement` which takes a `context`, a type, an element class, and a view.
+Views are registered using `configureModelElement` which takes a `context`, a type, an element class, and a view.
 `loadDefaultModules` is used to include Sprotty's default modules, while `container.load` can be used to include extra modules required by our application.
 
 ## Connect to a model source
