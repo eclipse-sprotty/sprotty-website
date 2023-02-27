@@ -34,7 +34,7 @@ ActionDispatcher -->|Action| ModelSource
 There are two different `ModelSource`s: the `LocalModelSource` offers an API to control the model directly in the client, while the `DiagramServer` delegates to a remote source, e.g. through a WebSocket or a VSCode extension.
 
 ## Command Stack
-The `CommandStack` executes the commands it receives from the [`ActionDispatcher`](#action-dispatcher). It chains the promises returned by the execution methods and keeps an undo and a redo stack. It merges the current commands with the last one, e.g. to only keep the start and end point of a move from a drag operation. It is responsible for producing a graph model (namely [`SModel`](#sprottymodel)) and forwards it to the [`Viewer`](#viewer) to be rendered.
+The `CommandStack` executes the commands it receives from the [`ActionDispatcher`](#action-dispatcher). It chains the promises returned by the execution methods and keeps an undo and a redo stack. It merges the current commands with the last one, e.g. to only keep the start and end point of a move from a drag operation. It is responsible for producing a graph model (namely [`SModel`](#smodel-sprottymodel)) and forwards it to the [`Viewer`](#viewer) to be rendered.
 
 ## Command
 `Command`s describe the behavior of their corresponding [`Action`](#action). They have the typical methods `execute()`, `undo()`and `redo()`, each of which take the current model and a command execution context as parameter, and return the new model or a promise for it. The latter serves to chain asynchronous commands such as animations.
@@ -67,7 +67,7 @@ CustomLabel -.-> SLabel
 
 ## Viewer
 The `Viewer` is responsible for turning the internal model into its representation in the DOM. The conversion from an `SModel` to its representation in the DOM is not direct. Instead, Sprotty first creates a `VirtualDOM` and uses it to patch the actual DOM. This approach saves on expensive modification of the DOM by applying only the minimum amount of modification to it. 
-The `Viewer` receives an [`SModel`](#sprottymodel) from the [`CommandStack`](#command-stack) and traverses it to apply a corresponding [`View`](#view) to every element.
+The `Viewer` receives an [`SModel`](#smodel-sprottymodel) from the [`CommandStack`](#command-stack) and traverses it to apply a corresponding [`View`](#view) to every element.
 The viewer is also responsible to add event listeners and animations using its `Decorator`s. The received events should be converted to [`Action`](#action)s and transferred to the [`ActionDispatcher`](#action-dispatcher).
 
 {{< mermaid class="text-center">}}
