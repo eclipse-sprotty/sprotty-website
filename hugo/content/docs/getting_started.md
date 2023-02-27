@@ -243,7 +243,7 @@ export const graph: SGraph = {
 };
 ```
 
-Finally, we need to create the entry point of our application in a `index.ts` file:
+Finally, we need to create the entry point of our application in an `index.ts` file:
 ```typescript
 import "reflect-metadata";
 import { LocalModelSource, TYPES } from 'sprotty';
