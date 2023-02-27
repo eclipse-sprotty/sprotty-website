@@ -13,7 +13,7 @@ Some selected features:
 * Java or Node.js based server architecture
 * Configuration via dependency injection
 * Integrations with Xtext, Langium, the Language Server Protocol, VS Code and Theia
-* Can be run as rich-client as well as in the browser
+* Can be run as a rich-client as well as in the browser
 
 ## Where to start?
 If you are new with Sprotty, we recommend taking a look at our [Getting Started](./getting_started) section before diving further.
