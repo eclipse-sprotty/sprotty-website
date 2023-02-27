@@ -196,7 +196,7 @@ In this example, we consider the local variant. To enable the model source, we a
 ```ts
 bind(TYPES.ModelSource).to(LocalModelSource).inSingletonScope()
 ```
-Afterwards you can use the LocalModelSource to initialize and update the model. For example, the following `graph` consists of three task nodes with a connection between the first two. Create a new file `model-source.ts` at the root of the project:
+Afterwards you can use the `LocalModelSource` to initialize and update the model. For example, the following `graph` consists of three task nodes with a connection between the first two. Create a new file `model-source.ts` at the root of the project:
 ```typescript
 import { SGraph, SEdge, SNode } from "sprotty-protocol";
 import { TaskNode } from "./models";
