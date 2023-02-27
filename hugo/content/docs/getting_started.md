@@ -12,7 +12,7 @@ The main steps to integrate Sprotty into our application are as follows:
 5. [Connect to a model source](#connect-to-a-model-source), either local or remote
 
 ## Setting-up our application
-Our example application is based on TypeScript. In the following we will set up our project to be ready for receiving Sprotty.
+Our example application is based on TypeScript. In this application we will set up our project to be ready for receiving Sprotty.
 1. Create a new directory and navigate to it
 2. Initialize the project by running
     ```shell
