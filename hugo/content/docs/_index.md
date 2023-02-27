@@ -2,7 +2,7 @@
 title: 'Documentation'
 weight: 100
 ---
-Sprotty is a next-generation, open-source diagramming framework built with web-technologies
+Sprotty is a next-generation, open-source diagramming framework built with web-technologies.
 
 Some selected features:
 
