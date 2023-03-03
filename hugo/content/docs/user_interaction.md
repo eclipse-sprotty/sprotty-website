@@ -54,7 +54,7 @@ const container = new ContainerModule((bind, unbind, isBound, rebind) => {
 ```
 
 A button handler is a simple injectable class with a `buttonPressed(button: SButton): Action[]` method. 
-The actions that this method returns are passed to the `ActionDispatcher` to be handled there.
+The actions that this method returns are passed to the [`ActionDispatcher`](../overview#action-dispatcher) to be handled there.
 ```Typescript
 @injectable()
 export class CustomButtonHandler implements IButtonHandler {
@@ -67,7 +67,7 @@ export class CustomButtonHandler implements IButtonHandler {
 
 ### Mouse and Keyboard Listeners
 Sprotty also offers the ability to attach mouse and keyboard listeners by registering `MouseListener` or `KeyListener`.
-This can be simply done by binding the custom listener to the respective listener type in your DI-container like this:
+This can be simply done by binding the custom listener to the respective listener type in your [DI-container](../dependency_injection) like this:
 ```Typescript
     bind(CustomMouseListener).toSelf().inSingletonScope();
     bind(TYPES.MouseListener).toService(CustomMouseListener);
