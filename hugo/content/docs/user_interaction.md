@@ -34,7 +34,7 @@ The `CTRL` key in the following is equal to the `CMD` key on Mac.
 ## Creating Custom Interaction
 
 ### Buttons and Button Handlers
-The easiest way to create custom interactions is through buttons. Buttons in Sprotty work similarly to the other model elements. 
+Buttons in Sprotty work similarly to the other model elements, but they enable you to directly hook up handlers that react to the push of a button.
 As in the other examples with other types of nodes, we first need to define the model and view class and define its type ID. in addition, we also need to define a button handler of type `IButtonHandler`.
 
 ```Typescript
@@ -54,7 +54,7 @@ const container = new ContainerModule((bind, unbind, isBound, rebind) => {
 ```
 
 A button handler is a simple injectable class with a `buttonPressed(button: SButton): Action[]` method. 
-returned actions are passed to the `ActionDispatcher` to be handled there. 
+The actions that this method returns are passed to the `ActionDispatcher` to be handled there.
 ```Typescript
 @injectable()
 export class CustomButtonHandler implements IButtonHandler {
@@ -105,7 +105,14 @@ To add projections we add the `Projectable` type to the nodes in our model schem
             projectionCssClasses: ['svg-projection']
 }
 ```
-This requires us to add the `projectionCssClasses` property to the node which the view can evaluate to style the projections. We need at least one class, otherwise, no projection will be created.
-The projections are simple HTML `div` elements, which can be styled through the classes we set through `projectionCssClasses`. 
+The `Projectable` interface requires us to specify the `projectionCssClasses` property, which defines the CSS classes the framework will apply to the HTML `div` element that represents the projection in the projection bar. If no `projectionCssClasses` property value is specified, no projection will be created.
+As projections are simple HTML `div` elements positioned on the projection bar, they can easily be styled as follows:
+
+```css
+.svg-projection { 
+    background-color: rgba(255, 153, 0, 0.5); 
+}
+```
+
 
 
