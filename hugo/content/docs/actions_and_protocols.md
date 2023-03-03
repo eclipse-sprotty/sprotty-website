@@ -71,7 +71,7 @@ rect rgb(90, 90, 50)
 end
 Note over C,S: Server updates model
 loop when model changes
-    rect rgb(80, 80, 50)
+    rect rgb(90, 90, 50)
         S->>C: RequestBoundsAction
     end
 end
