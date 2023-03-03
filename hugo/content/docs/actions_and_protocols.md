@@ -59,17 +59,21 @@ First the client requests and receives the model from the server. After that, th
 
 ### 2. Client-Only Layout
 
-The server sends `RequestBoundsAction` to the client instead of updating the model directly. The client does not forward the resulting `ComputedBoundsAction` to the server because that would be an unnecessary round-trip. The updated bounds are applied locally in the client instead.
+The server sends `RequestBoundsAction` (highlighted in yellow) to the client instead of updating the model directly. The client does not forward the resulting `ComputedBoundsAction` to the server because that would be an unnecessary round-trip. The updated bounds are applied locally in the client instead.
 {{< mermaid class="text-center">}}
 sequenceDiagram
 participant C as Client
 participant S as Server
 Note over C,S: Client requests model
 C->>S: RequestModelAction
-S->>C: RequestBoundsAction
+rect rgb(90, 90, 50)
+    S->>C: RequestBoundsAction
+end
 Note over C,S: Server updates model
 loop when model changes
-    S->>C: RequestBoundsAction
+    rect rgb(80, 80, 50)
+        S->>C: RequestBoundsAction
+    end
 end
 {{< /mermaid>}}
 This is very similiar to scenario 1 (with server-only layout). However, instead of `SetModelAction` and `UpdateModelAction` we use the `RequestBoundsAction` which contains the full graph
