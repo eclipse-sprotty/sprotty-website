@@ -15,7 +15,7 @@ The [Class Diagram example](https://github.com/eclipse-sprotty/sprotty/tree/mast
 Let's focus on `node0` which represents the class `Foo`:
 
 ![node0](/micro-layout-node0.png)
-
+![node0-layout-types](/micro-layout-node0-layout-types.png)
 ```typescript
 const node0: SNode & Expandable = {
     id: 'node0',
