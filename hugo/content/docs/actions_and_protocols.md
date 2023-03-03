@@ -66,12 +66,12 @@ participant C as Client
 participant S as Server
 Note over C,S: Client requests model
 C->>S: RequestModelAction
-rect rgb(90, 90, 50)
+rect rgb(240, 240, 180, .4)
     S->>C: RequestBoundsAction
 end
 Note over C,S: Server updates model
 loop when model changes
-    rect rgb(90, 90, 50)
+    rect rgb(240, 240, 180, .4)
         S->>C: RequestBoundsAction
     end
 end
