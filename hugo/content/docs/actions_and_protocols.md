@@ -72,7 +72,7 @@ loop when model changes
     S->>C: RequestBoundsAction
 end
 {{< /mermaid>}}
-This is very similiar to scenario 1 (with server-only layout). However, insted of `SetModelAction` and `UpdateModelAction` we use the `RequestBoundsAction` which contains the full graph
+This is very similiar to scenario 1 (with server-only layout). However, instead of `SetModelAction` and `UpdateModelAction` we use the `RequestBoundsAction` which contains the full graph
 
 ### 3. Client and Server Layout
 
