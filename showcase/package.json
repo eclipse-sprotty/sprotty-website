@@ -5,11 +5,11 @@
   "private": "true",
   "scripts": {
     "build": "npm run build-examples & npm run build-language-server & npm run copy-monaco-workers & npm run copy-elk-worker",
-    "build-examples": "esbuild ./src/index.ts --bundle --minify --sourcemap --outfile=../static-dev/bundle.js --loader:.ttf=file",
-    "build-language-server": "esbuild ./src/interactive-example/language-server/main-browser.ts --bundle --minify --sourcemap --outfile=../static-dev/language-server.js --loader:.ttf=file",
+    "build-examples": "esbuild ./src/index.ts --bundle --minify --sourcemap --outfile=../hugo/static/showcase/bundle.js --loader:.ttf=file",
+    "build-language-server": "esbuild ./src/langium-diagram/language-server/main-browser.ts --bundle --minify --sourcemap --outfile=../hugo/static/showcase/language-server.js --loader:.ttf=file",
     "langium:generate": "langium generate",
-    "copy-monaco-workers": "shx cp -R ../node_modules/monaco-editor-workers/dist/workers ../static-dev/monaco-workers",
-    "copy-elk-worker": "shx mkdir ../static-dev/elk-workers/ & shx cp -R ../node_modules/elkjs/lib/elk-worker.js ../static-dev/elk-workers/elk-worker.js"
+    "copy-monaco-workers": "shx cp -R ../node_modules/monaco-editor-workers/dist/workers ../hugo/static/showcase/monaco-workers",
+    "copy-elk-worker": "shx mkdir ../hugo/static/showcase/elk-workers/ & shx cp -R ../node_modules/elkjs/lib/elk-worker.js ../hugo/static/showcase/elk-workers/"
   },
   "devDependencies": {
     "esbuild": "0.17.5",

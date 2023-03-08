@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {{ partial "sprotty-head" . }}
+    </head>
+
+    <body>
+        {{ partial "sprotty-header" . }}
+        <main>
+            {{ block "main" . }}
+            {{ end }}
+        </main>
+    </body>
+</html>
