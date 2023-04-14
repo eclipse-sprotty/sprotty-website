@@ -2,66 +2,155 @@
 title: "Sprotty"
 type: sprotty
 ---
-<!-- CTA -->
-<section class=" bg-sprottyBlue py-16">
-    <h2 class="text-4xl text-center">Create diagram visualization tools in your web application with Sprotty</h2>
-    <p>
-        Who: Sprotty is an open-source project developed by a community of developers who are passionate about creating powerful diagramming tools and graphical editors using web technologies.
-<br><br>
-What: Sprotty provides a framework for rendering diagrams using the Scalable Vector Graphics (SVG) format, with a powerful graph layout engine based on the Eclipse Layout Kernel (ELK) algorithm. It also provides a set of standard components for creating common types of diagrams such as flowcharts, UML diagrams, and state machines, as well as APIs for customizing the layout and behavior of the diagrams.
-<br><br>
-Where: Sprotty can be used in any web application that supports web technologies such as HTML, CSS, and JavaScript. It can be integrated with various web frameworks such as React, Angular, and Vue.js.
-<br><br>
-When: Sprotty was first released in 2017 and has since been continuously developed and improved by the community of contributors.
-<br><br>
-Why: Sprotty makes it easy to create beautiful, interactive diagrams in web applications, with the ability to customize and integrate with external tools and services. It provides a flexible and extensible framework that can be used for a wide range of diagramming needs, from simple flowcharts to advanced graphical editors that integrate with external services. With Sprotty, developers can save time and effort in creating powerful diagramming tools for their applications.
-    </p>
-    <div class="flex flex-row justify-center gap-4 pt-16">
-        <div class="rounded-xl border p-4">
-            <a href="/docs/getting_started/">Getting Started</a>
+
+<section id="introduction" class="font-redHat">
+    <div class="flex flex-col pt-10 px-28">
+        <h2 class="text-sprottyDarkBlue text-center font-semibold text-3xl pb-10">
+            Diagram Vizualization Tools <br />for your web applications
+        </h2>
+        <div class="flex flex-row justify-center pb-5">
+            <img src="/assets/sprotty-multicore.png" alt="" class="mb-3 z-40" />
+            <img src="/assets/sprotty-xtext.png" alt="" class="mx-[-50px] mt-3 z-30" />
+            <img src="/assets/sprotty-dependency.png" alt="" class="mb-3 z-20" />
         </div>
-        <div>
-            <a href="/#showcase-1   "><svg class="w-14 h-14" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
-                    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
-                    <g transform="matrix(0.965517,0,0,0.965517,1.03448,1.03448)">
-                        <circle cx="30" cy="30" r="29" style="fill:none;stroke:white;stroke-width:2px;" />
-                    </g>
-                    <g transform="matrix(0.535417,0.535417,-0.535417,0.535417,30,-2.72295)">
-                        <path d="M14.5,45.5L45.5,45.5L45.5,14.5"
-                            style="fill:none;stroke:white;stroke-width:3px;stroke-linecap:butt;stroke-linejoin:miter;" />
-                    </g>
-                    <g transform="matrix(0.535417,0.535417,-0.535417,0.535417,30,-16.4474)">
-                        <path d="M14.5,45.5L45.5,45.5L45.5,14.5"
-                            style="fill:none;stroke:white;stroke-width:3px;stroke-linecap:butt;stroke-linejoin:miter;" />
-                    </g>
-                </svg>
-            </a>
+        <p class="text-sprottyDarkBlue text-lg text-center pb-20">
+            Sprotty is an open-source project developed by a community of developers<br>who are passionate about
+            creating powerful diagramming tools and graphical
+            editors<br>using web technologies.
+        </p>
+        <div class="flex flex-row gap-10 justify-center items-center pb-10">
+            <a href="" class="bg-sprottyMidBlue bg-opacity-50 rounded-xl px-8 py-3 text-sprottyDarkBlue">Get started</a>
+            <div class="flex flex-row gap-2">
+                <a href="" class="text-sprottyDarkBlue">Learn more</a>
+                <img src="/assets/chevron-down.svg" alt="">
+            </div>
         </div>
-    </div>
-</section >
-<!-- Showcase 1 -->
-<section id="showcase-1" class="flex flex-col">
-    <div id="sprotty-ascet-example">
-        <img src="/images/ASCET-example.png" alt="" class="m-auto">
-    </div>
-    <div class="px-4 text-center pt-4">
-        <p>Easily create and customize interactive diagrams for your data.</p>
     </div>
 </section>
 
+<section id="what-is-sprotty">
+    <div class="flex flex-row bg-waves bg-cover bg-repeat-x px-10 pt-20 gap-5">
+        <div class="basis-1/2">
+            <p class="text-sprottyDarkBlue font-montserrat">
+                Sprotty provides a framework for rendering diagrams using the Scalable
+                Vector Graphics (SVG) format, with a powerful graph layout engine based
+                on the Eclipse Layout Kernel (ELK) algorithm. It also provides a set of
+                standard components for creating common types of diagrams such as
+                flowcharts, UML diagrams and state machines, as well as APIs for
+                customizing the layout and behavior of the diagrams.
+            </p>
+        </div>
+        <div id="sprotty-ascet-example" class="bg-white basis-1/2"></div>
+    </div>
+</section>
+
+<section id="characteristics">
+    <div class="flex flex-row bg-im ">
+        <div>
+            <img src="/assets/sprotty-dependency.png" alt="" />
+            <img src="/assets/sprotty-multicore.png" alt="" />
+            <img src="/assets/sprotty-yang.png" alt="" />
+            <img src="/assets/sprotty-xtext.png" alt="" />
+        </div>
+        <div>
+            <h3>Customizable and beautiful</h3>
+            <p>
+                Sprotty makes it easy to create beautiful, interactive diagrams in web
+                applications, with the ability to customize and integrate with external
+                tools and services.
+            </p>
+            <h3>From simple to advanced</h3>
+            <p>
+                It provides a flexible and extensible framework that can be used for a
+                wide range of diagramming needs, from simple flowcharts to advanced
+                graphical editors that integrate with external services.
+            </p>
+            <h3>Powerful timesaver</h3>
+            <p>
+                With Sprotty, developers can save time and effort in creating powerful
+                diagramming tools for their applications.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="integration">
+    <div class="flex flex-row bg-sprottyLightBlue bg-opacity-30">
+        <div class="flex flex-col">
+            <img src="/assets/fishbowl.svg" alt="" />
+            <h3>At home in any kind of water...</h3>
+            <p>
+                Sprotty can be used in any web application that supports web
+                technologies such as HTML, CSS, and JavaScript.
+            </p>
+        </div>
+        <div>
+            <img src="/assets/hook.svg" alt="" />
+            <h3>Quick to hook...</h3>
+            <p>
+                Sprotty can be integrated with various web frameworks such as React, Angular and Vue.js.
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<section id="client">
+    <div class="flex flex-row">
+        <div>
+            <img src="" alt="">
+            <p>Sprotty is well suited for
+                client-side diagramming,
+                involving no server-side work
+                whatsoever.</p>
+            <img src="" alt="">
+            <p>This pairs nicely
+                with external applications,
+                allowing you to provide
+                rich visualizations;
+                such as for DSLs.</p>
+        </div>
+        <div class="flex flex-col">
+            <div id="monaco-editor"></div>
+            <div id="sprotty-langium-diagram"></div>
+        </div>
+    </div>
+</section>
+
+<section id="outro">
+    <div class="flex flex-col bg-sprottyLightBlue bg-opacity-30 ">
+        <p>Sprotty was first released in 2017 and has since been continuously developed and improved by the community of
+            contributors.</p>
+        <img src="/assets/sprotty-logo-fish.svg" alt="">
+        <p>Start using Sprotty right now or become a part of the sprotty school
+        </p>
+        <div class="flex flex-row">
+            <a href="">npm</a>
+            <a href="">twitter</a>
+            <a href="">github</a>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-sprottyTeal">
+    <a href="" class="text-white">Privacy</a>
+    <a href="" class="text-white">Terms</a>
+    <a href="" class="text-white">Imprint</a>
+</footer>
 <!-- Showcase 2 -->
-<section>
+<!-- <section>
     <section id="showcase-2" class="flex flex-col">
         <div class="flex flex-row justify-around">
             <div id="monaco-editor"></div>
             <div id="sprotty-langium-diagram">
-                <img src="/images/ASCET-example.png" alt="">
+                <img src="/images/ASCET-example.png" alt="" />
             </div>
         </div>
         <div class="px-4 text-center pt-4">
-            <p>Create advanced diagramming tools that integrates with external services, such as language servers.</p>
+            <p>
+                Create advanced diagramming tools that integrates with external
+                services, such as language servers.
+            </p>
         </div>
     </section>
-</section>
-
+</section> -->

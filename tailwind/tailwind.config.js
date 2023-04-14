@@ -7,8 +7,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        sprottyBlue: '#00788E'
-      }
+        sprottyDarkBlue: '#115E8E',
+        sprottyMidBlue: '#9CBFE2',
+        sprottyLightBlue: '#CDDFF1',
+        sprottyTeal: '#00788E'
+      },
+      backgroundImage: {
+        'waves': "url('/assets/waves.svg')"
+      },
+      fontFamily: {
+        redHat: ['RedHatDisplay','sans-serif'],
+        montserrat: ['Montserrat','sans-serif'],
+      },
     },
   },
   plugins: [],
