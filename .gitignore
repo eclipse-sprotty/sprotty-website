@@ -17,4 +17,5 @@ static-dev/elk-workers
 static-dev/*.ttf
 .vscode/settings.json
 
-static/showcase/
+hugo/static/showcase/
+hugo/static/css/style.css
