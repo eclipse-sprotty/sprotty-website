@@ -21,7 +21,7 @@ import { CloseAction, ErrorAction, MessageType, MonacoLanguageClient, MonacoServ
 import { BrowserMessageReader, BrowserMessageWriter } from "vscode-languageserver-protocol/browser";
 
 export function createMonacoEditor(containerId: string): MonacoEditorLanguageClientWrapper {
-    buildWorkerDefinition('/monaco-workers', new URL('../', window.location.href).href, false);
+    buildWorkerDefinition('/showcase/monaco-workers', new URL('../', window.location.href).href, false);
 
     MonacoEditorLanguageClientWrapper.addMonacoStyles('monaco-editor-styles');
     const client = new MonacoEditorLanguageClientWrapper('state-machine-example-code');
@@ -87,7 +87,7 @@ end`);
     config.setUseLanguageClient(true);
     config.setUseWebSocket(false);
 
-    const workerURL = new URL('../language-server.js',  window.location.href);
+    const workerURL = new URL('../showcase/language-server.js',  window.location.href);
 
     const lsWorker = new Worker(workerURL, {type: 'classic'});
     client.setWorker(lsWorker);

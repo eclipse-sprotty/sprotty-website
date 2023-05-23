@@ -16,23 +16,21 @@
 
 import "reflect-metadata";
 import { LocalModelSource, TYPES } from "sprotty";
-import createASCETContainer from "./sprotty-ASCET-example/di.config";
-import createLangiumSprottyContainer from "./interactive-example/diagram-frontend/di.config";
-import { model } from "./sprotty-ASCET-example/model-source";
-import { createMonacoEditor } from './interactive-example/monaco-config';
-import { LSWorkerDiagramServerProxy } from "./interactive-example/diagram-frontend/ls-worker-proxy";
+import createASCETContainer from "./ascet-example/di.config";
+import createLangiumSprottyContainer from "./langium-diagram/diagram-frontend/di.config";
+import { model } from "./ascet-example/model-source";
+import { createMonacoEditor } from './langium-diagram/monaco-config';
+import { LSWorkerDiagramServerProxy } from "./langium-diagram/diagram-frontend/ls-worker-proxy";
 
 export default function runExample() {
-    if (location.pathname.startsWith('/showcase')) {
-        const client = createMonacoEditor('monaco-editor');
-        const container = createLangiumSprottyContainer('sprotty-showcase', client.getLanguageClient());
-        const modelSource = container.get<LSWorkerDiagramServerProxy>(TYPES.ModelSource);
-        modelSource.start();
-    } else {
-        const container = createASCETContainer('sprotty-showcase');
-        const modelSource = container.get<LocalModelSource>(TYPES.ModelSource);
-        modelSource.setModel(model);
-    }
+    const ascetContainer = createASCETContainer('sprotty-ascet-example');
+    const ascetModelSource = ascetContainer.get<LocalModelSource>(TYPES.ModelSource);
+    ascetModelSource.setModel(model);
+
+    const client = createMonacoEditor('monaco-editor');
+    const langiumContainer = createLangiumSprottyContainer('sprotty-langium-diagram', client.getLanguageClient());
+    const langiumModelSource = langiumContainer.get<LSWorkerDiagramServerProxy>(TYPES.ModelSource);
+    langiumModelSource.start();
 }
 
 document.addEventListener("DOMContentLoaded", () => runExample());

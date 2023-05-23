@@ -16,3 +16,6 @@ static-dev/monaco-workers
 static-dev/elk-workers
 static-dev/*.ttf
 .vscode/settings.json
+
+hugo/static/showcase/
+hugo/static/css/style.css

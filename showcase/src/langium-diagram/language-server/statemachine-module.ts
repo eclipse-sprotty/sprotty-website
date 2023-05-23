@@ -61,7 +61,7 @@ export const StatemachineModule: Module<StatemachineServices, SprottyDiagramServ
         StatemachineValidator: () => new StatemachineValidator()
     },
     layout: {
-        ElkFactory: () => () => new ElkConstructor({ algorithms: ['layered'], workerUrl: '../elk-workers/elk-worker.js'}),
+        ElkFactory: () => () => new ElkConstructor({ algorithms: ['layered'], workerUrl: '../showcase/elk-workers/elk-worker.js'}),
         ElementFilter: () => new DefaultElementFilter(),
         LayoutConfigurator: () => new StatesLayoutConfigurator()
     }

@@ -1,4 +1,4 @@
-baseURL = 'http://localhost'
+baseURL = '/'
 languageCode = 'en-us'
 title = 'Sprotty'
 theme = "hugo-geekdoc"
