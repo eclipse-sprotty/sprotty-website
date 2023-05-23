@@ -6,24 +6,26 @@ type: sprotty
 <section id="introduction">
     <div class="flex flex-col pt-10 px-20 pb-20 font-redHat">
         <h2 class="text-sprottyTeal text-center font-medium text-3xl pb-10">
-            Diagram Vizualization Tools <br />for your web applications
+            Diagram Vizualization Tools <br />for Your Web Applications
         </h2>
         <div class="flex flex-row justify-center pb-5">
-            <img src="/assets/sprotty-multicore.png" alt="" class="mb-3 z-40" />
-            <img src="/assets/sprotty-xtext.png" alt="" class="mx-[-50px] mt-3 z-30" />
-            <img src="/assets/sprotty-dependency.png" alt="" class="mb-3 z-20" />
+            <img src="/assets/sprotty-multicore.png" alt="" class="mb-3 z-40 w-[300px]" />
+            <img src="/assets/sprotty-xtext.png" alt="" class="mx-[-50px] mt-3 z-30 w-[300px]" />
+            <img src="/assets/sprotty-dependency.png" alt="" class="mb-3 z-20 w-[300px]" />
         </div>
         <p class="text-sprottyTeal text-xl text-center pb-20 font-medium">
             Sprotty is an open-source project enabling the creation of powerful diagramming tools and graphical editors.
             <br><br>
-            The project is maintained by <a href="https://www.typefox.io" class="underline decoration-dashed">TypeFox</a> and <a href="https://eclipsesource.com/" class="underline decoration-dashed">EclipseSource</a>, offering professional support to elevate your project to new heights!
+            The project is maintained by <a href="https://www.typefox.io" target="_blank" class="underline decoration-dashed">TypeFox</a> and <a href="https://eclipsesource.com/" target="_blank" class="underline decoration-dashed">EclipseSource</a>, offering professional support to elevate your project to new heights!
         </p>
         <div class="flex flex-row gap-10 justify-center items-center pb-10">
             <a href="/docs/getting_started" class="bg-sprottyMidBlue bg-opacity-50 rounded-xl px-8 py-3 text-sprottyDarkBlue shadow-md">Get started</a>
+            <a href="#what-is-sprotty" class="text-sprottyDarkBlue">
             <div class="flex flex-row gap-2">
-                <a href="#what-is-sprotty" class="text-sprottyDarkBlue">Learn more</a>
-                <img src="/assets/chevron-down.svg" alt="">
-            </div>
+                    <p>Learn more</p>
+                    <img src="/assets/chevron-down.svg" alt="">
+                </div>
+            </a>
         </div>
     </div>
 </section>
@@ -32,11 +34,11 @@ type: sprotty
     <div class="flex flex-row bg-waves bg-[length:auto_100%] bg-center bg-repeat-x px-10 pt-10 gap-5">
         <div class="basis-1/2">
             <p class="text-sprottyDarkBlue font-montserrat pb-20">
-                Sprotty provides a framework for rendering diagrams using the <span class="font-semibold">Scalable Vector Graphics</span> (SVG) format, pluggable to powerful layout engines such as the <a href="https://www.eclipse.org/elk/" class="font-semibold underline decoration-dashed">Eclipse Layout Kernel</a> (ELK).
+                Sprotty provides a framework for rendering diagrams using the <span class="font-semibold">Scalable Vector Graphics</span> (SVG) format, pluggable to powerful layout engines such as the <a href="https://www.eclipse.org/elk/" target="_blank" class="font-semibold underline decoration-dashed">Eclipse Layout Kernel</a> (ELK).
                 <br><br>
                 Sprotty is <span class="font-semibold"> fully customizable </span>, from the look of your diagram, down to its behavior.
                 <br><br>
-                The example diagram depicts electronic components and their relationship for an electronically controlled vehicle (from <a href="https://www.etas.com/en/products/ehandbook.php" class="underline decoration-dashed">ETAS EHANDBOOK</a>).
+                The example diagram shows part of a visual implementation of an electronic control unit used in the automotive domain (from <a href="https://www.etas.com/en/products/ehandbook.php" target="_blank" class="underline decoration-dashed">ETAS EHANDBOOK</a>).
                 <br><br>
                 Try it live! Start exploring the diagram, hover over components, click on them, discover what Sprotty can do!
             </p>
@@ -48,10 +50,10 @@ type: sprotty
 <section id="characteristics">
     <div class="flex flex-row gap-5 bg-im px-10 mb-[-3rem]">
         <div class="basis-1/2">
-            <img src="/assets/sprotty-dependency.png" alt="" class="mt-[-4rem]"/>
-            <img src="/assets/sprotty-multicore.png" alt="" class="mt-[-5rem] pl-36 z-10 relative"/>
-            <img src="/assets/sprotty-yang.png" alt="" class="mt-[-5rem]"/>
-            <img src="/assets/sprotty-xtext.png" alt="" class="mt-[-5rem] pl-36"/>
+            <img src="/assets/sprotty-dependency.png" alt="" class="mt-[-4rem] w-[300px]"/>
+            <img src="/assets/sprotty-multicore.png" alt="" class="mt-[-5rem] pl-36 z-10 relative w-[450px]"/>
+            <img src="/assets/sprotty-yang.png" alt="" class="mt-[-5rem] w-[300px]"/>
+            <img src="/assets/sprotty-xtext.png" alt="" class="mt-[-5rem] pl-36 w-[450px]"/>
         </div>
         <div class="text-sprottyTeal font-montserrat basis-1/2">
             <h3 class="font-semibold py-3 text-xl">Customizable and beautiful</h3>
@@ -105,7 +107,7 @@ type: sprotty
 <section id="client">
     <div class="flex flex-col">
         <div class="py-8">
-            <p class="text-sprottyTeal text-center font-montserrat">The following example shows a full integration between Sprotty and the Monaco Editor. The Monaco Editor runs a language server for a DSL created with <a href="https://langium.org/">Langium</a> for creating state-machines. Edit the content of the editor and see changes transferred in real-time to the diagram!</p>
+            <p class="text-sprottyTeal text-center font-montserrat">The following example shows a full integration between Sprotty and the Monaco Editor. The Monaco Editor runs a language server for a DSL created with <a href="https://langium.org/" target="_blank">Langium</a> for creating state-machines. Edit the content of the editor and see changes transferred in real-time to the diagram!</p>
         </div>
         <div class="flex flex-row basis-1/2 shadow-md bg-white border-sprottyTeal border-solid border mx-5">
             <div id="monaco-editor" class="basis-1/2"></div>
@@ -134,12 +136,12 @@ type: sprotty
 
 <section id="outro">
     <div class="flex flex-col bg-sprottyLightBlue bg-opacity-30 items-center text-sprottyDarkBlue text-center py-20 mt-[-3rem]">
-        <p class="font-montserrat text-xl pb-8 px-32">Sprotty was first released in 2017 and has since been continuously developed and improved by <a href="https://www.typefox.io">TypeFox</a>, <a href="https://eclipsesource.com/">EclipseSource</a>, and many individual contributors.</p>
+        <p class="font-montserrat text-xl pb-8 px-32">Sprotty was first released in 2017 and has since been continuously developed and improved by <a href="https://www.typefox.io" target="_blank" class="underline decoration-dashed">TypeFox</a>, <a href="https://eclipsesource.com/" target="_blank" class="underline decoration-dashed">EclipseSource</a>, and many individual contributors.</p>
         <img src="/assets/sprotty-logo-fish.svg" alt="" class="w-[155px]">
         <p class="font-redHat text-2xl py-8">Start using Sprotty right now or become a part of the sprotty school
         </p>
         <div class="flex flex-row gap-8">
-            <a href="https://www.npmjs.com/package/sprotty"><img src="assets/npm.svg" alt=""></a>
+            <a href="https://www.npmjs.com/package/sprotty" target="_blank"><img src="assets/npm.svg" alt=""></a>
             <a href=""><img src="assets/twitter.svg" alt=""></a>
             <a href="https://github.com/eclipse-sprotty/sprotty" target="_blank"><img src="assets/github.svg" alt=""></a>
         </div>
