@@ -4,6 +4,7 @@
   "description": "showcase content for the sprotty website",
   "private": "true",
   "scripts": {
+    "clean": "npx npx shx rm -rf ../hugo/static/showcase",
     "build": "npm run build-examples & npm run build-language-server & npm run copy-monaco-workers & npm run copy-elk-worker",
     "build-examples": "esbuild ./src/index.ts --bundle --minify --sourcemap --outfile=../hugo/static/showcase/bundle.js --loader:.ttf=file",
     "build-language-server": "esbuild ./src/langium-diagram/language-server/main-browser.ts --bundle --minify --sourcemap --outfile=../hugo/static/showcase/language-server.js --loader:.ttf=file",

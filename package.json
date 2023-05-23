@@ -11,15 +11,15 @@
     "tailwindcss": "^3.2.7"
   },
   "scripts": {
-    "watch": "concurrently -c gray,blue -k -n hugo, tailwind \"npm run watch --workspace hugo\" \"npm run watch --workspace tailwind\"",
+    "watch": "concurrently -c gray,blue -n tailwind,hugo \"npm run watch --workspace tailwind\" \"npm run watch --workspace hugo\"",
     "watch:gitpod": "concurrently -c gray,blue -k -n hugo \"npm run watch:gitpod --workspace hugo\" \"npm run watch --workspace tailwind\"",
     "build": "npm run clean && npm run build --workspaces",
     "clean": "shx rm -rf public && npm run clean --workspaces",
     "start": "http-server ./static-dev"
   },
   "workspaces": [
-    "hugo",
     "showcase",
-    "tailwind"
+    "tailwind",
+    "hugo"
   ]
 }

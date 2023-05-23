@@ -2,8 +2,8 @@
     "name": "sprotty-website-hugo",
     "version": "0.0.1",
     "scripts": {
-        "clean:static": "npx shx rm -rf ./static/libs",
-        "build:static": "npm run clean:static",
+        "clean": "npx shx rm -rf ./static/libs",
+        "build:static": "npm run clean",
         "build": "npm run build:static && cross-env NODE_ENV=production  hugo        --config ./config.toml    -b /              -d ../public --gc --minify    ",
         "watch": "npm run build:static && cross-env NODE_ENV=development hugo server --config ./config.toml -D -b localhost:1313 -d ../public --appendPort=false",
         "watch:gitpod": "npm run build:static && cross-env NODE_ENV=development hugo server --config ./config.toml -D -b `gp url 1313` -d ../public --appendPort=false"
