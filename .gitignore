@@ -1,12 +1,11 @@
-node_modules
-public
+node_modules/
+public/
 .idea/
 .nyc_output/
-node_modules/
+dist/
 npm-debug.log
 yarn-error.log
 .DS_Store
-dist/
 
 #static-dev files
 static-dev/bundle.*

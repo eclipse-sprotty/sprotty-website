@@ -9,7 +9,9 @@
     "esModuleInterop": true,
     "sourceMap": true,
     "experimentalDecorators": true,
-    "jsx": "react"
+    "jsx": "react",
+    "rootDir": "src",
+    "outDir": "dist"
   },
   "lib": ["ES2022","DOM"]
 }

@@ -15,7 +15,7 @@
     "watch:gitpod": "concurrently -c gray,blue -k -n hugo \"npm run watch:gitpod --workspace hugo\" \"npm run watch --workspace tailwind\"",
     "build": "npm run clean && npm run build --workspaces",
     "clean": "shx rm -rf public && npm run clean --workspaces",
-    "start": "http-server ./static-dev"
+    "start:dev": "http-server ./static-dev"
   },
   "workspaces": [
     "showcase",
