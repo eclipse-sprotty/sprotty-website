@@ -8,8 +8,8 @@
     "build-examples": "esbuild ./src/index.ts --bundle --minify --sourcemap --outfile=../hugo/static/showcase/bundle.js --loader:.ttf=file",
     "build-language-server": "esbuild ./src/langium-diagram/language-server/main-browser.ts --bundle --minify --sourcemap --outfile=../hugo/static/showcase/language-server.js --loader:.ttf=file",
     "langium:generate": "langium generate",
-    "copy-monaco-workers": "shx cp -R ../node_modules/monaco-editor-workers/dist/workers ../hugo/static/showcase/monaco-workers",
-    "copy-elk-worker": "shx mkdir ../hugo/static/showcase/elk-workers/ & shx cp -R ../node_modules/elkjs/lib/elk-worker.js ../hugo/static/showcase/elk-workers/"
+    "copy-monaco-workers": "shx mkdir ../hugo/static/showcase/monaco-workers/ & shx cp -R ../node_modules/monaco-editor-workers/dist/workers ../hugo/static/showcase/monaco-workers",
+    "copy-elk-worker": "shx mkdir ../hugo/static/showcase/elk-workers/ & shx cp -R ../node_modules/elkjs/lib/elk-worker.js ../hugo/static/showcase/elk-workers"
   },
   "devDependencies": {
     "esbuild": "0.17.5",
