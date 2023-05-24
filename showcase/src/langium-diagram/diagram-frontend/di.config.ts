@@ -10,8 +10,6 @@ import { EdgeArrow } from "./views";
 export default (containerId: string, client: MonacoLanguageClient) => {
 
     const StatemachineLangiumModule = new ContainerModule((bind, unbind, isBound, rebind) => { 
-        rebind(TYPES.ILogger).to(ConsoleLogger).inSingletonScope();
-        rebind(TYPES.LogLevel).toConstantValue(LogLevel.log);
         bind(MonacoLanguageClient).toConstantValue(client);
         bind(TYPES.ModelSource).to(LSWorkerDiagramServerProxy).inSingletonScope();
         

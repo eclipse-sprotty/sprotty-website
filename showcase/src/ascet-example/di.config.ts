@@ -23,8 +23,6 @@ export default (containerId: string) => {
 
     const ASCETExamleModule = new ContainerModule((bind, unbind, isBound, rebind) => { 
         bind(TYPES.ModelSource).to(LocalModelSource).inSingletonScope();
-        rebind(TYPES.ILogger).to(ConsoleLogger).inSingletonScope();
-        rebind(TYPES.LogLevel).toConstantValue(LogLevel.log);
         const context = { bind, unbind, isBound, rebind };
         configureModelElement(context, 'graph', SGraph, SGraphView);
         configureModelElement(context, 'node:input', RectangularNode, InputView);
