@@ -1,13 +1,14 @@
 {
-    "name": "langium-website-tailwind",
-    "version": "0.0.0",
-    "description": "Source code for langium.org",
-    "author": "TypeFox",
-    "license": "MIT",
-    "private": true,
-    "scripts": {
-      "clean": "rm -rf ../hugo/static/css/style.css",
-      "build": "cross-env NODE_ENV=production  tailwindcss -i ./style.css -o ../hugo/static/css/style.css -c ./tailwind.config.js",
-      "watch": "cross-env NODE_ENV=development tailwindcss -i ./style.css -o ../hugo/static/css/style.css -c ./tailwind.config.js --watch "
-    }
+  "name": "langium-website-tailwind",
+  "version": "0.0.0",
+  "license": "EPL-2.0",
+  "private": true,
+  "scripts": {
+    "clean": "rm -rf ../hugo/static/css/style.css",
+    "build": "cross-env NODE_ENV=production  tailwindcss -i ./style.css -o ../hugo/static/css/style.css -c ./tailwind.config.js",
+    "watch": "cross-env NODE_ENV=development tailwindcss -i ./style.css -o ../hugo/static/css/style.css -c ./tailwind.config.js --watch "
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.2"
   }
+}

@@ -44,7 +44,7 @@ jobs:
           HUGO_ENV: production
         run: |
           npm install
-          npm run build --workspaces
+          npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:

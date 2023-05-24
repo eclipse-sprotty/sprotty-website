@@ -1,14 +1,15 @@
 {
-    "name": "sprotty-website-hugo",
-    "version": "0.0.1",
-    "scripts": {
-        "clean": "npx shx rm -rf ./static/libs",
-        "build": "npm run clean && cross-env NODE_ENV=production  hugo        --config ./config.toml    -b /              -d ../public --gc --minify    ",
-        "watch": "npm run clean && cross-env NODE_ENV=development hugo server --config ./config.toml -D -b localhost:1313 -d ../public --appendPort=false",
-        "watch:gitpod": "npm run clean && cross-env NODE_ENV=development hugo server --config ./config.toml -D -b `gp url 1313` -d ../public --appendPort=false"
-    },
-    "workspaces": [
-      "hugo"
-    ]
+  "name": "sprotty-website-hugo",
+  "version": "0.0.0",
+  "license": "EPL-2.0",
+  "private": true,
+  "scripts": {
+      "clean": "npx shx rm -rf ./static/libs",
+      "build": "npm run clean && cross-env NODE_ENV=production  hugo        --config ./config.toml    -b /              -d ../public --gc --minify    ",
+      "watch": "npm run clean && cross-env NODE_ENV=development hugo server --config ./config.toml -D -b localhost:1313 -d ../public --appendPort=false",
+      "watch:gitpod": "npm run clean && cross-env NODE_ENV=development hugo server --config ./config.toml -D -b `gp url 1313` -d ../public --appendPort=false"
+  },
+  "devDependencies": {
+    "hugo-extended": "~0.110.0"
   }
-  
+}

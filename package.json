@@ -1,20 +1,19 @@
 {
   "name": "sprotty-website",
-  "version": "0.0.1",
-  "description": "the sprotty website",
+  "version": "0.0.0",
+  "license": "EPL-2.0",
+  "private": true,
   "devDependencies": {
     "concurrently": "^7.6.0",
     "cross-env": "^7.0.3",
-    "http-server": "14.1.1",
-    "hugo-extended": "0.110.0",
-    "shx": "^0.3.4",
-    "tailwindcss": "^3.2.7"
+    "http-server": "^14.1.1",
+    "shx": "^0.3.4"
   },
   "scripts": {
+    "clean": "shx rm -rf public && npm run clean --workspaces",
+    "build": "npm run build --workspaces",
     "watch": "concurrently -c gray,blue -n tailwind,hugo \"npm run watch --workspace tailwind\" \"npm run watch --workspace hugo\"",
     "watch:gitpod": "concurrently -c gray,blue -k -n hugo \"npm run watch:gitpod --workspace hugo\" \"npm run watch --workspace tailwind\"",
-    "build": "npm run clean && npm run build --workspaces",
-    "clean": "shx rm -rf public && npm run clean --workspaces",
     "start:dev": "http-server ./static-dev"
   },
   "workspaces": [
