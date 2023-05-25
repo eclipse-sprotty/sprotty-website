@@ -2,8 +2,8 @@
     "projectName": "Statemachine",
     "languages": [{
         "id": "statemachine",
-        "grammar": "src/interactive-example/language-server/statemachine.langium",
+        "grammar": "src/langium-diagram/language-server/statemachine.langium",
         "fileExtensions": [".statemachine"]
     }],
-    "out": "src/interactive-example/language-server/generated"
+    "out": "src/langium-diagram/language-server/generated"
 }
