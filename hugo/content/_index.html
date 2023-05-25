@@ -4,15 +4,15 @@ type: sprotty
 ---
 
 <section id="introduction">
-    <div class="flex flex-col pt-10 px-20 pb-20 font-redHat">
+    <div class="md:flex md:flex-col pt-10 px-20 pb-20 font-redHat">
         <p class="text-sprottyTeal text-xl text-center pb-20 font-medium">
         <h2 class="text-sprottyTeal text-center font-medium text-3xl pb-10">
             Diagram Vizualization Tools <br />for Your Web Applications
         </h2>
-        <div class="flex flex-row justify-center pb-5">
-            <img src="/assets/sprotty-multicore.png" alt="" class="mb-3 z-40 w-[300px]" />
-            <img src="/assets/sprotty-xtext.png" alt="" class="mx-[-50px] mt-3 z-30 w-[300px]" />
-            <img src="/assets/sprotty-dependency.png" alt="" class="mb-3 z-20 w-[300px]" />
+        <div class="flex flex-col md:flex-row items-center justify-center pb-5">
+            <img src="/assets/sprotty-multicore.png" alt="" class="mr-[-25px] md:mr-0 mb-3 z-40 w-[300px]" />
+            <img src="/assets/sprotty-xtext.png" alt="" class="ml-[-25px] md:mx-[-50px] md:mt-3 z-30 w-[300px] my-[-50px] md:my-0" />
+            <img src="/assets/sprotty-dependency.png" alt="" class="mr-[-25px] md:mr-0 mb-3 z-20 w-[300px]" />
         </div>
         <p class="text-sprottyTeal text-xl text-center pb-20 font-medium">
             Eclipse Sprotty is an open-source project enabling the creation of powerful diagramming tools and graphical editors.
@@ -32,9 +32,9 @@ type: sprotty
 </section>
 
 <section id="what-is-sprotty">
-    <div class="flex flex-row bg-waves bg-[length:auto_100%] bg-center bg-repeat-x px-10 pt-10 gap-5">
+    <div class="md:flex md:flex-row bg-waves bg-[length:auto_100%] bg-center bg-repeat-x px-10 pt-10 gap-5">
         <div class="basis-1/2">
-            <p class="text-sprottyDarkBlue font-montserrat pb-20">
+            <p class="text-sprottyDarkBlue font-montserrat pb-20 pt-10 md:pt-0">
                 Sprotty provides a framework for rendering diagrams using the <span class="font-semibold">Scalable Vector Graphics</span> (SVG) format, pluggable to powerful layout engines such as the <a href="https://www.eclipse.org/elk/" target="_blank" class="font-semibold underline decoration-dashed">Eclipse Layout Kernel</a> (ELK).
                 <br><br>
                 Sprotty is <span class="font-semibold"> fully customizable </span>, from the look of your diagram, down to its behavior.
@@ -44,14 +44,14 @@ type: sprotty
                 Try it live! Start exploring the diagram, hover over components, click on them, discover what Sprotty can do!
             </p>
         </div>
-        <div id="sprotty-ascet-example" class="bg-white basis-1/2 mt-[-4rem] shadow-md"></div>
+        <div id="sprotty-ascet-example" class="bg-white basis-1/2 md:mt-[-4rem] shadow-md"></div>
     </div>
 </section>
 
 <section id="characteristics">
-    <div class="flex flex-row gap-5 bg-im px-10 mb-[-3rem]">
+    <div class="md:flex md:flex-row gap-5 bg-im px-10 md:mb-[-3rem] pb-10">
         <div class="basis-1/2">
-            <img src="/assets/sprotty-dependency.png" alt="" class="mt-[-4rem] w-[300px]"/>
+            <img src="/assets/sprotty-dependency.png" alt="" class="mt-10 md:mt-[-4rem] w-[300px]"/>
             <img src="/assets/sprotty-multicore.png" alt="" class="mt-[-5rem] pl-36 z-10 relative w-[450px]"/>
             <img src="/assets/sprotty-yang.png" alt="" class="mt-[-5rem] w-[300px]"/>
             <img src="/assets/sprotty-xtext.png" alt="" class="mt-[-5rem] pl-36 w-[450px]"/>
@@ -79,8 +79,9 @@ type: sprotty
 </section>
 
 <section id="integration">
-    <div class="flex flex-row gap-10 bg-sprottyLightBlue bg-opacity-30 font-montserrat text-sprottyDarkBlue pt-20 pb-20">
-        <div class="flex flex-col basis-1/2 items-center pl-32">
+    <div class="flex flex-row gap-10 bg-sprottyLightBlue bg-opacity-30 font-montserrat text-sprottyDarkBlue py-10 md:py-20 overflow-x-scroll">
+        <!--  we probably need to add something like arrows to the sidex or a page indicator below to indicate you can show other texts by scrolling horizontally -->
+        <div class="flex flex-col basis-1/2 items-center px-2 md:pl-32 min-w-full md:min-w-0">
             <img src="/assets/fishbowl.svg" alt="" class="w-[150px]"/>
             <h3 class="font-semibold py-4 text-xl">At home in any kind of water...</h3>
             <p class="text-center">
@@ -92,7 +93,7 @@ type: sprotty
                 It can also use <span class="font-semibold">server-side</span> diagram generation for most complex use cases.
             </p>
         </div>
-        <div class="basis-1/2 flex flex-col items-center pr-32">
+        <div class="basis-1/2 flex flex-col items-center px-2 md:pr-32 min-w-full md:min-w-0">
             <img src="/assets/hook.svg" alt="" />
             <h3 class="font-semibold py-4 text-xl">Quick to hook...</h3>
             <p class="text-center">
@@ -108,11 +109,11 @@ type: sprotty
 
 
 <section id="client">
-    <div class="flex flex-col">
+    <div class="md:flex md:flex-col">
         <div class="py-8 max-w-[75%] mx-auto">
-            <p class="text-sprottyTeal text-center font-montserrat">The following example shows a full integration between Sprotty and the <a href="https://microsoft.github.io/monaco-editor/" target="_blank" class="underline decoration-dashed">Monaco Editor</a>. The Monaco Editor runs a language server for a DSL created with <a href="https://langium.org/" target="_blank" class="underline decoration-dashed">Langium</a> for creating state-machines. Edit the content of the editor and see changes transferred in real-time to the diagram!</p>
+            <p class="text-sprottyTeal text-center font-montserrat px-4 md:px-0">The following example shows a full integration between Sprotty and the <a href="https://microsoft.github.io/monaco-editor/" target="_blank" class="underline decoration-dashed">Monaco Editor</a>. The Monaco Editor runs a language server for a DSL created with <a href="https://langium.org/" target="_blank" class="underline decoration-dashed">Langium</a> for creating state-machines. Edit the content of the editor and see changes transferred in real-time to the diagram!</p>
         </div>
-        <div class="flex flex-row basis-1/2 shadow-md bg-white border-sprottyTeal border-solid border mx-5">
+        <div class="md:flex md:flex-row basis-1/2 shadow-md bg-white border-sprottyTeal border-solid border mx-5">
             <div id="monaco-editor" class="basis-1/2"></div>
             <div id="sprotty-langium-diagram" class="basis-1/2"></div>
         </div>
