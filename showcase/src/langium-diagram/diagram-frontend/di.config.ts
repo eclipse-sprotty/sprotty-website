@@ -31,7 +31,10 @@ export default (containerId: string, client: MonacoLanguageClient) => {
         configureViewerOptions(context, {
             needsClientLayout: false,
             needsServerLayout: true,
-            baseDiv: containerId
+            baseDiv: containerId,
+            zoomLimits: {min: 0.4, max: 1.5},
+            horizontalScrollLimits: {min: -1950, max: 2150},
+            verticalScrollLimits: {min: -950, max: 1500},
         });
 
     });

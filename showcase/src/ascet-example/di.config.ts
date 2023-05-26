@@ -43,7 +43,10 @@ export default (containerId: string) => {
 
         configureViewerOptions(context, {
             needsClientLayout: false,
-            baseDiv: containerId
+            baseDiv: containerId,
+            zoomLimits: {min: 0.4, max: 1.5},
+            horizontalScrollLimits: {min: -800, max: 2100},
+            verticalScrollLimits: {min: -800, max: 1500}
         });
 
     });

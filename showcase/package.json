@@ -18,8 +18,8 @@
     "langium-cli": "~1.2.0"
   },
   "dependencies": {
-    "sprotty": "^0.13.0",
-    "sprotty-elk": "^0.13.1",
+    "sprotty": "0.14.0-next.e058bb2.23",
+    "sprotty-elk": "0.14.0-next.e058bb2.23",
     "reflect-metadata": "^0.1.13",
     "monaco-editor-workers": "0.34.2",
     "monaco-editor-wrapper": "1.3.2",
