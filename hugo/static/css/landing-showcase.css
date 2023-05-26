@@ -10,72 +10,193 @@
     width: 90%;
 } */
 #monaco-editor {
-    min-height: 600px;
+  min-height: 600px;
 }
 .sprotty-graph {
-    width: 100%;
-    height: 100%;
-    min-height: 600px;
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
 }
 
 .sprotty-edge {
-    fill: none;
-    stroke: black;
-    stroke-width: 1px;
+  fill: none;
+  stroke: black;
+  stroke-width: 1px;
+}
+
+.sprotty-edge-transparent {
+  stroke: transparent;
+  stroke-width: 10px;
 }
 
 #sprotty-showcase_Tqs_flgTorqueRegOverride-\>Relais > path {
-    stroke-dasharray: 5;
+  stroke-dasharray: 5;
 }
 
 .sprotty-routing-handle {
-    fill: black
+  fill: black;
 }
 
-.sprotty-edge.mouseover,.sprotty-edge.selected {
-    stroke-width: 2px;
+.sprotty-edge.mouseover,
+.sprotty-edge.selected {
+  stroke-width: 2px;
 }
 
 .sprotty-node {
-    fill: white;
-    stroke: black;
+  fill: white;
+  stroke: black;
 }
 
 .component-marker {
-    stroke: lightgray;
-    stroke-width: 1px;
-    fill: lightblue;
+  stroke: lightgray;
+  stroke-width: 1px;
+  fill: lightblue;
 }
 
-.class-input-back, .input-arrow-full {
-    fill: black;
+.class-input-back,
+.input-arrow-full {
+  fill: black;
 }
 
 .input-arrow-stroke {
-    fill: white;
-    stroke: black;
+  fill: white;
+  stroke: black;
 }
 
 .operand-symbol {
-    font-weight: bold;
-    fill: #8585EB;
-    font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  fill: #8585eb;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.sprotty-text, .sprotty-label {
-    font-family: monospace;
-    text-anchor: middle;
-    fill: blue;
+.sprotty-text,
+.sprotty-label {
+  font-family: monospace;
+  text-anchor: middle;
+  fill: blue;
+}
+
+.arrow {
+  fill: black;
 }
 
 .inputOutputLabel {
-    fill: blue !important;
+  fill: blue !important;
 }
 
 .sprotty-label {
-    font-size: 12;
-    font-weight: 100;
-    fill: black;
-    stroke: none;
-    white-space: pre-line;
+  font-size: 12;
+  font-weight: 100;
+  fill: black;
+  stroke: none;
+  white-space: pre-line;
+}
+
+.input.mouseover > *:not(.sprotty-text),
+.component.mouseover > *:not(.sprotty-text),
+.controller.mouseover > *:not(.sprotty-text),
+.relais.mouseover > *:not(.sprotty-text),
+.operand.mouseover > *:not(.sprotty-text) {
+  filter: drop-shadow(1px 2px 3px gray);
+}
+
+.input.mouseover > .sprotty-text,
+.component.mouseover > .sprotty-text,
+.controller.mouseover > .sprotty-text,
+.relais.mouseover > .sprotty-text,
+.operand.mouseover > .sprotty-text {
+  font-weight: bold;
+}
+
+.sprotty-edge.selected > g > path:not(.sprotty-edge-transparent) {
+  stroke-width: 2px;
+  stroke-dasharray: 5;
+  animation: edge-dash 10s linear infinite;
+}
+@keyframes edge-dash {
+  to {
+    stroke-dashoffset: -200;
+  }
+}
+
+.sprotty-edge-incoming {
+  stroke: forestgreen;
+  stroke-width: 3;
+}
+.sprotty-edge-outgoing {
+  stroke: tomato;
+  stroke-width: 3;
+}
+
+.sprotty-edge-incoming > .arrow {
+  fill: forestgreen;
+}
+.sprotty-edge-outgoing > .arrow {
+  fill: tomato;
+}
+
+.input-incoming > .input-back,
+.input-incoming > .input-arrow-full,
+.input-incoming > .input-arrow-stroke,
+.input-incoming > .sprotty-text {
+  fill: forestgreen;
+}
+.input-outgoing > .input-back,
+.input-outgoing > .input-arrow-full,
+.input-outgoing > .input-arrow-stroke,
+.input-outgoing > .sprotty-text {
+  fill: tomato;
+}
+
+.component-incoming > .sprotty-node {
+  stroke: forestgreen;
+}
+.component-incoming > .input-back,
+.component-incoming > .sprotty-text {
+  fill: forestgreen;
+}
+.component-outgoing > .sprotty-node {
+  stroke: tomato;
+}
+.component-outgoing > .input-back,
+.component-outgoing > .sprotty-text {
+  fill: tomato;
+}
+
+.controller-incoming > rect {
+  stroke: forestgreen
+}
+.controller-incoming > .sprotty-text {
+  fill: forestgreen
+}
+.controller-outgoing > rect {
+  stroke: tomato
+}
+.controller-outgoing > .sprotty-text {
+  fill: tomato
+}
+
+.operand-incoming > rect {
+  stroke: forestgreen;
+  stroke-width: 2;
+}
+.operand-outgoing > rect {
+  stroke: tomato;
+  stroke-width: 2;
+}
+
+.relais-incoming > rect {
+  stroke: forestgreen;
+  stroke-width: 2;
+}
+.relais-outgoing > rect {
+  stroke: tomato;
+  stroke-width: 2;
+}
+
+.outline {
+  stroke: black;
+  stroke-width: 2;
+  fill: none;
+  stroke-dasharray: 5;
 }

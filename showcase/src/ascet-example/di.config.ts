@@ -15,31 +15,31 @@
  ********************************************************************************/
 
 import { Container, ContainerModule } from "inversify";
-import { configureModelElement, configureViewerOptions, ConsoleLogger, edgeIntersectionModule, JumpingPolylineEdgeView, loadDefaultModules, LocalModelSource, LogLevel, PolylineEdgeView, RectangularNode, RectangularNodeView, SChildElement, SEdge, SGraph, SGraphView, SLabel, SLabelView, SModelElement, SRoutingHandle, SRoutingHandleView, SShapeElement, TYPES } from "sprotty";
-import { ComponentView, ControllerView, EdgeArrow, Icon1, Icon2, Icon3, InputView, OperandView, RelaisView, SplitMarkedEdgeView } from "./views";
+import { configureModelElement, configureViewerOptions, edgeIntersectionModule, editFeature, loadDefaultModules, moveFeature, RectangularNode, SChildElement, SEdge, SGraph, SLabel, SLabelView, SRoutingHandle, SRoutingHandleView, TYPES } from "sprotty";
+import { AscetGraphView, ComponentView, ControllerView, EdgeArrow, Icon1, Icon2, Icon3, InputView, OperandView, RelaisView, SplitMarkedEdgeView } from "./views";
+import { AscetModelSource } from "./model-source";
 
 
 export default (containerId: string) => {
 
     const ASCETExamleModule = new ContainerModule((bind, unbind, isBound, rebind) => { 
-        bind(TYPES.ModelSource).to(LocalModelSource).inSingletonScope();
+        bind(TYPES.ModelSource).to(AscetModelSource).inSingletonScope();
         const context = { bind, unbind, isBound, rebind };
-        configureModelElement(context, 'graph', SGraph, SGraphView);
-        configureModelElement(context, 'node:input', RectangularNode, InputView);
-        configureModelElement(context, 'node:component', RectangularNode, ComponentView);
-        configureModelElement(context, 'node:operand', RectangularNode, OperandView);
-        configureModelElement(context, 'node:controller', RectangularNode, ControllerView);
-        configureModelElement(context, 'node:relais', RectangularNode, RelaisView);
-        configureModelElement(context, 'edge:straight', SEdge, SplitMarkedEdgeView);
+        configureModelElement(context, 'graph', SGraph, AscetGraphView);
+        configureModelElement(context, 'node:input', RectangularNode, InputView, {disable: [moveFeature]});
+        configureModelElement(context, 'node:component', RectangularNode, ComponentView, {disable: [moveFeature]});
+        configureModelElement(context, 'node:operand', RectangularNode, OperandView, {disable: [moveFeature]});
+        configureModelElement(context, 'node:controller', RectangularNode, ControllerView, {disable: [moveFeature]});
+        configureModelElement(context, 'node:relais', RectangularNode, RelaisView, {disable: [moveFeature]});
+        configureModelElement(context, 'edge:straight', SEdge, SplitMarkedEdgeView, {disable: [editFeature]});
         configureModelElement(context, 'label:arrow', SLabel, EdgeArrow);
-        configureModelElement(context, 'label:text', SLabel, SLabelView)
-        configureModelElement(context, 'routing-point', SRoutingHandle, SRoutingHandleView)
-        configureModelElement(context, 'volatile-routing-point', SRoutingHandle, SRoutingHandleView);
+        configureModelElement(context, 'label:text', SLabel, SLabelView);
+        configureModelElement(context, 'routing-point', SRoutingHandle, SRoutingHandleView, {disable: [moveFeature]})
+        configureModelElement(context, 'volatile-routing-point', SRoutingHandle, SRoutingHandleView, {disable: [moveFeature]});
         // icons
         configureModelElement(context, 'label:icon1', SChildElement, Icon1);
         configureModelElement(context, 'label:icon2', SChildElement, Icon2);
         configureModelElement(context, 'label:icon3', SChildElement, Icon3);
-
 
         configureViewerOptions(context, {
             needsClientLayout: false,
