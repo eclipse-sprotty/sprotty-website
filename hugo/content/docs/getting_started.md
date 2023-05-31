@@ -11,8 +11,21 @@ The main steps to integrate Sprotty into our application are as follows:
 4. [Configure the diagram](#configure-the-diagram) through dependency injection.
 5. [Connect to a model source](#connect-to-a-model-source), either local or remote
 
+### Fast-Forward With Yeoman
+
+If you'd like to skip the manual steps below and create a Sprotty-based project right away, you can use the [Yeoman](https://yeoman.io/) generator:
+
+```shell
+$ npm install -g yo generator-sprotty
+$ yo sprotty
+```
+
+Answer a few questions and you'll get a ready-to-use example project.
+
 ## Setting-up Our Application
+
 Our example application is based on TypeScript. In this application we will set up our project to be ready for receiving Sprotty.
+
 1. Create a new directory and navigate to it
 2. Initialize the project by running
     ```shell
@@ -83,9 +96,11 @@ Our example application is based on TypeScript. In this application we will set 
         stroke-width: 1px;
     }
     ```
+
 Our project is now set-up and ready for integrating Sprotty diagrams.
 
 ## Define Your Model
+
 Sprotty comes with a set of model classes that you can reuse for your application. e.g. `SNode` and `SEdge` for graphs and `SChildElement` for other views. However, it is often necessary to add application-specific properties to model elements, so their graphical views can be parameterized.
 
 We will define a new interface for our nodes called `TaskNode`, extending Sprotty's `SNode` with application-specific properties. Create a new file `models.ts` at the root of the project:
@@ -100,9 +115,11 @@ export interface TaskNode extends SNode {
 ```
 
 ## Implement Views
+
 A view maps a model element to its graphical representation. You can create your own views by creating a class implementing `IView` or extending a view already available in Sprotty.
 
 In the following example we use the JSX syntax to create a SVG group with a `rect` and a `text` element. Add a new file `view.tsx` (note the `tsx` extension) at the root of the project:
+
 ```typescript
 /** @jsx svg */
 import { svg } from 'sprotty/lib/lib/jsx';
@@ -130,6 +147,7 @@ export class TaskNodeView implements IView {
 ```
 
 The SVG elements are styled with CSS using classes that are injected using the `class-myClass={boolean expression}` in the jsx expression. Add the following to `styles.css`:
+
 ```css
 .sprotty-node.task {
     fill: #c0e0fc;
@@ -154,7 +172,9 @@ text {
     text-anchor: middle;
 }
 ```
+
 ## Configure the Diagram
+
 The configuration of our Sprotty application is done via Dependency Injection using [InversifyJS](https://inversify.io/). We recommend defining your InversifyJS container in a file named `di.config.ts` at the root of the project which could look like this:
 
 ```typescript
@@ -187,16 +207,20 @@ Views are registered using `configureModelElement` which takes a `context`, a ty
 `loadDefaultModules` is used to include Sprotty's default modules, while `container.load` can be used to include extra modules required by our application.
 
 ## Connect to a Model Source
+
 Sprotty supports two kinds of model sources:
 
 * `LocalModelSource` allows to create models directly in TypeScript or JavaScript
 * `WebSocketDiagramServer` delegates to a remote source that is connected via a web socket
 
 In this example, we consider the local variant. To enable the model source, we add the following line to our module definition (see previous section):
+
 ```ts
 bind(TYPES.ModelSource).to(LocalModelSource).inSingletonScope()
 ```
+
 Afterwards you can use the `LocalModelSource` to initialize and update the model. For example, the following `graph` consists of three task nodes with a connection between the first two. Create a new file `model-source.ts` at the root of the project:
+
 ```typescript
 import { SGraph, SEdge, SNode } from "sprotty-protocol";
 import { TaskNode } from "./models";
@@ -244,6 +268,7 @@ export const graph: SGraph = {
 ```
 
 Finally, we need to create the entry point of our application in an `index.ts` file:
+
 ```typescript
 import "reflect-metadata";
 import { LocalModelSource, TYPES } from 'sprotty';

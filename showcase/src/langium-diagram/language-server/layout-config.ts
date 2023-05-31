@@ -22,9 +22,13 @@ export class StatesLayoutConfigurator extends DefaultLayoutConfigurator {
 
     protected override graphOptions(sgraph: SGraph, index: SModelIndex): LayoutOptions {
         return {
+            'org.eclipse.elk.algorithm': 'org.eclipse.elk.layered',
             'org.eclipse.elk.direction': 'DOWN',
+            'org.eclipse.elk.edgeRouting': 'ORTHOGONAL',
             'org.eclipse.elk.spacing.nodeNode': '30.0',
-            'org.eclipse.elk.layered.spacing.edgeNodeBetweenLayers': '30.0'
+            'org.eclipse.elk.layered.spacing.edgeNodeBetweenLayers': '30.0',
+            'org.eclipse.elk.spacing.edgeEdge': '22.0',
+            'org.eclipse.elk.spacing.portPort': '22.0'
         };
     }
 

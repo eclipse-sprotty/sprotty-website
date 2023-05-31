@@ -39,6 +39,7 @@ export class StatesDiagramGenerator extends LangiumDiagramGenerator {
             type: 'node',
             id: nodeId,
             size: {width: 100, height: 30},
+            cssClasses: ['state'],
             children: [
                 <SLabel>{
                     type: 'label',
@@ -68,9 +69,9 @@ export class StatesDiagramGenerator extends LangiumDiagramGenerator {
         return {
             type: 'edge',
             id: edgeId,
+            cssClasses: ['transition'],
             sourceId: sourceId!,
             targetId: targetId!,
-            routerKind: 'manhattan',
             children: [
                 <SLabel>{
                     type: 'label:xref',
@@ -78,7 +79,8 @@ export class StatesDiagramGenerator extends LangiumDiagramGenerator {
                     text: transition.event?.ref?.name,
                     edgePlacement:  {
                         position: 0.5,
-                        rotate: true
+                        rotate: true,
+                        offset: -2
                     }
                 },
                 <SLabel> {

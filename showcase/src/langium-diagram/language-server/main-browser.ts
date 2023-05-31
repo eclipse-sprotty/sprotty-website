@@ -30,7 +30,6 @@ const connection = createConnection(messageReader, messageWriter);
 const { shared } = createStatemachineServices({connection, ...EmptyFileSystem });
 
 // Start the language server with the shared services
-console.log("starting language server");
 startLanguageServer(shared);
 
 addDiagramHandler(connection, shared);

@@ -16,7 +16,7 @@ export default (containerId: string, client: MonacoLanguageClient) => {
         const context = { bind, unbind, isBound, rebind };
         configureModelElement(context, 'graph', SGraph, SGraphView);
         configureModelElement(context, 'node', RectangularNode, RectangularNodeView, {
-            disable: [moveFeature, selectFeature]
+            disable: [moveFeature]
         });
         configureModelElement(context, 'edge', SEdge, PolylineEdgeView, {
             disable: [editFeature]

@@ -92,6 +92,19 @@
   white-space: pre-line;
 }
 
+.state rect.mouseover {
+  filter: drop-shadow(1px 2px 3px gray);
+}
+
+.state rect.selected {
+  fill: #CDDFF1;
+  stroke: #115E8E;
+}
+
+.sprotty-edge.transition.selected {
+  stroke: #115E8E;
+}
+
 .input.mouseover > *:not(.sprotty-text),
 .component.mouseover > *:not(.sprotty-text),
 .controller.mouseover > *:not(.sprotty-text),

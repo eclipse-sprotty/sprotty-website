@@ -65,22 +65,24 @@ export function createMonacoEditor(containerId: string): MonacoEditorLanguageCli
     config.setMainCode(`// Create your own statemachine here!
 statemachine TrafficLight
 events
-    switchCapacity
+    power
     next
+
 initialState PowerOff
+
 state PowerOff
-    switchCapacity => RedLight
+    power => RedLight
 end
 state RedLight
-    switchCapacity => PowerOff
+    power => PowerOff
     next => GreenLight
 end
 state YellowLight
-    switchCapacity => PowerOff
+    power => PowerOff
     next => RedLight
 end
 state GreenLight
-    switchCapacity => PowerOff
+    power => PowerOff
     next => YellowLight
 end`);
 
