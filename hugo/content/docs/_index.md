@@ -16,6 +16,7 @@ Some selected features:
 * Can be run as a rich-client as well as in the browser
 
 ## Where to start?
+
 If you are new with Sprotty, we recommend taking a look at our [Getting Started](./getting_started) section before diving further.
 
 ## Want to contribute?
