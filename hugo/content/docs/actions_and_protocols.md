@@ -2,30 +2,43 @@
 title: 'Communication and Protocols'
 weight: 500
 ---
-Sprotty uses actions to communicate between `ModelSource` and `ActionDispatcher` regardless if the model source is local or remote. 
+Sprotty uses actions to communicate between `ModelSource` and `ActionDispatcher` regardless if the model source is local or remote.
 The core of this communication follows specific protocols. This Chapter will give an overview of these protocols and their used actions.
+
 ## Actions
+
 Actions are plain JSON serializable objects so that they can easily be passed through all kinds of APIs. They can be distinguished through their `KIND` string property.
 In this section, the most important actions for understanding the basic communication protocols are described.
 For more info on existing actions see [actions.ts](https://github.com/eclipse-sprotty/sprotty/blob/master/packages/sprotty-protocol/src/actions.ts)
+
 ### ComputedBoundsAction
-Sent from the client to the model source to transmit the result of bounds computation for micro-layout. 
+
+Sent from the client to the model source to transmit the result of bounds computation for micro-layout.
 This is sent as a response to a RequestBoundsAction
 
 ### RequestBoundsAction
+
 Sent from the model source to the client to request bounds for the given model. This triggers the micro-layout computation.
+
 ### RequestModelAction
+
 Sent from client to model source to request a new model. Usually, this is the first action sent to initiate the communication.
 Optionally this can contain an `options` object containing configuration for the `DiagramServer`, like properties for `needsClientLayout` and `needsServerLayout`.
+
 ### SetModelAction
+
 Sent from the model source to the client to set the model. It contains the schema for the new graph.
 Should a model already exist in the client, it is overwritten.
+
 ### UpdateModelAction
-Sent from model source to client to update the current model. Allows animating the transition from the old to the new model and contains properties for the transistion.
+
+Sent from model source to client to update the current model. Allows animating the transition from the old to the new model and contains properties for the transition.
 
 ## Protocols
+
 Based on where layouting should be done there are 3 different protocols through which the `DiagramServer` and client can communicate.
 On the client-side, this can be configured through the `configureViewerOptions` in the dependency injection container.
+
 ```Typescript
 configureViewerOptions(context, {
     needsClientLayout: false,
@@ -35,6 +48,7 @@ configureViewerOptions(context, {
 ```
 
 On the server-side layout options need to be set in the `DiagramServer`
+
 ```Typescript
 diagramServer.setNeedsClientLayout(false);
 diagramServer.setNeedsServerLayout(true);
@@ -76,7 +90,7 @@ loop when model changes
     end
 end
 {{< /mermaid>}}
-This is very similiar to scenario 1 (with server-only layout). However, instead of `SetModelAction` and `UpdateModelAction` we use the `RequestBoundsAction` which contains the full graph
+This is very similar to scenario 1 (with server-only layout). However, instead of `SetModelAction` and `UpdateModelAction` we use the `RequestBoundsAction` which contains the full graph
 
 ### 3. Client and Server Layout
 
@@ -97,4 +111,3 @@ loop when model changes
     S ->> C: UpdateModelAction
 end
 {{< /mermaid>}}
-

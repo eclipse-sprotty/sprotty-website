@@ -5,8 +5,9 @@ weight: 200
 Our 'Getting Started' example consists of a simple application that displays a list of tasks, their status, and the relationship between them in a HTML page.
 
 The main steps to integrate Sprotty into our application are as follows:
+
 1. [Set-up](#setting-up-our-application) your application.
-2. [Define your model](#define-your-model) by creating subclasses of `SModelElement`.
+2. [Define your model](#define-your-model) by creating subclasses of `SModelElementImpl`.
 3. [Implement views](#implement-views) to generate SVGs for each type of model element.
 4. [Configure the diagram](#configure-the-diagram) through dependency injection.
 5. [Connect to a model source](#connect-to-a-model-source), either local or remote
@@ -16,8 +17,8 @@ The main steps to integrate Sprotty into our application are as follows:
 If you'd like to skip the manual steps below and create a Sprotty-based project right away, you can use the [Yeoman](https://yeoman.io/) generator:
 
 ```shell
-$ npm install -g yo generator-sprotty
-$ yo sprotty
+npm install -g yo generator-sprotty
+yo sprotty
 ```
 
 Answer a few questions and you'll get a ready-to-use example project.
@@ -28,11 +29,14 @@ Our example application is based on TypeScript. In this application we will set 
 
 1. Create a new directory and navigate to it
 2. Initialize the project by running
+
     ```shell
     npm init -y
     ```
+
     This will create a `package.json` file.
 3. Modify `package.json` to add a build script and necessary dependencies
+
     ```json
     {
         "scripts": {
@@ -48,11 +52,15 @@ Our example application is based on TypeScript. In this application we will set 
         }
     }
     ```
+
 4. Initialize the TypeScript project
+
     ```shell
     npx tsc --init
     ```
+
     This will create `tsconfig.json` file at the root of your project. You should overwrite this files with the following:
+
     ```json
     {
         "$schema": "https://json.schemastore.org/tsconfig",
@@ -73,8 +81,10 @@ Our example application is based on TypeScript. In this application we will set 
         ]
     }
     ```
+
 5. Install dependencies running `npm i`
 6. Create a `index.html` file at the root of your project
+
     ```html
     <head>
         <script src="./out/index.js" type="text/javascript"></script>
@@ -84,7 +94,9 @@ Our example application is based on TypeScript. In this application we will set 
         <div id="sprotty-container"></div>
     </body>
     ```
+
 7. Add some default CSS styles by creating a `styles.css` file at the root of the project:
+
     ```css
     .sprotty-graph {
         width: 100%;
@@ -101,9 +113,10 @@ Our project is now set-up and ready for integrating Sprotty diagrams.
 
 ## Define Your Model
 
-Sprotty comes with a set of model classes that you can reuse for your application. e.g. `SNode` and `SEdge` for graphs and `SChildElement` for other views. However, it is often necessary to add application-specific properties to model elements, so their graphical views can be parameterized.
+Sprotty comes with a set of model classes that you can reuse for your application. e.g. `SNodeImpl` and `SEdgeImpl` for graphs and `SChildElementImpl` for other views. However, it is often necessary to add application-specific properties to model elements, so their graphical views can be parameterized.
 
-We will define a new interface for our nodes called `TaskNode`, extending Sprotty's `SNode` with application-specific properties. Create a new file `models.ts` at the root of the project:
+We will define a new interface for our nodes called `TaskNode`, extending Sprotty's `SNode` interface with application-specific properties. Create a new file `models.ts` at the root of the project:
+
 ```typescript
 import { SNode } from "sprotty-protocol"
 
@@ -179,7 +192,7 @@ The configuration of our Sprotty application is done via Dependency Injection us
 
 ```typescript
 import { Container, ContainerModule } from 'inversify';
-import { configureModelElement, configureViewerOptions, loadDefaultModules, LocalModelSource, PolylineEdgeView, SEdge, SGraph, SGraphView, SNode, TYPES } from 'sprotty';
+import { configureModelElement, configureViewerOptions, loadDefaultModules, LocalModelSource, PolylineEdgeView, SEdgeImpl, SGraphImpl, SGraphView, SNodeImpl, TYPES } from 'sprotty';
 import { TaskNodeView } from './views';
 
 export const createContainer = (containerId: string) => {
@@ -187,9 +200,9 @@ export const createContainer = (containerId: string) => {
         bind(TYPES.ModelSource).to(LocalModelSource).inSingletonScope();
 
         const context = { bind, unbind, isBound, rebind };
-        configureModelElement(context, 'graph', SGraph, SGraphView);
-        configureModelElement(context, 'task', SNode, TaskNodeView);
-        configureModelElement(context, 'edge', SEdge, PolylineEdgeView);
+        configureModelElement(context, 'graph', SGraphImpl, SGraphView);
+        configureModelElement(context, 'task', SNodeImpl, TaskNodeView);
+        configureModelElement(context, 'edge', SEdgeImpl, PolylineEdgeView);
 
         configureViewerOptions(context, {
             needsClientLayout: false,
@@ -203,6 +216,7 @@ export const createContainer = (containerId: string) => {
     return container;
 };
 ```
+
 Views are registered using `configureModelElement` which takes a `context`, a type, an element class, and a view.
 `loadDefaultModules` is used to include Sprotty's default modules, while `container.load` can be used to include extra modules required by our application.
 
