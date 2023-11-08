@@ -41,7 +41,7 @@ export const createContainer = (containerId: string) => {
 
 The container is built from multiple modules. Through `loadDefaultModules()` all modules are loaded for default Sprotty functionalities. We can also load other optional modules like the `edgeIntersectionModule` for extra functionality.
 
-Most important is our own module where the core of the configuration happens. Here we can configure singleton scope classes like our [datasource](../datasources) or rebind default Sprotty components (for example the logger) to a custom implementation. We use Symbols for bindings instead of using classes directly. All Symbols can be found in the `TYPES` object.
+Most important is our own module where the core of the configuration happens. Here we can configure singleton scope classes like our [model source](../model_sources) or rebind default Sprotty components (for example the logger) to a custom implementation. We use Symbols for bindings instead of using classes directly. All Symbols can be found in the `TYPES` object.
 
 Using `configureModelElement` we can link our model to specific view components through the type property. Meaning if we have the following SNode,
 in our model, Sprotty will try to convert this data structure to an instance of the actual `SNodeImpl` class and render it with the `TaskNodeView`.
