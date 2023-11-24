@@ -5,9 +5,56 @@ weight: 300
 
 The `SModel` (short for `SprottyModel`) is the core data structure of Sprotty. It is a tree of model elements that can be rendered by a View. The root of the model is **always** an instance of `SModelRootImpl` or one of its derived class.
 
-Classes are disambiguated from their corresponding interfaces with the suffix `Impl`.
+First, we need to distinguish between two models: the **internal model** and the **external model**.
 
-## Model Elements
+The **internal model** is used *only* in the *CommandStack* and the *Viewer*. It is a tree of model elements representing the current state of what is visible in the diagram. After a change has been applied via a *Command*. the *CommandStack* sends an updated version of the internal model to the *Viewer* which in turns renders the updated model using the provided View implementations.
+
+The **external model** is used to transfer information between the model source and the Sprotty frontend. The **external model** must be serializable as JSON so that it can be easily transferred via network messages. Changes to the external model are applied through *Actions*, which contain the external model or parts of it. When the model source resides in the backend, the content of the diagram are controlled by a *DiagramServer*, which holds a copy of the external model.
+
+## External Model
+
+The external model is tree of JSON-serializable objects. To facilitate its implementation, Sprotty provides a set of interfaces (in the *sprotty-protocol* package) that can be used to describe the external model. These interfaces have a class counterpart that is used in the internal model. The complete list of interfaces provided by Sprotty can be found [here](https://github.com/eclipse-sprotty/sprotty/blob/master/packages/sprotty-protocol/src/model.ts).
+
+## Internal Model Elements
+
+The internal model is a tree of model elements implemented as classes. To avoid ambiguity with interfaces used in the external model, classes are named with the suffix *Impl*.
+
+## Classes Inheritance
+
+{{< mermaid class="text-center">}}
+flowchart BT;
+SModelElementImpl
+SParentElementImpl
+SChildElementImpl
+SModelRootImpl
+ModelIndexImpl
+SGraphImpl
+ViewportRootElement
+SNodeImpl
+SConnectableElementImpl
+SShapeElementImpl
+SPortImpl
+SEdgeImpl
+SRoutableElementImpl
+SLabelImpl
+SCompartmentImpl
+SGraphIndex
+
+SParentElementImpl --> SModelElementImpl
+SChildElementImpl --> SParentElementImpl
+SModelRootImpl --> SParentElementImpl
+SGraphImpl --> ViewportRootElement
+ViewportRootElement --> SModelRootImpl
+SNodeImpl --> SConnectableElementImpl
+SConnectableElementImpl --> SShapeElementImpl
+SShapeElementImpl --> SChildElementImpl
+SPortImpl --> SConnectableElementImpl
+SEdgeImpl --> SRoutableElementImpl
+SRoutableElementImpl --> SChildElementImpl
+SLabelImpl --> SShapeElementImpl
+SCompartmentImpl --> SShapeElementImpl
+SGraphIndex --> ModelIndexImpl
+{{< /mermaid>}}
 
 ### SModelElementImpl
 
@@ -15,9 +62,9 @@ This is the base class for **all** elements of the diagram model. This ensures t
 
 *Properties:*
 
-* `type: string`: The type of the element. This is used to determine the corresponding view.
-* `id: string`: The unique identifier of the element.
-* `features: FeatureSet` - *optional*: A set of features that are supported by the element.
+* `type: string`: The type of the element. This value is used in the Sprotty configuration to specify the corresponding view for all elements of this type.
+* `id: string`: The globally unique identifier of the element.
+* `features: FeatureSet` - *optional*: A set of [features](#features) that are enabled on the element.
 * `cssClasses: string[]` - *optional*: A list of CSS classes that should be applied to the element.
 
 ### SParentElementImpl
@@ -51,7 +98,7 @@ This is the base class for the root element of the diagram model. It inherits fr
 *Properties:*
 
 * `canvasBounds: Bounds`: The bounds of the canvas. This is used to determine the size of the diagram. Defaults to `Bounds.EMPTY` (i.e. `{x: 0, y: 0, width: -1, height: -1}`).
-* `revision: number`- *optional*: The revision number of the model. This is incremented whenever the model is changed.
+* `revision: number`- *optional*: The revision number of the model. This is incremented whenever the model is changed. This is used in the DiagramServer to ensure that the correct version of the model is used.
 
 *Inheritance:*
 
@@ -151,7 +198,7 @@ These are the connectors for the diagram model. An edge has a source and a targe
 
 ### SLabelImpl
 
-A label can be attached to a node, port, or edge.
+A label represents some text to be displayed and attached to a node, port, or edge.
 
 *Properties:*
 
@@ -175,7 +222,7 @@ A label can be attached to a node, port, or edge.
 
 ### SCompartmentImpl
 
-A compartment is used to group multiple child elements of a node, such as labels. Usually, a `vbox` of `hbox` layout is used to arrange these children.
+A compartment is used to group multiple child elements of a node or compartment, such as labels. Usually, a `vbox` or `hbox` layout is used to arrange these children.
 
 *Properties*:
 
@@ -217,7 +264,7 @@ Model root element that defines a viewport, so it transforms the coordinate syst
 
 ### SConnectableElementImpl
 
-A connectable element is on that can have outgoing and incoming edges. It can be the source or target element of an edge. There are two kinds of connectable elements: nodes and ports.
+A connectable element is one that can have outgoing and incoming edges. It can be the source or target element of an edge. There are two kinds of connectable elements: SNodes and SPorts.
 
 *Properties:*
 
@@ -251,55 +298,20 @@ Abstract class for edges.
 * `routingPoints: Point[]` - *optional*: The routing points of the edge. Defaults to an empty array.
 * `sourceId: string`: The id of the source element.
 * `targetId: string`: The id of the target element.
-* `sourceAnchorCorrection: number` - *optional*: The correction of the source anchor. Defaults to `0`.
+* `sourceAnchorCorrection: number` - *optional*: The correction of the source anchor. Defaults to `0`. This can be used to apply an offset to the anchor position of the source element
 * `targetAnchorCorrection: number` - *optional*: The correction of the target anchor. Defaults to `0`.
+
+To offset the anchor point of an edge
 
 *Inheritance:*
 
 [`SChildElementImpl`](#schildelementimpl) &rarr; [`SParentElementImpl`](#sparentelementimpl) &rarr; [`SModelElementImpl`](#smodelelementimpl)
 
-## Classes Inheritance
-
-{{< mermaid class="text-center">}}
-flowchart TD;
-SModelElementImpl
-SParentElementImpl
-SChildElementImpl
-SModelRootImpl
-ModelIndexImpl
-SGraphImpl
-ViewportRootElement
-SNodeImpl
-SConnectableElementImpl
-SShapeElementImpl
-SPortImpl
-SEdgeImpl
-SRoutableElementImpl
-SLabelImpl
-SCompartmentImpl
-SGraphIndex
-
-SParentElementImpl --> SModelElementImpl
-SChildElementImpl --> SParentElementImpl
-SModelRootImpl --> SParentElementImpl
-SGraphImpl --> ViewportRootElement
-ViewportRootElement --> SModelRootImpl
-SNodeImpl --> SConnectableElementImpl
-SConnectableElementImpl --> SShapeElementImpl
-SShapeElementImpl --> SChildElementImpl
-SPortImpl --> SConnectableElementImpl
-SEdgeImpl --> SRoutableElementImpl
-SRoutableElementImpl --> SChildElementImpl
-SLabelImpl --> SShapeElementImpl
-SCompartmentImpl --> SShapeElementImpl
-SGraphIndex --> ModelIndexImpl
-{{< /mermaid>}}
-
 ## Features
 
-Features can be viewed as a set of functionalities that a given element can support. They can enrich the behavior and usability of the diagram model. SModelElements can have default features that will apply to all model elements that are instance of this SModelElement.
+Features can be viewed as a set of functionalities that a given element can support. They can enrich the behavior and usability of the diagram model.
 
-Features can be added in a inherited class by setting the `DEFAULT_FEATURES` field. This way, the default features will be enabled for all instances of the class.
+SModelElements can have default features that will apply to all model elements that are instance of this SModelElement.Default features are specified in the `DEFAULT_FEATURES` field, which can be overridden in inherited classes. This way, the default features will be enabled for all instances of the class.
 
 Let's have a look at the `SNodeImpl` class and how it implements default features:
 
@@ -371,7 +383,7 @@ export interface CreatingOnDrag extends SModelExtension {
 
 ### decorationFeature
 
-Controls if an element is a decoration.
+Controls if an element is a decoration. It is generally used to show error or warning markers on model elements.
 
 *Interface*: `Decoration`
 
@@ -507,7 +519,7 @@ export interface Locateable extends SModelExtension {
 
 ### nameFeature
 
-Controls if an element has a name.
+Controls if an element has a name. This feature is used during renaming to change the name attribute on the model element.
 
 *Interface:* `Nameable`
 
