@@ -64,7 +64,7 @@ This is the base class for **all** elements of the diagram model. This ensures t
 
 * `type: string`: The type of the element. This value is used in the Sprotty configuration to specify the corresponding view for all elements of this type.
 * `id: string`: The globally unique identifier of the element.
-* `features: FeatureSet` - *optional*: A set of [features](#features) that are enabled on the element.
+* `features: FeatureSet` - *optional*: A set of [features](#features) that are enabled on the element. The list of features can be further configured in the [dependency injection container](../dependency_injection/#features).
 * `cssClasses: string[]` - *optional*: A list of CSS classes that should be applied to the element.
 
 ### SParentElementImpl
@@ -98,7 +98,7 @@ This is the base class for the root element of the diagram model. It inherits fr
 *Properties:*
 
 * `canvasBounds: Bounds`: The bounds of the canvas. This is used to determine the size of the diagram. Defaults to `Bounds.EMPTY` (i.e. `{x: 0, y: 0, width: -1, height: -1}`).
-* `revision: number`- *optional*: The revision number of the model. This is incremented whenever the model is changed. This is used in the DiagramServer to ensure that the correct version of the model is used.
+* `revision: number`- *optional*: The revision number of the model. This is incremented by Sprotty whenever the model is changed. This is used in the DiagramServer to ensure that the correct version of the model is used.
 
 *Inheritance:*
 
@@ -176,7 +176,7 @@ A port is a connection point for edges. It should **always** be contained in an 
 
 ### SEdgeImpl
 
-These are the connectors for the diagram model. An edge has a source and a target. Each of which can either be a node or a port. The source and target elements are referenced by their `id` and can be resolved via the `index` stored in the root element.
+These are the connectors for the diagram model. An edge has a source and a target. Each of which can either be a node or a port. The source and target elements are referenced by their `id` (inherited from `SRoutableElementImpl`) and can be resolved via the `index` stored in the root element.
 
 *Properties;*
 
@@ -198,7 +198,7 @@ These are the connectors for the diagram model. An edge has a source and a targe
 
 ### SLabelImpl
 
-A label represents some text to be displayed and attached to a node, port, or edge.
+A label represents some text to be displayed and attached to a node, compartment, port, or edge.
 
 *Properties:*
 
@@ -294,12 +294,12 @@ Abstract class for edges.
 
 *Properties:*
 
-* `routerKind: string` - *optional*: The kind of router to use for the edge.
+* `routerKind: string` - *optional*: The kind of router to use for the edge. Sprotty provides an implementation of 'polyline', 'manhattan', and 'bezier' routers.
 * `routingPoints: Point[]` - *optional*: The routing points of the edge. Defaults to an empty array.
 * `sourceId: string`: The id of the source element.
 * `targetId: string`: The id of the target element.
-* `sourceAnchorCorrection: number` - *optional*: The correction of the source anchor. Defaults to `0`. This can be used to apply an offset to the anchor position of the source element
-* `targetAnchorCorrection: number` - *optional*: The correction of the target anchor. Defaults to `0`.
+* `sourceAnchorCorrection: number` - *optional*: The correction of the source anchor. This can be used to apply an offset to the anchor position of the source element. Defaults to `0`.
+* `targetAnchorCorrection: number` - *optional*: The correction of the target anchor. This can be used to apply an offset to the anchor position of the target element. Defaults to `0`.
 
 To offset the anchor point of an edge
 
@@ -329,12 +329,12 @@ It is possible to fine-tune the behavior in the [dependency injection container]
 configureElement('my-node-type', SNodeImpl, RectangularNodeView, {enable: [layoutableChildFeature], disable: [moveFeature]})
 ```
 
-To ensure that the required additional properties are present on the model element, Sprotty comes with a set of interfaces known as `SModelExtension`.
+To ensure that the required additional properties are present on the model element, Sprotty comes with a set of interfaces to ensure correct implementation in the model element class. These interfaces must extend `SModelExtension`.
 
 ### alignFeature
 
 Controls the position adjustment of an element. It is given by the `alignment: Point` property of an element.
-It applies a `translate` to the svg element.
+It applies a `translate` to the svg element. This translation is applied in addition to the translation that may be applied by the layout engine.
 
 *Interface:* `Alignable`
 
@@ -454,7 +454,7 @@ export interface Expandable extends SModelExtension {
 
 ### exportFeature
 
-Controls if an element can be exported.
+Controls if an element can be exported. It is enabled by default to the `ViewportRootElement` making the entire diagram exportable.
 
 ### fadeFeature
 
