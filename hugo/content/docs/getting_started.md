@@ -7,7 +7,7 @@ Our 'Getting Started' example consists of a simple application that displays a l
 The main steps to integrate Sprotty into our application are as follows:
 
 1. [Set-up](#setting-up-our-application) your application.
-2. [Define your model](#define-your-model) by creating subclasses of `SModelElementImpl`.
+2. [Define your model](#define-your-model) by creating subclasses of `SModelElement`.
 3. [Implement views](#implement-views) to generate SVGs for each type of model element.
 4. [Configure the diagram](#configure-the-diagram) through dependency injection.
 5. [Connect to a model source](#connect-to-a-model-source), either local or remote
@@ -53,7 +53,8 @@ Our example application is based on TypeScript. In this application we will set 
     }
     ```
 
-4. Initialize the TypeScript project
+4. Install dependencies running `npm i`
+5. Initialize the TypeScript project
 
     ```shell
     npx tsc --init
@@ -82,7 +83,6 @@ Our example application is based on TypeScript. In this application we will set 
     }
     ```
 
-5. Install dependencies running `npm i`
 6. Create a `index.html` file at the root of your project
 
     ```html
@@ -113,7 +113,7 @@ Our project is now set-up and ready for integrating Sprotty diagrams.
 
 ## Define Your Model
 
-Sprotty comes with a set of model classes that you can reuse for your application. e.g. `SNodeImpl` and `SEdgeImpl` for graphs and `SChildElementImpl` for other views. However, it is often necessary to add application-specific properties to model elements, so their graphical views can be parameterized.
+Sprotty comes with a set of model classes that you can reuse for your application. e.g. `SNode` and `SEdge` for graphs and `SChildElement` for other views. However, it is often necessary to add application-specific properties to model elements, so their graphical views can be parameterized.
 
 We will define a new interface for our nodes called `TaskNode`, extending Sprotty's `SNode` interface with application-specific properties. Create a new file `models.ts` at the root of the project:
 
@@ -131,7 +131,7 @@ export interface TaskNode extends SNode {
 
 A view maps a model element to its graphical representation. You can create your own views by creating a class implementing `IView` or extending a view already available in Sprotty.
 
-In the following example we use the JSX syntax to create a SVG group with a `rect` and a `text` element. Add a new file `view.tsx` (note the `tsx` extension) at the root of the project:
+In the following example we use the JSX syntax to create a SVG group with a `rect` and a `text` element. Add a new file `views.tsx` (note the `tsx` extension) at the root of the project:
 
 ```typescript
 /** @jsx svg */
@@ -192,7 +192,7 @@ The configuration of our Sprotty application is done via Dependency Injection us
 
 ```typescript
 import { Container, ContainerModule } from 'inversify';
-import { configureModelElement, configureViewerOptions, loadDefaultModules, LocalModelSource, PolylineEdgeView, SEdgeImpl, SGraphImpl, SGraphView, SNodeImpl, TYPES } from 'sprotty';
+import { configureModelElement, configureViewerOptions, loadDefaultModules, LocalModelSource, PolylineEdgeView, SEdge, SGraph, SGraphView, SNode, TYPES } from 'sprotty';
 import { TaskNodeView } from './views';
 
 export const createContainer = (containerId: string) => {
@@ -200,9 +200,9 @@ export const createContainer = (containerId: string) => {
         bind(TYPES.ModelSource).to(LocalModelSource).inSingletonScope();
 
         const context = { bind, unbind, isBound, rebind };
-        configureModelElement(context, 'graph', SGraphImpl, SGraphView);
-        configureModelElement(context, 'task', SNodeImpl, TaskNodeView);
-        configureModelElement(context, 'edge', SEdgeImpl, PolylineEdgeView);
+        configureModelElement(context, 'graph', SGraph, SGraphView);
+        configureModelElement(context, 'task', SNode, TaskNodeView);
+        configureModelElement(context, 'edge', SEdge, PolylineEdgeView);
 
         configureViewerOptions(context, {
             needsClientLayout: false,
