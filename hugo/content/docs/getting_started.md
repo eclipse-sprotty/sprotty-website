@@ -7,7 +7,7 @@ Our 'Getting Started' example consists of a simple application that displays a l
 The main steps to integrate Sprotty into our application are as follows:
 
 1. [Set-up](#setting-up-our-application) your application.
-2. [Define your model](#define-your-model) by creating subclasses of `SModelElementImpl`.
+2. [Define your model](#define-your-model) by creating sub-interfaces of `SModelElement`.
 3. [Implement views](#implement-views) to generate SVGs for each type of model element.
 4. [Configure the diagram](#configure-the-diagram) through dependency injection.
 5. [Connect to a model source](#connect-to-a-model-source), either local or remote
@@ -48,12 +48,12 @@ Our example application is based on TypeScript. In this application we will set 
         },
         "dependencies": {
             "reflect-metadata": "^0.1.13",
-            "sprotty": "^0.13.0"
+            "sprotty": "^1.0.0"
         }
     }
     ```
-
-4. Initialize the TypeScript project
+4. Install dependencies running `npm i`
+5. Initialize the TypeScript project
 
     ```shell
     npx tsc --init
@@ -81,8 +81,6 @@ Our example application is based on TypeScript. In this application we will set 
         ]
     }
     ```
-
-5. Install dependencies running `npm i`
 6. Create a `index.html` file at the root of your project
 
     ```html
@@ -131,7 +129,7 @@ export interface TaskNode extends SNode {
 
 A view maps a model element to its graphical representation. You can create your own views by creating a class implementing `IView` or extending a view already available in Sprotty.
 
-In the following example we use the JSX syntax to create a SVG group with a `rect` and a `text` element. Add a new file `view.tsx` (note the `tsx` extension) at the root of the project:
+In the following example we use the JSX syntax to create a SVG group with a `rect` and a `text` element. Add a new file `views.tsx` (note the `tsx` extension) at the root of the project:
 
 ```typescript
 /** @jsx svg */
