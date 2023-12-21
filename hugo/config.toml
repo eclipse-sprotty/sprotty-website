@@ -3,6 +3,9 @@ languageCode = 'en-us'
 title = 'Sprotty'
 theme = "hugo-geekdoc"
 
+# Required for publishing of previews as they are hosted in subdirs
+relativeURLs = true
+
 # Geekdoc required configuration
 pygmentsUseClasses = true
 pygmentsCodeFences = true
