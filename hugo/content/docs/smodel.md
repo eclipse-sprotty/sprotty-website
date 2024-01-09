@@ -207,6 +207,13 @@ A label represents some text to be displayed and attached to a node, compartment
 * `alignment: Point`: The alignment of the label. Defaults to `Point.ORIGIN`.
 * `opacity: number`: The opacity of the label. Defaults to `1`.
 * `edgePlacement: EdgePlacement` - *optional*: The placement of the label on an edge. Defaults to `EdgePlacement.NONE`.
+  *  `rotate: boolean` - true, if the label should be rotated to touch the edge tangentially
+  *  `side: EdgeSide` - where is the label relative to the line's direction. Possible values are 'bottom', 'top', 'left', 'right', and 'on'.
+  *  `position: number` - between 0 (source anchor) and 1 (target anchor)
+  *  `offset: number` - space between label and edge/connected nodes
+  *  `moveMode: 'edge' | 'free' | 'none'` - *optional* constraints where the label can be moved when move feature is enabled for the respective Label.
+     'edge' means the label is moved along the edge, 'free' means the label is moved freely, 'none' means the label is not moved.
+     Default is 'edge'.
 
 *Inheritance:*
 
