@@ -2,7 +2,7 @@
 title: Micro-layout
 weight: 400
 ---
-
+{{< toc >}}
 The **micro-layout** refers to the layout of elements inside of a node, i.e. the layout of nested labels, buttons, etc. It is not to be confused with the **macro-layout** which refers to the layout of the entire graph, e.g. the position of nodes.
 
 ## Layout Configuration
