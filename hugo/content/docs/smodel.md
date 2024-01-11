@@ -211,9 +211,9 @@ A label represents some text to be displayed and attached to a node, compartment
   *  `side: EdgeSide` - where is the label relative to the line's direction. Possible values are 'bottom', 'top', 'left', 'right', and 'on'.
   *  `position: number` - between 0 (source anchor) and 1 (target anchor)
   *  `offset: number` - space between label and edge/connected nodes
-  *  `moveMode: 'edge' | 'free' | 'none'` - *optional* constraints where the label can be moved when move feature is enabled for the respective Label.
-     'edge' means the label is moved along the edge, 'free' means the label is moved freely, 'none' means the label is not moved.
-     Default is 'edge'.
+  *  `moveMode: 'edge' | 'free' | 'none'` - *optional* constrains where the label can be moved when move feature is enabled for the respective Label.
+     `edge` means the label can be moved along the edge, `free` means the label can be moved freely, `none` means the label cannot moved.
+     Defaults to `edge`.
 
 *Inheritance:*
 
