@@ -2,7 +2,7 @@
 title: 'User Interaction'
 Weight: 900
 ---
-
+{{< toc >}}
 ## Interacting with a Sprotty Diagram
 
 Sprotty offers multiple mouse and keyboard interactions by default listed in the following tables.

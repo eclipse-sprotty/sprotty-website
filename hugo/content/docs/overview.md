@@ -2,6 +2,9 @@
 title: 'Overview'
 weight: 100
 ---
+
+{{< toc >}}
+
 The base architecture of Sprotty revolves around an unidirectional cyclic flow of information between three major components: the [`ActionDispatcher`](#action-dispatcher), the [`CommandStack`](#command-stack), and the [`Viewer`](#viewer). This leads to a clear and easily testable flow of data which prevents feedback loops.
 
 {{< mermaid class="text-center">}}

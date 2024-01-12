@@ -1,8 +1,8 @@
 ---
 title: 'Sprotty configuration and dependency injection'
-Weight: 300
+Weight: 310
 --- 
-
+{{< toc >}}
 As seen in the [getting started](../getting_started) guide, Sprotty relies heavily on dependency injection (DI) through [InversifyJs](https://inversify.io/) for the configuration of its various components. This chapter will take a closer look at how to work with this.
 
 ## Why dependency injection?
@@ -60,7 +60,7 @@ Lastly, we need to configure our viewer options. Here we configure all the DOM e
 
 ## Features
 
-Model elements can further be configured through features.
+Model elements can further be configured through [features](../features).
 
 ```typescript
 configureModelElement(context, 'task', SNodeImpl, TaskNodeView, {
