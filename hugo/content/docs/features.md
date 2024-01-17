@@ -104,7 +104,9 @@ Controls if an element is layoutable on an edge. The element must be an `SChildE
 edgePlacement: {
     position: number, // between 0 and 1, from the source (0) to the target (1)
     side: 'bottom' | 'top' | 'left' | 'right' | 'on',
-    rotate: boolean
+    rotate: boolean,
+    offset: number,
+    moveMode: 'edge' | 'free' | 'none'
 }
 ```
 
