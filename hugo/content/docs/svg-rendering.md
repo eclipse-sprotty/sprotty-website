@@ -1,6 +1,5 @@
 ---
 title: 'SVG Rendering'
-weight: 320
 ---
 {{< toc >}}
 Sprotty transforms a given `SModel` to its representation in the DOM in the form of a hierarchy of SVG elements. An `SModel` is composed of `SModelElement`s, and each `SModelElement` has a `type` property that is associated to a single corresponding `View`. The `ViewRegistry` keeps a map of the correspondence between an element type and a view. These model elements are organized in the *virtual DOM* before being rendered as actual SVG elements in the DOM.

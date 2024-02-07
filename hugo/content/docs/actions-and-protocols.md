@@ -1,6 +1,5 @@
 ---
 title: 'Communication and Protocols'
-weight: 500
 ---
 {{< toc >}}
 Sprotty uses actions to communicate between `ModelSource` and `ActionDispatcher` regardless if the model source is local or remote.

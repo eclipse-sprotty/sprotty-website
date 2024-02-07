@@ -1,6 +1,5 @@
 ---
 title: 'Getting Started'
-weight: 200
 ---
 Our 'Getting Started' example consists of a simple application that displays a list of tasks, their status, and the relationship between them in a HTML page.
 
@@ -52,6 +51,7 @@ Our example application is based on TypeScript. In this application we will set 
         }
     }
     ```
+
 4. Install dependencies running `npm i`
 5. Initialize the TypeScript project
 
@@ -81,6 +81,7 @@ Our example application is based on TypeScript. In this application we will set 
         ]
     }
     ```
+
 6. Create a `index.html` file at the root of your project
 
     ```html

@@ -1,6 +1,5 @@
 ---
 title: 'Sprotty configuration and dependency injection'
-Weight: 310
 --- 
 {{< toc >}}
 As seen in the [getting started](../getting_started) guide, Sprotty relies heavily on dependency injection (DI) through [InversifyJs](https://inversify.io/) for the configuration of its various components. This chapter will take a closer look at how to work with this.

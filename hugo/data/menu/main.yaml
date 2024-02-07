@@ -1,0 +1,26 @@
+---
+main:
+  - name: Documentation
+    sub:
+      - name: Introduction
+        ref: "/docs/introduction"
+      - name: Overview
+        ref: "docs/overview"
+      - name: Sprotty Configuration and Dependency Injection
+        ref: "docs/dependency-injection"
+      - name: SVG Rendering
+        ref: "docs/svg-rendering"
+      - name: Micro-layout
+        ref: "docs/micro-layout"
+      - name: Model Sources
+        ref: "docs/model-sources"
+      - name: Communication and Protocols
+        ref: "docs/actions-and-protocols"
+  - name: Reference
+    sub:
+      - name: SModel
+        ref: "docs/smodel"
+      - name: Features
+        ref: "docs/features"
+      - name: User Interaction
+        ref: "docs/user-interaction"

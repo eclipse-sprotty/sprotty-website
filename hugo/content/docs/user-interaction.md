@@ -1,8 +1,8 @@
 ---
 title: 'User Interaction'
-Weight: 900
 ---
 {{< toc >}}
+
 ## Interacting with a Sprotty Diagram
 
 Sprotty offers multiple mouse and keyboard interactions by default listed in the following tables.
@@ -101,7 +101,7 @@ This view automatically adds a vertical and horizontal scrollbar to our diagram 
 To activate this feature, instead of using `SGraphImpl` and `SGraphView` for our root element, as we did in the other examples, we use `ViewportRootElement` and `ProjectedViewportView`.
 The scrollbars created through `ProjectedViewportView` can be styled via the `.sprotty-viewport` and `.sprotty-projection-bar` CSS classes.
 
-As we can see in the image, these scrollbars can contain projections of our nodes, which show their horizontal and vertical position. 
+As we can see in the image, these scrollbars can contain projections of our nodes, which show their horizontal and vertical position.
 Double-clicking on a projection will center the view on the node the projection belongs to.
 
 To add projections we add the `Projectable` type to the nodes in our model schema like this:
