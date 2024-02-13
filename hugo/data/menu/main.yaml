@@ -16,6 +16,8 @@ main:
         ref: "docs/model-sources"
       - name: Communication and Protocols
         ref: "docs/actions-and-protocols"
+      - name: Creating Custom Interactions
+        ref: "docs/custom-interactions"
   - name: Reference
     sub:
       - name: SModel
