@@ -1,6 +1,5 @@
 ---
 title: 'Model Sources'
-weight: 400
 ---
 {{< toc >}}
 When drawing a diagram with Sprotty we need a place to define and update the schema of the diagram to draw. Sprotty uses *model sources* to do this.

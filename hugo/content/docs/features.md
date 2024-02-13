@@ -1,6 +1,5 @@
 ---
 title: 'Features'
-weight: 301
 ---
 {{< toc >}}
 

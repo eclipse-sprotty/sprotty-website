@@ -25,3 +25,6 @@ enableRobotsTXT = true
 
 [taxonomies]
    tag = "tags"
+
+[params]
+  geekdocMenuBundle = true
