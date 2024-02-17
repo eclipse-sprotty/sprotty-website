@@ -64,7 +64,7 @@ This is the base class for **all** elements of the diagram model. This ensures t
 
 * `type: string`: The type of the element. This value is used in the Sprotty configuration to specify the corresponding view for all elements of this type.
 * `id: string`: The globally unique identifier of the element.
-* `features: FeatureSet` - *optional*: A set of [features](../features) that are enabled on the element. The list of features can be further configured in the [dependency injection container](../dependency_injection/#features).
+* `features: FeatureSet` - *optional*: A set of [features]({{< ref "/docs/features" >}}) that are enabled on the element. The list of features can be further configured in the [dependency injection container]({{< ref "/docs/dependency-injection" >}}#features).
 * `cssClasses: string[]` - *optional*: A list of CSS classes that should be applied to the element.
 
 ### SParentElementImpl
@@ -142,15 +142,15 @@ Model element for **Nodes**, which are the main entity in a graph. A node can be
 
 *Default features:*
 
-* [connectableFeature](../features#connectablefeature)
-* [deletableFeature](../features#deletablefeature)
-* [selectFeature](../features#selectfeature)
-* [boundsFeature](../features#boundsfeature)
-* [moveFeature](../features#movefeature)
-* [layoutContainerFeature](../features#layoutcontainerfeature)
-* [fadeFeature](../features#fadefeature)
-* [hoverFeedbackFeature](../features#hoverfeedbackfeature)
-* [popupFeature](../features#popupfeature)
+* [connectableFeature]({{< ref "/docs/features" >}}#connectablefeature)
+* [deletableFeature]({{< ref "/docs/features" >}}#deletablefeature)
+* [selectFeature]({{< ref "/docs/features" >}}#selectfeature)
+* [boundsFeature]({{< ref "/docs/features" >}}#boundsfeature)
+* [moveFeature]({{< ref "/docs/features" >}}#movefeature)
+* [layoutContainerFeature]({{< ref "/docs/features" >}}#layoutcontainerfeature)
+* [fadeFeature]({{< ref "/docs/features" >}}#fadefeature)
+* [hoverFeedbackFeature]({{< ref "/docs/features" >}}#hoverfeedbackfeature)
+* [popupFeature]({{< ref "/docs/features" >}}#popupfeature)
 
 ### SPortImpl
 
@@ -168,11 +168,11 @@ A port is a connection point for edges. It should **always** be contained in an 
 
 *Default features:*
 
-* [connectableFeature](../features#connectablefeature)
-* [selectFeature](../features#selectfeature)
-* [boundsFeature](../features#boundsfeature)
-* [fadeFeature](../features#fadefeature)
-* [hoverFeedbackFeature](../features#hoverfeedbackfeature)
+* [connectableFeature]({{< ref "/docs/features" >}}#connectablefeature)
+* [selectFeature]({{< ref "/docs/features" >}}#selectfeature)
+* [boundsFeature]({{< ref "/docs/features" >}}#boundsfeature)
+* [fadeFeature]({{< ref "/docs/features" >}}#fadefeature)
+* [hoverFeedbackFeature]({{< ref "/docs/features" >}}#hoverfeedbackfeature)
 
 ### SEdgeImpl
 
@@ -190,11 +190,11 @@ These are the connectors for the diagram model. An edge has a source and a targe
 
 *Default features:*
 
-* [editFeature](../features#editfeature)
-* [deletableFeature](../features#deletablefeature)
-* [selectFeature](../features#selectfeature)
-* [fadeFeature](../features#fadefeature)
-* [hoverFeedbackFeature](../features#hoverfeedbackfeature)
+* [editFeature]({{<ref "/docs/features" >}}#editfeature)
+* [deletableFeature]({{<ref "/docs/features" >}}#deletablefeature)
+* [selectFeature]({{<ref "/docs/features" >}}#selectfeature)
+* [fadeFeature]({{<ref "/docs/features" >}}#fadefeature)
+* [hoverFeedbackFeature]({{<ref "/docs/features" >}}#hoverfeedbackfeature)
 
 ### SLabelImpl
 
@@ -221,11 +221,11 @@ A label represents some text to be displayed and attached to a node, compartment
 
 *Default features:*
 
-* [boundsFeature](../features#boundsfeature)
-* [alignFeature](../features#alignfeature)
-* [layoutableChildFeature](../features#layoutablechildfeature)
-* [edgeLayoutFeature](../features#edgelayoutfeature)
-* [fadeFeature](../features#fadefeature)
+* [boundsFeature]({{< ref "/docs/features" >}}#boundsfeature)
+* [alignFeature]({{< ref "/docs/features" >}}#alignfeature)
+* [layoutableChildFeature]({{< ref "/docs/features" >}}#layoutablechildfeature)
+* [edgeLayoutFeature]({{< ref "/docs/features" >}}#edgelayoutfeature)
+* [fadeFeature]({{< ref "/docs/features" >}}#fadefeature)
 
 ### SCompartmentImpl
 
@@ -242,10 +242,10 @@ A compartment is used to group multiple child elements of a node or compartment,
 
 *Default features:*
 
-* [boundsFeature](../features#boundsfeature)
-* [layoutContainerFeature](../features#layoutcontainerfeature)
-* [layoutableChildFeature](../features#layoutablechildfeature)
-* [fadeFeature](../features#fadefeature)
+* [boundsFeature]({{< ref "/docs/features" >}}#boundsfeature)
+* [layoutContainerFeature]({{< ref "/docs/features" >}}#layoutcontainerfeature)
+* [layoutableChildFeature]({{< ref "/docs/features" >}}#layoutablechildfeature)
+* [fadeFeature]({{< ref "/docs/features" >}}#fadefeature)
 
 ### SGraphIndex
 
