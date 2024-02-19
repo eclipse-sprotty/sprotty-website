@@ -16,7 +16,7 @@ Some selected features:
 
 ## Where to start?
 
-If you are new with Sprotty, we recommend taking a look at our [Getting Started](./getting_started) section before diving further.
+If you are new with Sprotty, we recommend taking a look at our [Getting Started]({{< ref "/docs/getting-started" >}}) section before diving further.
 
 ## Want to contribute?
 

@@ -17,7 +17,7 @@ export class SNodeImpl extends SConnectableElementImpl implements Selectable, Fa
 }
 ```
 
-It is possible to fine-tune the behavior in the [dependency injection container](../dependency_injection/#the-container) by enabling or disabling features for a given model element type.
+It is possible to fine-tune the behavior in the [dependency injection container]({{< ref "/docs/dependency-injection" >}}#the-container) by enabling or disabling features for a given model element type.
 
 ```typescript
 configureElement('my-node-type', SNodeImpl, RectangularNodeView, {enable: [layoutableChildFeature], disable: [moveFeature]})
