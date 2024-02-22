@@ -20,6 +20,10 @@ main:
         ref: "docs/actions-and-protocols"
       - name: Creating Custom Interactions
         ref: "docs/custom-interactions"
+  - name: Sprotty-elk
+    sub:
+      - name: Introduction
+        ref: "docs/sprotty-elk"
   - name: Reference
     sub:
       - name: SModel
