@@ -1,5 +1,5 @@
 ---
-title: 'sportty-elk'
+title: 'sprotty-elk'
 ---
 
 {{< toc >}}
@@ -55,6 +55,8 @@ const myModule = new ContainerModule((bind, unbind, isBound, rebind) => {
 
 ### Bind the LayoutConfigurator to the ContainerModule
 
+The `LayoutConfigurator` is used to apply layout options to the ELK graph. See the [Layout section](#layout) for more information.
+
 ```typescript
 const myModule = new ContainerModule((bind, unbind, isBound, rebind) => {
     ...
@@ -82,7 +84,7 @@ const container = new Container();
 
 ## Transformation of an SModel to an ELK graph
 
-An ELK graph is comprised of ElkNodes, ElkEdges, ElkPorts, and ElkLabels. On the other hand, a SModel can be comprised of an arbitrary number of nodes, edges, ports, and labels subtypes.
+In order to perform the layout, Elk requires a specific graph structure comprised of ElkNodes, ElkEdges, ElkPorts, and ElkLabels. On the other hand, the SModel can be comprised of an arbitrary number of nodes, edges, ports, and labels subtypes which are not directly compatible with the format that Elk supports.
 
 The first thing we need to do is transform our SModel elements to ELK elements. This relies heavily on the `basic_type:sub_type` syntax. Only the basic type is considered when transforming SModel elements to their Elk counterpart. For example, an SModel node with the type `node:my_type` will be transformed into an ElkNode. Similarly, SModel elements of basic type `edge` will be transformed into an ElkEdge, `label` to ElkLabel, and `port` to ElkPort.
 
@@ -95,6 +97,26 @@ The root element of the SModel **must be** of basic type `graph`.
 Once the SModel has been transformed into an ELK graph, we can apply some preprocessing to the graph. This is done by implementing a class implementing the `ILayoutPreprocessor` interface, and passing it to the constructor of the `ElkLayoutEngine`. The preprocessor class needs to implement a `preprocess` method, which will receive the ELK graph, the Sprotty graph, and the index.
 
 By default, no preprocessing is done.
+
+First, we need to create a class implementing the `ILayoutPreprocessor` interface.
+
+```typescript
+@injectable()
+export class MyLayoutPreprocessor implements ILayoutPreprocessor {
+    preprocess(elkGraph: ElkNode, sgraph: SGraph, index: SModelIndex): void {
+        // apply preprocessing to the ELK graph
+    }
+}
+```
+
+Then, we need to bind the preprocessor to the `ContainerModule`.
+
+```typescript
+const myModule = new ContainerModule((bind, unbind, isBound, rebind) => {
+    ...
+    bind(ILayoutPreprocessor).to(Preprocessor).inSingletonScope();
+});
+```
 
 ## Layout
 
@@ -136,6 +158,28 @@ The complete list of available options can be found in the [ELK documentation](h
 ## Postprocessing
 
 Once the ELK graph has been laid out, we can apply some postprocessing to the graph. This is done by implementing a class implementing the `ILayoutPostprocessor` interface, and passing it to the constructor of the `ElkLayoutEngine`. The postprocessor class needs to implement a `postprocess` method, which will receive the ELK graph, the Sprotty graph, and the index. This postprecessor should be used to apply any changes to the ELK graph that are not possible to be done during the layout phase.
+
+By default, no postprocessing is done.
+
+Similarly to the preprocessor, we need to create a class implementing the `ILayoutPostprocessor` interface.
+
+```typescript
+@injectable()
+export class MyLayoutPostprocessor implements ILayoutPostprocessor {
+    postprocess(elkGraph: ElkNode, sgraph: SGraph, index: SModelIndex): void {
+        // apply postprocessing to the ELK graph
+    }
+}
+```
+
+Then, we need to bind the postprocessor to the `ContainerModule`.
+
+```typescript
+const myModule = new ContainerModule((bind, unbind, isBound, rebind) => {
+    ...
+    bind(ILayoutPostprocessor).to(Postprocessor).inSingletonScope();
+});
+```
 
 ## Back to the SModel
 
