@@ -1,4 +1,8 @@
 /* You can add custom styles here. */
+:root .chroma .err {
+    background-color: inherit !important;
+}
+
 pre {
     max-height: 500px !important;
 }
