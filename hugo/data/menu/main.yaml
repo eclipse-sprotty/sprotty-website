@@ -12,6 +12,8 @@ main:
         ref: "docs/svg-rendering"
       - name: Micro-layout
         ref: "docs/micro-layout"
+      - name: Styling
+        ref: "docs/styling"
       - name: Model Sources
         ref: "docs/model-sources"
       - name: Communication and Protocols
