@@ -16,8 +16,8 @@ main:
         ref: "docs/styling"
       - name: Model Sources
         ref: "docs/model-sources"
-      - name: Communication and Protocols
-        ref: "docs/actions-and-protocols"
+      - name: Communication with Actions
+        ref: "docs/communication-with-actions"
       - name: Creating Custom Interactions
         ref: "docs/custom-interactions"
   - name: Sprotty-elk
@@ -32,3 +32,5 @@ main:
         ref: "docs/features"
       - name: User Interaction
         ref: "docs/user-interaction"
+      - name: Actions
+        ref: "docs/actions-reference"
