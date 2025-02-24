@@ -1,9 +1,9 @@
 ---
 main:
+  - name: Introduction
+    ref: "/docs/introduction"
   - name: Documentation
     sub:
-      - name: Introduction
-        ref: "/docs/introduction"
       - name: Overview
         ref: "docs/overview"
       - name: Sprotty Configuration and Dependency Injection
