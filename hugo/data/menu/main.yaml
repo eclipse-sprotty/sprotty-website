@@ -2,6 +2,10 @@
 main:
   - name: Introduction
     ref: "/docs/introduction"
+  - name: Learn Sprotty
+    sub:
+      - name: Getting Started
+        ref: "docs/getting-started"
   - name: Documentation
     sub:
       - name: Overview
