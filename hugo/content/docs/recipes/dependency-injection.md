@@ -2,7 +2,7 @@
 title: 'Sprotty configuration and dependency injection'
 --- 
 {{< toc >}}
-As seen in the [getting started]({{< ref "/docs/getting-started" >}}) guide, Sprotty relies heavily on dependency injection (DI) through [InversifyJs](https://inversify.io/) for the configuration of its various components. This chapter will take a closer look at how to work with this.
+As seen in the [getting started]({{< ref "/docs/learn/getting-started" >}}) guide, Sprotty relies heavily on dependency injection (DI) through [InversifyJs](https://inversify.io/) for the configuration of its various components. This chapter will take a closer look at how to work with this.
 
 ## Why dependency injection?
 
@@ -40,7 +40,7 @@ export const createContainer = (containerId: string) => {
 
 The container is built from multiple modules. Through `loadDefaultModules()` all modules are loaded for default Sprotty functionalities. We can also load other optional modules like the `edgeIntersectionModule` for extra functionality.
 
-Most important is our own module where the core of the configuration happens. Here we can configure singleton scope classes like our [model source]({{< ref "/docs/model-sources" >}}) or rebind default Sprotty components (for example the logger) to a custom implementation. We use Symbols for bindings instead of using classes directly. All Symbols can be found in the `TYPES` object.
+Most important is our own module where the core of the configuration happens. Here we can configure singleton scope classes like our [model source]({{< ref "/docs/recipes/model-sources" >}}) or rebind default Sprotty components (for example the logger) to a custom implementation. We use Symbols for bindings instead of using classes directly. All Symbols can be found in the `TYPES` object.
 
 Using `configureModelElement` we can link our model to specific view components through the type property. Meaning if we have the following SNode,
 in our model, Sprotty will try to convert this data structure to an instance of the actual `SNodeImpl` class and render it with the `TaskNodeView`.
@@ -59,7 +59,7 @@ Lastly, we need to configure our viewer options. Here we configure all the DOM e
 
 ## Features
 
-Model elements can further be configured through [features]({{< ref "/docs/features" >}}).
+Model elements can further be configured through [features]({{< ref "/docs/ref/features" >}}).
 
 ```typescript
 configureModelElement(context, 'task', SNodeImpl, TaskNodeView, {

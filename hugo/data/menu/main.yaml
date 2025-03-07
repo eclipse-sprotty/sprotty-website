@@ -5,34 +5,34 @@ main:
   - name: Learn Sprotty
     sub:
       - name: Getting Started
-        ref: "docs/getting-started"
-  - name: Documentation
+        ref: "docs/learn/getting-started"
+  - name: Recipes
     sub:
-      - name: Overview
-        ref: "docs/overview"
+      - name: Architecture Overview
+        ref: "docs/recipes/architecture-overview"
       - name: Sprotty Configuration and Dependency Injection
-        ref: "docs/dependency-injection"
+        ref: "docs/recipes/dependency-injection"
       - name: SVG Rendering
-        ref: "docs/svg-rendering"
+        ref: "docs/recipes/svg-rendering"
       - name: Micro-layout
-        ref: "docs/micro-layout"
+        ref: "docs/recipes/micro-layout"
       - name: Styling
-        ref: "docs/styling"
+        ref: "docs/recipes/styling"
       - name: Model Sources
-        ref: "docs/model-sources"
+        ref: "docs/recipes/model-sources"
       - name: Communication and Protocols
-        ref: "docs/actions-and-protocols"
+        ref: "docs/recipes/actions-and-protocols"
       - name: Creating Custom Interactions
-        ref: "docs/custom-interactions"
+        ref: "docs/recipes/custom-interactions"
   - name: Sprotty-elk
     sub:
       - name: Introduction
-        ref: "docs/sprotty-elk"
+        ref: "docs/sprotty-elk/introduction"
   - name: Reference
     sub:
       - name: SModel
-        ref: "docs/smodel"
+        ref: "docs/ref/smodel"
       - name: Features
-        ref: "docs/features"
+        ref: "docs/ref/features"
       - name: User Interaction
-        ref: "docs/user-interaction"
+        ref: "docs/ref/user-interaction"

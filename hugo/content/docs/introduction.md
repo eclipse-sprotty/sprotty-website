@@ -17,7 +17,7 @@ Whether you're visualizing **complex data flows**, building **interactive editor
 
 ## Ready to dive in?
 
-If you are new to Sprotty, check out our [Getting Started]({{< ref "/docs/getting-started" >}}) guide to quickly build your first diagram.
+If you are new to Sprotty, check out our [Getting Started]({{< ref "/docs/learn/getting-started" >}}) guide to quickly build your first diagram.
 
 ### Want to contribute?
 

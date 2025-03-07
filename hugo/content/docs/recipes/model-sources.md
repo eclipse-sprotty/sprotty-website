@@ -16,14 +16,14 @@ ModelSource --- LocalModelSource
 ModelSource --- DiagramServerProxy
 DiagramServerProxy <-.->|Action| DiagramServer
 {{< /mermaid>}}
-Regardless of where your model-source is located, Sprotty handles them in a similar fashion. All communication between `ActionDispatcher` and model source is always through [actions]({{< ref "/docs/actions-and-protocols" >}}) and is bi-directional.
+Regardless of where your model-source is located, Sprotty handles them in a similar fashion. All communication between `ActionDispatcher` and model source is always through [actions]({{< ref "/docs/recipes/actions-and-protocols" >}}) and is bi-directional.
 This is a powerful feature of Sprotty as it allows both flexibility regarding where and how the Diagram is generated, as well as changing or updating and reacting to interactions with the diagram simultaneously.
 
 The following sections will explain how to use and work with the different types of model sources.
 
 ## General usage
 
-Regardless of the model source we are using, the first thing we have to do is to register our model source in the front-end [DI-container]({{< ref "/docs/dependency-injection" >}}) like this:
+Regardless of the model source we are using, the first thing we have to do is to register our model source in the front-end [DI-container]({{< ref "/docs/recipes/dependency-injection" >}}) like this:
 
 ```Typescript
 bind(TYPES.ModelSource).to(ModelSourceClassOrProxy).inSingletonScope();

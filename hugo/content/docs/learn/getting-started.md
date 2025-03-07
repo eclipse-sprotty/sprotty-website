@@ -10,7 +10,6 @@ You can follow this tutorial in one of two ways:
 
 * [**Fast-forward with a scaffolded project**](#fast-forwarding-with-yeoman) - Jump straight in with a pre-configured setup.
 * [**Build it step by step**](#step-by-step-installation) - Start from an empty folder and write the code yourself.
-<!-- TODO: change the link above -->
 
 Both paths lead to the same result, so pick the one that suits your style!
 
@@ -33,7 +32,7 @@ Sprotty provides a quick way to scaffold a new project using the [Yeoman](https:
 
 3. Answer a few prompts and let the magic happen. For this tutorial, we will assume that you selected the default options.
 
-That's it! Your Sprotty project is now ready to go. You can directly go to the [next section]({{< ref "/docs/getting-started" >}})
+That's it! Your Sprotty project is now ready to go. You can directly go to the [next section]({{< ref "/docs/learn/getting-started" >}})
 <!-- TODO: Change link above -->
 
 ## Step-by-Step Installation
@@ -151,5 +150,5 @@ To bundle your application and make it available to `index.html`, update your `p
 
 That's it! You're now ready to start working on your Sprotty project.
 
-Next, let's start defining the [data model]({{< ref "/docs/getting-started" >}}) for your diagram.
+Next, let's start defining the [data model]({{< ref "/docs/learn/getting-started" >}}) for your diagram.
 <!-- TODO: change link above -->
