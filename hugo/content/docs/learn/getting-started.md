@@ -2,153 +2,179 @@
 title: 'Getting Started'
 ---
 
-Welcome to your first Sprotty diagram!
+**Welcome to the first step of your Sprotty journey!** In this section, we'll set up everything you need to start building interactive diagrams.
 
-In this guided tutorial, we will build a simple **client-only Sprotty application** from scratch. By the end, you will have an interactive diagram running in your browser!
+![Project Setup](/images/project-setup.png)
 
-You can follow this tutorial in one of two ways:
+## Choose Your Adventure
 
-* [**Fast-forward with a scaffolded project**](#fast-forwarding-with-yeoman) - Jump straight in with a pre-configured setup.
-* [**Build it step by step**](#step-by-step-installation) - Start from an empty folder and write the code yourself.
+There are two ways to begin your Sprotty project:
 
-Both paths lead to the same result, so pick the one that suits your style!
+{{< tabs "setup-method" >}}
+{{< tab "Fast Track (Recommended)" >}}
 
-## Fast-forwarding With Yeoman
+## 🚀 Fast Track with Yeoman
 
-Sprotty provides a quick way to scaffold a new project using the [Yeoman](https://yeoman.io/) generator.
+If you want to jump straight into learning Sprotty concepts without manual setup, our Yeoman generator has you covered!
 
-1. install Yeoman and the Sprotty generator:
+### 1. Install the Generator
 
-    ```bash
-    npm install -g yo generator-sprotty
-    
-    ```
-
-2. Run the generator:
-
-    ```bash
-    yo sprotty
-    ```
-
-3. Answer a few prompts and let the magic happen. For this tutorial, we will assume that you selected the default options.
-
-That's it! Your Sprotty project is now ready to go. You can directly go to the [next section]({{< ref "/docs/learn/getting-started" >}})
-<!-- TODO: Change link above -->
-
-## Step-by-Step Installation
-
-If you prefer to build your Sprotty project from scratch, follow these steps to set up your project manually.
-
-1. [Create a new package](#create-a-new-package)
-2. [Install dependencies](#install-dependencies)
-3. [Create a static html page](#create-a-static-html-page)
-4. [Create a build script](#create-a-build-script)
-
-### Create a New Package
-
-First, navigate to your desired project folder (we'll use `hello-world` as an example) and initialize a new npm package:
+First, install Yeoman and the Sprotty generator:
 
 ```bash
+npm install -g yo generator-sprotty
+```
+
+### 2. Generate Your Project
+
+Run the generator and follow the prompts:
+
+```bash
+yo sprotty
+```
+
+The generator will ask you a few questions about your project. For this tutorial, you can accept the default options by pressing Enter.
+
+### 3. Explore Your New Project
+
+That's it! Your Sprotty project is now ready to go. The generator has created all the necessary files and installed all dependencies.
+
+**What's next?** Continue to the [Data Model]({{< ref "/docs/learn/data-model" >}}) section to understand the components of your generated project.
+
+{{< /tab >}}
+{{< tab "Step-by-Step" >}}
+
+## 🛠️ Step-by-Step Setup
+
+If you prefer to understand every piece of your project from the ground up, follow these steps to set up your project manually.
+
+### 1. Create a New Package
+
+First, create a new directory for your project and initialize a new npm package:
+
+```bash
+mkdir hello-world
+cd hello-world
 npm init -y
 ```
 
-This will generate a package.json file at the root of your project, which initially looks like this:
+This will generate a `package.json` file at the root of your project. You can simplify it by replacing its content with:
 
 ```json
 {
   "name": "hello-world",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs"
-}
-```
-
-You can simplify it by replacing its content with:
-
-```json
-{
-  "name": "hello-world",
-  "version": "1.0.0",
-  "description": "",
+  "description": "A simple Sprotty diagram",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
 ```
 
-Since we are using TypeScript, we can initialize the configuration with:
+### 2. Set Up TypeScript
+
+Since we're using TypeScript, initialize the configuration:
 
 ```bash
 npx tsc --init
 ```
 
-To keep things tidy, let’s create two directories at the root of the package:
+### 3. Create Project Structure
 
-* src → This is where your TypeScript code will go.
-* static → This will hold your HTML, CSS, and transpiled JavaScript files.
-
-After this step, your project structure should look like this:
+Create the following directory structure:
 
 ```bash
-.
-├── package.json
-├── src
-└── static
-└── tsconfig.json
+hello-world/
+├── src/         # TypeScript source files
+└── static/      # HTML, CSS, and compiled JS
 ```
 
-### Install Dependencies
+```bash
+mkdir src static
+```
 
-Now, let's install the following dependencies and devDependencies:
+### 4. Install Dependencies
+
+Install the required dependencies:
 
 ```bash
-npm install sprotty inversify reflect-metadata &&\
+# Core dependencies
+npm install sprotty inversify reflect-metadata
+
+# Development dependencies
 npm install typescript esbuild --save-dev
 ```
 
-### Create a Static HTML Page
+### 5. Create a Static HTML Page
 
-This will be the entry point of your Sprotty application. Place it in the `static` directory as `index.html`:
+Create an HTML file in the `static` directory to host your diagram:
+
+```bash
+touch static/index.html
+```
+
+Add the following content to `static/index.html`:
 
 ```html
 <!DOCTYPE html>
+<html>
 <head>
+  <title>My First Sprotty Diagram</title>
   <script src="index.js" type="text/javascript"></script>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div id="sprotty-diagram"></div>
 </body>
+</html>
 ```
 
-At this point, your project should look like this:
+### 6. Set Up the Build Script
+
+Add a build script to your `package.json` file:
+
+```json
+"scripts": {
+  "build": "esbuild ./src/index.ts --bundle --sourcemap --outfile=./static/index.js"
+}
+```
+
+Your complete `package.json` should now look like this:
+
+```json
+{
+  "name": "hello-world",
+  "version": "1.0.0",
+  "description": "A simple Sprotty diagram",
+  "scripts": {
+    "build": "esbuild ./src/index.ts --bundle --sourcemap --outfile=./static/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
+```
+
+### 7. Verify Your Setup
+
+Your project structure should now look like this:
 
 ```bash
+hello-world/
+├── node_modules/
 ├── package.json
-├── src
-├── static
+├── package-lock.json
+├── src/
+├── static/
 │   └── index.html
 └── tsconfig.json
 ```
 
-### Create a Build Script
+**Congratulations!** Your project is now set up and ready for development.
 
-To bundle your application and make it available to `index.html`, update your `package.json` file with the following build script:
+{{< /tab >}}
+{{< /tabs >}}
 
-```json
- "scripts": {
-      "build": "esbuild ./src/index.ts --bundle --sourcemap --outfile=./static/index.js"
-    }
-```
+## What's Next?
 
-That's it! You're now ready to start working on your Sprotty project.
+Now that your project is set up, it's time to define the data model for your diagram. In the next section, you'll learn how to create a model that represents tasks and their dependencies.
 
-Next, let's start defining the [data model]({{< ref "/docs/learn/getting-started" >}}) for your diagram.
-<!-- TODO: change link above -->
+**Continue to [Defining Your Data Model]({{< ref "/docs/learn/data-model" >}})**

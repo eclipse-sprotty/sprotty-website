@@ -3,9 +3,18 @@ main:
   - name: Introduction
     ref: "/docs/introduction"
   - name: Learn Sprotty
+    ref: "docs/learn"
     sub:
       - name: Getting Started
         ref: "docs/learn/getting-started"
+      - name: Data Model
+        ref: "docs/learn/data-model"
+      - name: Views
+        ref: "docs/learn/views"
+      - name: Dependency Injection
+        ref: "docs/learn/dependency-injection"
+      - name: Putting It Together
+        ref: "docs/learn/putting-it-together"
   - name: Recipes
     sub:
       - name: Architecture Overview
