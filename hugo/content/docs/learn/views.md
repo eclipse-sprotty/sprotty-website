@@ -13,7 +13,7 @@ Sprotty uses a powerful rendering system that maps model elements to view implem
 3. The view converts the model element into SVG elements
 4. These SVG elements are composed to create your complete diagram
 
-> 💡 **Pro Tip**: Sprotty uses [snabbdom](https://github.com/snabbdom/snabbdom), a virtual DOM library, to efficiently update only the parts of the diagram that change.
+> 💡 **Key Insight**: Sprotty uses [snabbdom](https://github.com/snabbdom/snabbdom), a virtual DOM library, to efficiently update only the parts of the diagram that change.
 
 ## Creating a Custom Task Node View
 
@@ -61,6 +61,8 @@ import { svg } from 'sprotty/lib/lib/jsx';
 ```
 
 These lines enable JSX syntax for creating SVG elements. The `@jsx svg` comment tells the TypeScript compiler to use the `svg` function for JSX expressions.
+
+> 💡 **Hint**: Be sure that jsx is enabled in the tsconfig.
 
 ### The View Class
 

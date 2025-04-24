@@ -95,11 +95,13 @@ mkdir src static
 
 ### 4. Install Dependencies
 
+> 💡 **Key Insight**: Sprotty is currently not using the latest version of inversify so it is important to add the version that is also used by Sprotty.
+
 Install the required dependencies:
 
 ```bash
 # Core dependencies
-npm install sprotty inversify reflect-metadata
+npm install sprotty inversify@^6.1.3 reflect-metadata
 
 # Development dependencies
 npm install typescript esbuild --save-dev
@@ -149,6 +151,15 @@ Your complete `package.json` should now look like this:
   "scripts": {
     "build": "esbuild ./src/index.ts --bundle --sourcemap --outfile=./static/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "inversify": "^6.1.3",
+    "reflect-metadata": "^0.2.2",
+    "sprotty": "^1.4.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.3",
+    "typescript": "^5.8.3"
   }
 }
 ```
