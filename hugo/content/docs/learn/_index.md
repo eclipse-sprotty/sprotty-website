@@ -7,7 +7,7 @@ weight: 20
 
 In this hands-on tutorial, you'll build a complete diagram application from the ground up. By the time you finish, you'll have created a fully interactive task management diagram and gained the skills to build your own custom diagram applications.
 
-![Task Management Diagram](/getting-started-diagram.png)
+![Task Management Diagram](/assets/docs/getting-started-diagram.png)
 
 ## What You'll Create
 

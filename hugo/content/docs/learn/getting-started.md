@@ -4,8 +4,6 @@ title: 'Getting Started'
 
 **Welcome to the first step of your Sprotty journey!** In this section, we'll set up everything you need to start building interactive diagrams.
 
-![Project Setup](/images/project-setup.png)
-
 ## Choose Your Adventure
 
 There are two ways to begin your Sprotty project:

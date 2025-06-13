@@ -4,8 +4,6 @@ title: 'Putting It Together'
 
 **The moment of truth has arrived!** In this final section, we'll connect all the pieces we've built and bring our interactive diagram to life.
 
-![Final Diagram](/images/final-diagram.png)
-
 ## Creating the Application Entry Point
 
 First, we need to create an entry point that initializes our diagram when the page loads. This file will:
@@ -105,6 +103,8 @@ This will create an `index.js` file in your `static` directory.
 ### 3. Open Your Application
 
 Open the `static/index.html` file in your browser. You should see your interactive diagram with three task nodes and a connection between the first and second tasks!
+
+![Final Diagram](/assets/docs/getting-started-diagram.png)
 
 ## Exploring Your Interactive Diagram
 
