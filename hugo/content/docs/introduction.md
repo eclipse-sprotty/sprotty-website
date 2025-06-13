@@ -1,23 +1,24 @@
 ---
-title: 'Introduction'
+title: 'Welcome to Sprotty'
 ---
-Sprotty is a next-generation, open-source diagramming framework built with web-technologies.
+Sprotty is a **modern**, **open-source** diagramming framework designed for the **web**.
 
-Some selected features:
+Whether you're visualizing **complex data flows**, building **interactive editors**, or **embedding diagrams** into your application, Sprotty gives you the tools to create fast, scalable, and beautiful visualizations.
 
-* Fast, scalable SVG rendering that is compatible with all modern browsers and stylable with CSS
-* Animations built into the core
-* Support for a distributed runtime with client and server
-* Fast, reactive client architecture implemented in TypeScript
-* Java or Node.js based server architecture
-* Configuration via dependency injection
-* Integrations with Xtext, Langium, the Language Server Protocol, VS Code and Theia
-* Can be run as a rich-client as well as in the browser
+## Why Sprotty?
 
-## Where to start?
+* **SVG rendering** - Fast, smooth, scalable, and fully stylable with CSS
+* **Built-in animations** - Add dynamic interactions with ease
+* **Client-server flexibility** - Supports distributed runtimes for powerful backend processes, or client-only applications
+* **Reactive architecture** - A snappy, event-driven system implemented in TypeScript
+* **Easy integration** - With Xtext, Langium, the Language Server Protocol, VS Code, Theia, and any modern browser
+* **Dependency injection** - Easily configure and extend Sprotty to fit your needs
+* **Run anywhere** - Use it as a browser-based tool or a rich-client application
 
-If you are new with Sprotty, we recommend taking a look at our [Getting Started]({{< ref "/docs/getting-started" >}}) section before diving further.
+## Ready to dive in?
 
-## Want to contribute?
+If you are new to Sprotty, check out our [Getting Started]({{< ref "/docs/learn/getting-started" >}}) guide to quickly build your first diagram.
 
-Visit the [Sprotty repository](https://github.com/eclipse-sprotty/sprotty) and have a look at the [contribution guidelines](https://github.com/eclipse-sprotty/sprotty/blob/master/CONTRIBUTING.md) to take part in Sprotty's development.
+### Want to contribute?
+
+Sprotty is fully open-source! Head over to the [Sprotty repository](https://github.com/eclipse-sprotty/sprotty) and have a look at the [contribution guidelines](https://github.com/eclipse-sprotty/sprotty/blob/master/CONTRIBUTING.md) to join the development.
