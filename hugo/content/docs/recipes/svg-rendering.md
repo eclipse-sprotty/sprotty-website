@@ -33,7 +33,7 @@ export class NodeView extends RectangularNodeView {
 }
 ```
 
-The class `NodeView` extends `RectangularNodeView` which is a default `View` in Sprotty, ultimately implementing `IView`. Don't forget to add the class decorator `@injectable()`, which is necessary for the [Dependency Injection]({{< ref "/docs/recipes/dependency-injection" >}}) mechanism.
+The class `NodeView` extends `RectangularNodeView` which is a default `View` in Sprotty, ultimately implementing `IView`. Don't forget to add the class decorator `@injectable()`, which is necessary for the [Dependency Injection]({{< ref "/docs/concepts/extension-points">}}#dependency-injection).
 
 The `render()` method is the core of the `View`. It takes `node` -- that is the model element to be rendered - as an argument, a `RenderingContext`, and an optional `args` object. View implementations should first check whether the `node` should be rendered at all. This is an optimization step, as we only want to render SVG elements that are inside of the visible viewport and not hidden by some other user-defined filter.
 Eventually, the `render()` method returns a `VNode` which is [Snabbdom's](https://github.com/snabbdom/snabbdom) virtual representation of a DOM element. This `VNode` can hold one and only one *root element*, therefore we need to group our SVG elements inside of a *container element* `g`.
