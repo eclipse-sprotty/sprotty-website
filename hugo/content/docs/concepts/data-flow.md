@@ -12,7 +12,7 @@ Now that you understand the [Core Components]({{< relref "core-components" >}}) 
 Here is how the unilateral data flow goes:
 
 - An event occurs. For example, the application requests the data model, or a user selects a node in the diagram
-- The **Model Source** react to this event and may send the corresponding **Action** to the **Action Dispatcher**
+- The **Model Source** reacts to this event and may send the corresponding **Action** to the **Action Dispatcher**
 - The **Action Dispatcher** looks up the corresponding handler for the **Action**
 - The **Action** may be converted to a **Command** and forwarded to the **Command Stack**
 - The **Command Stack** executes the **Command**, resulting in a model update and notifying the **Viewer**
