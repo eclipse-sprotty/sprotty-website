@@ -14,7 +14,8 @@
     "build": "npm run build --workspaces",
     "watch": "concurrently -c gray,blue -n tailwind,hugo \"npm run watch --workspace tailwind\" \"npm run watch --workspace hugo\"",
     "watch:gitpod": "concurrently -c gray,blue -k -n hugo \"npm run watch:gitpod --workspace hugo\" \"npm run watch --workspace tailwind\"",
-    "start:dev": "http-server ./static-dev"
+    "start:dev": "http-server ./static-dev",
+    "process-docs": "node scripts/process-docs.js"
   },
   "workspaces": [
     "showcase",

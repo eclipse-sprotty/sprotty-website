@@ -142,15 +142,15 @@ Model element for **Nodes**, which are the main entity in a graph. A node can be
 
 *Default features:*
 
-* [connectableFeature]({{< ref "/docs/ref/features" >}}#connectablefeature)
-* [deletableFeature]({{< ref "/docs/ref/features" >}}#deletablefeature)
-* [selectFeature]({{< ref "/docs/ref/features" >}}#selectfeature)
-* [boundsFeature]({{< ref "/docs/ref/features" >}}#boundsfeature)
-* [moveFeature]({{< ref "/docs/ref/features" >}}#movefeature)
-* [layoutContainerFeature]({{< ref "/docs/ref/features" >}}#layoutcontainerfeature)
-* [fadeFeature]({{< ref "/docs/ref/features" >}}#fadefeature)
-* [hoverFeedbackFeature]({{< ref "/docs/ref/features" >}}#hoverfeedbackfeature)
-* [popupFeature]({{< ref "/docs/ref/features" >}}#popupfeature)
+* [connectableFeature](../{{< ref "/docs/ref/features" >}}#connectablefeature)
+* [deletableFeature](../{{< ref "/docs/ref/features" >}}#deletablefeature)
+* [selectFeature](../{{< ref "/docs/ref/features" >}}#selectfeature)
+* [boundsFeature](../{{< ref "/docs/ref/features" >}}#boundsfeature)
+* [moveFeature](../{{< ref "/docs/ref/features" >}}#movefeature)
+* [layoutContainerFeature](../{{< ref "/docs/ref/features" >}}#layoutcontainerfeature)
+* [fadeFeature](../{{< ref "/docs/ref/features" >}}#fadefeature)
+* [hoverFeedbackFeature](../{{< ref "/docs/ref/features" >}}#hoverfeedbackfeature)
+* [popupFeature](../{{< ref "/docs/ref/features" >}}#popupfeature)
 
 ### SPortImpl
 
@@ -168,11 +168,11 @@ A port is a connection point for edges. It should **always** be contained in an 
 
 *Default features:*
 
-* [connectableFeature]({{< ref "/docs/ref/features" >}}#connectablefeature)
-* [selectFeature]({{< ref "/docs/ref/features" >}}#selectfeature)
-* [boundsFeature]({{< ref "/docs/ref/features" >}}#boundsfeature)
-* [fadeFeature]({{< ref "/docs/ref/features" >}}#fadefeature)
-* [hoverFeedbackFeature]({{< ref "/docs/ref/features" >}}#hoverfeedbackfeature)
+* [connectableFeature](../{{< ref "/docs/ref/features" >}}#connectablefeature)
+* [selectFeature](../{{< ref "/docs/ref/features" >}}#selectfeature)
+* [boundsFeature](../{{< ref "/docs/ref/features" >}}#boundsfeature)
+* [fadeFeature](../{{< ref "/docs/ref/features" >}}#fadefeature)
+* [hoverFeedbackFeature](../{{< ref "/docs/ref/features" >}}#hoverfeedbackfeature)
 
 ### SEdgeImpl
 
@@ -190,11 +190,11 @@ These are the connectors for the diagram model. An edge has a source and a targe
 
 *Default features:*
 
-* [editFeature]({{<ref "/docs/ref/features" >}}#editfeature)
-* [deletableFeature]({{<ref "/docs/ref/features" >}}#deletablefeature)
-* [selectFeature]({{<ref "/docs/ref/features" >}}#selectfeature)
-* [fadeFeature]({{<ref "/docs/ref/features" >}}#fadefeature)
-* [hoverFeedbackFeature]({{<ref "/docs/ref/features" >}}#hoverfeedbackfeature)
+* [editFeature](../{{<ref "/docs/ref/features" >}}#editfeature)
+* [deletableFeature](../{{<ref "/docs/ref/features" >}}#deletablefeature)
+* [selectFeature](../{{<ref "/docs/ref/features" >}}#selectfeature)
+* [fadeFeature](../{{<ref "/docs/ref/features" >}}#fadefeature)
+* [hoverFeedbackFeature](../{{<ref "/docs/ref/features" >}}#hoverfeedbackfeature)
 
 ### SLabelImpl
 
@@ -221,11 +221,11 @@ A label represents some text to be displayed and attached to a node, compartment
 
 *Default features:*
 
-* [boundsFeature]({{< ref "/docs/ref/features" >}}#boundsfeature)
-* [alignFeature]({{< ref "/docs/ref/features" >}}#alignfeature)
-* [layoutableChildFeature]({{< ref "/docs/ref/features" >}}#layoutablechildfeature)
-* [edgeLayoutFeature]({{< ref "/docs/ref/features" >}}#edgelayoutfeature)
-* [fadeFeature]({{< ref "/docs/ref/features" >}}#fadefeature)
+* [boundsFeature](../{{< ref "/docs/ref/features" >}}#boundsfeature)
+* [alignFeature](../{{< ref "/docs/ref/features" >}}#alignfeature)
+* [layoutableChildFeature](../{{< ref "/docs/ref/features" >}}#layoutablechildfeature)
+* [edgeLayoutFeature](../{{< ref "/docs/ref/features" >}}#edgelayoutfeature)
+* [fadeFeature](../{{< ref "/docs/ref/features" >}}#fadefeature)
 
 ### SCompartmentImpl
 
@@ -242,10 +242,10 @@ A compartment is used to group multiple child elements of a node or compartment,
 
 *Default features:*
 
-* [boundsFeature]({{< ref "/docs/ref/features" >}}#boundsfeature)
-* [layoutContainerFeature]({{< ref "/docs/ref/features" >}}#layoutcontainerfeature)
-* [layoutableChildFeature]({{< ref "/docs/ref/features" >}}#layoutablechildfeature)
-* [fadeFeature]({{< ref "/docs/ref/features" >}}#fadefeature)
+* [boundsFeature](../{{< ref "/docs/ref/features" >}}#boundsfeature)
+* [layoutContainerFeature](../{{< ref "/docs/ref/features" >}}#layoutcontainerfeature)
+* [layoutableChildFeature](../{{< ref "/docs/ref/features" >}}#layoutablechildfeature)
+* [fadeFeature](../{{< ref "/docs/ref/features" >}}#fadefeature)
 
 ### SGraphIndex
 
