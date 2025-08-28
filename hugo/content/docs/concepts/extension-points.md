@@ -306,6 +306,8 @@ export class CreateCustomNodeCommand extends Command {
 
 **Mergeable Command:**
 
+A *Mergeable Command* is a command that can accumulate subsequent commands of the same kind. For example, multiple subsequent move commands can be merged to yield a single command, so that they can be rolled back together by an undo.
+
 ```typescript
 import { injectable, inject } from 'inversify';
 import { MergeableCommand, CommandExecutionContext, CommandResult, TYPES } from 'sprotty';
@@ -381,6 +383,11 @@ export class CustomActionHandler implements IActionHandler {
             
             case 'deleteCustomNode':
                 return new DeleteCustomNodeCommand(action.nodeId);
+            case 'moveCustomNode':
+                return new MoveCustomCommand(
+                    action.nodeId.
+                    action.newPosition
+                    )
         }
     }
 }
@@ -403,6 +410,7 @@ const customModule = new ContainerModule((bind, unbind, isBound, rebind) => {
     configureCommand(context, CreateCustomNodeCommand);
     configureCommand(context, UpdateCustomNodeCommand);
     configureCommand(context, DeleteCustomNodeCommand);
+    configureCommand(context, MoveCustomNodeCommand);
 });
 ```
 

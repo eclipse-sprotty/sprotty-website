@@ -12,7 +12,7 @@ Any model element that implements or extends the `SNode` or `SCompartment` inter
 * `hbox`: children elements are arranged horizontally
 * `vbox`: children elements are arranged vertically
 
-The `layout` property aims at arranging children elements that do not have a meaning in terms of graph hierarchy (i.e. labels, buttons, ...). Please note that children [that are instances of `SNodeImpl`]({{< ref "/docs/concepts/extension-points">}}#dependency-injection) do not respect the `layout` property by default (more on that [later](#layouting-nested-nodes)).
+The `layout` property aims at arranging children elements that do not have a meaning in terms of graph hierarchy (i.e. labels, buttons, ...). Please note that children that are instances of `SNodeImpl` do not respect the `layout` property by default (more on that [later](#layouting-nested-nodes)).
 
 First and foremost, the micro-layout engine needs to be activated in the inversify container. This is done by setting the `needsClientLayout` property to `true` in the inversify container configuration:
 
@@ -115,7 +115,7 @@ This results in the following visuals:
 
 ![layout-configuration](/assets/docs/layout-configuration.png)
 
-If you want different layout configurations, you can implement your own micro-layout engine and inject it via [Dependency Injection]({{< ref "/docs/concepts/extension-points">}}#dependency-injection).
+If you want different layout configurations, you can implement your own micro-layout engine and inject it via [Dependency Injection]({{< relref "extension-points">}}#dependency-injection).
 
 ## Layout Options
 
