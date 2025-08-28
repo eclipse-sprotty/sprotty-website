@@ -108,7 +108,7 @@ class MyNodeView extends ShapeView {
 
 ## Styling on User Interaction
 
-Taking advantage of the conditional CSS classes, you can also apply styles to your diagram elements based on [user interaction]({{< ref "/docs/ref/user-interaction" >}}). For example, you could apply a CSS class to a node when it is selected. Without going into the details of how to handle user interaction, let's look at how Sprotty's default views handle this.
+Taking advantage of the conditional CSS classes, you can also apply styles to your diagram elements based on user interaction. For example, you could apply a CSS class to a node when it is selected. Without going into the details of how to handle user interaction, let's look at how Sprotty's default views handle this.
 
 `SNodeImpl` has the default feature `selectFeature`, meaning that when a node is selected, its `selected` property is set to `true`. This property can be used in the corresponding view to add a CSS class to the selected element. For example in the `RectangularNodeView`:
 
