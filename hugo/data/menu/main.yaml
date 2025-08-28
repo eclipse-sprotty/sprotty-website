@@ -15,20 +15,26 @@ main:
         ref: "docs/learn/dependency-injection"
       - name: Putting It Together
         ref: "docs/learn/putting-it-together"
-  - name: Recipes
+  - name: Concepts
     sub:
       - name: Architecture Overview
-        ref: "docs/recipes/architecture-overview"
-      - name: Sprotty Configuration and Dependency Injection
-        ref: "docs/recipes/dependency-injection"
+        ref: "docs/concepts/architecture-overview"
+      - name: Core Components
+        ref: "docs/concepts/core-components"
+      - name: Data Flow
+        ref: "docs/concepts/data-flow"
+      - name: Extension Points
+        ref: "docs/concepts/extension-points"
+      - name: Best Practices
+        ref: "docs/concepts/best-practices"
+  - name: Recipes
+    sub:
       - name: SVG Rendering
         ref: "docs/recipes/svg-rendering"
       - name: Micro-layout
         ref: "docs/recipes/micro-layout"
       - name: Styling
         ref: "docs/recipes/styling"
-      - name: Model Sources
-        ref: "docs/recipes/model-sources"
       - name: Communication and Protocols
         ref: "docs/recipes/actions-and-protocols"
       - name: Creating Custom Interactions

@@ -64,7 +64,7 @@ This is the base class for **all** elements of the diagram model. This ensures t
 
 * `type: string`: The type of the element. This value is used in the Sprotty configuration to specify the corresponding view for all elements of this type.
 * `id: string`: The globally unique identifier of the element.
-* `features: FeatureSet` - *optional*: A set of [features]({{< ref "/docs/ref/features" >}}) that are enabled on the element. The list of features can be further configured in the [dependency injection container]({{< ref "/docs/recipes/dependency-injection" >}}#features).
+* `features: FeatureSet` - *optional*: A set of [features]({{< ref "/docs/ref/features" >}}) that are enabled on the element. The list of features can be further configured in the [dependency injection container]({{< ref "/docs/concepts/extension-points">}}#dependency-injection).
 * `cssClasses: string[]` - *optional*: A list of CSS classes that should be applied to the element.
 
 ### SParentElementImpl
