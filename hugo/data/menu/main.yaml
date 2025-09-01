@@ -45,9 +45,13 @@ main:
         ref: "docs/sprotty-elk/introduction"
   - name: Reference
     sub:
+      - name: User Interaction
+        ref: "docs/ref/user-interaction"
       - name: SModel
         ref: "docs/ref/smodel"
       - name: Features
         ref: "docs/ref/features"
-      - name: User Interaction
-        ref: "docs/ref/user-interaction"
+      - name: Sprotty Core
+        ref: "docs/ref/sprotty-core"
+      - name: Sprotty Protocol
+        ref: "docs/ref/sprotty-protocol"

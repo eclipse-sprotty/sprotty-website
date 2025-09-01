@@ -1,0 +1,16 @@
+
+### postUpdate()
+
+> **postUpdate**(`cause?`): `void`
+
+Defined in: [packages/sprotty/src/base/views/vnode-postprocessor.ts:29](https://github.com/eclipse-sprotty/sprotty/blob/f9b2433481cc27a1ac0c92d525a92039ae7f6c76/packages/sprotty/src/base/views/vnode-postprocessor.ts#L29)
+
+#### Parameters
+
+##### cause?
+
+`Action`
+
+#### Returns
+
+`void`
