@@ -190,11 +190,11 @@ These are the connectors for the diagram model. An edge has a source and a targe
 
 *Default features:*
 
-* [editFeature]({{<ref "/docs/ref/features" >}}#editfeature)
-* [deletableFeature]({{<ref "/docs/ref/features" >}}#deletablefeature)
-* [selectFeature]({{<ref "/docs/ref/features" >}}#selectfeature)
-* [fadeFeature]({{<ref "/docs/ref/features" >}}#fadefeature)
-* [hoverFeedbackFeature]({{<ref "/docs/ref/features" >}}#hoverfeedbackfeature)
+* [editFeature](../{{<ref "/docs/ref/features" >}}#editfeature)
+* [deletableFeature](../{{<ref "/docs/ref/features" >}}#deletablefeature)
+* [selectFeature](../{{<ref "/docs/ref/features" >}}#selectfeature)
+* [fadeFeature](../{{<ref "/docs/ref/features" >}}#fadefeature)
+* [hoverFeedbackFeature](../{{<ref "/docs/ref/features" >}}#hoverfeedbackfeature)
 
 ### SLabelImpl
 
