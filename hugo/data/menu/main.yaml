@@ -31,8 +31,8 @@ main:
     sub:
       - name: Custom Views
         ref: "docs/recipes/custom-views"
-      - name: SVG Rendering
-        ref: "docs/recipes/svg-rendering"
+      - name: Layout Strategies
+        ref: "docs/recipes/layout-strategies"
       - name: Micro-layout
         ref: "docs/recipes/micro-layout"
       - name: Styling
