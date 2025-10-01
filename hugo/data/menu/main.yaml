@@ -37,8 +37,8 @@ main:
         ref: "docs/recipes/micro-layout"
       - name: Styling
         ref: "docs/recipes/styling"
-      - name: Communication and Protocols
-        ref: "docs/recipes/actions-and-protocols"
+      - name: Communication Patterns
+        ref: "docs/recipes/communication-patterns"
       - name: Advanced Interactions
         ref: "docs/recipes/advanced-interactions"
   - name: Sprotty-elk
