@@ -47,12 +47,20 @@ When dealing with diagrams with different types of nodes, ports, edges, or label
 
 By convention, Sprotty uses the `type` property, which is a string of the shape `main-type:sub-type`, to distinguish between different types of diagram elements. For example, a node of type `node:my-node` has the main type `node` and the sub-type `my-node`.
 
-Using this convention, you can add a CSS class for each diagram element sub-type. For example:
+Using this convention, you can add a CSS class for each diagram element sub-type. The `CssClassPostprocessor`, which is included by default in Sprotty, automatically extracts the sub-type from the element's type and adds it as a CSS class to the element's wrapper.
+
+For example:
 
 * A node of type `node:my-node` using the `RectangularNodeView` would have the following CSS classes: `sprotty-node` and `my-node`.
 * A node of type `node:my-other-node` using the `RectangularNodeView` would have the following CSS classes: `sprotty-node` and `my-other-node`.
 
-This allows for more control over the styling of your diagram elements.
+The `CssClassPostprocessor` works by:
+
+1. Extracting the sub-type from the element's type (the part after the colon)
+2. Adding this sub-type as a CSS class to the element's wrapper `<g>` element
+3. Allowing you to target elements using descendant selectors like `.my-node .sprotty-node`
+
+This allows for more control over the styling of your diagram elements without requiring manual class management.
 
 ## Styling on a Per-Element Basis
 
