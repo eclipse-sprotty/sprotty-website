@@ -29,6 +29,8 @@ main:
         ref: "docs/concepts/best-practices"
   - name: Recipes
     sub:
+      - name: Custom Views
+        ref: "docs/recipes/custom-views"
       - name: SVG Rendering
         ref: "docs/recipes/svg-rendering"
       - name: Micro-layout
