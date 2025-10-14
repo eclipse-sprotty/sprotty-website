@@ -28,6 +28,58 @@ const nodeModel: SNode = {
 };
 ```
 
+## Setting Up JSX for Custom Views
+
+Before you can create custom views using JSX/TSX syntax, you need to set up your TypeScript environment properly. Sprotty uses JSX to declaratively define SVG elements, but this requires specific configuration.
+
+### The JSX Pragma
+
+Every view file that uses JSX must start with a special pragma comment at the very top:
+
+```typescript
+/** @jsx svg */
+import { svg } from 'sprotty/lib/lib/jsx';
+```
+
+**The Pragma Comment**: `/** @jsx svg */` is a JSX pragma that tells the TypeScript compiler which function to use when transforming JSX expressions. Instead of using React's `createElement`, we use Sprotty's `svg` function.
+
+**The svg Import**: The `svg` function from `sprotty/lib/lib/jsx` is what actually transforms your JSX expressions into Snabbdom virtual DOM nodes (`VNode`). This is the core of how Sprotty renders SVG elements efficiently.
+
+### Why These Are Required
+
+When you write JSX like `<rect width={100} height={50} />`, the TypeScript compiler needs to transform it into function calls. The pragma tells TypeScript to transform it to `svg('rect', { width: 100, height: 50 })` instead of the default `React.createElement('rect', { width: 100, height: 50 })`.
+
+Without the pragma and import:
+
+- ❌ Your JSX won't compile
+- ❌ You'll get "Cannot find name 'React'" errors
+- ❌ The virtual DOM nodes won't be created correctly
+
+### TypeScript Configuration
+
+Your `tsconfig.json` must have JSX support enabled. Add or verify these settings:
+
+```json
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "experimentalDecorators": true
+  }
+}
+```
+
+- **`"jsx": "react"`**: Enables JSX transformation (despite the name, this works for non-React uses too)
+- **`"experimentalDecorators": true`**: Required for the `@injectable()` decorator used in view classes
+
+### File Extension Requirement
+
+View files that use JSX **must** have the `.tsx` extension, not `.ts`:
+
+- ✅ `views.tsx` - Correct
+- ❌ `views.ts` - Will not compile
+
+> 💡 **Pro Tip**: Always copy the pragma and import as the first two lines of any new view file. This is easy to forget and will cause confusing compilation errors!
+
 ## Creating Your First Custom View
 
 Let's create a custom view step by step:
@@ -35,6 +87,8 @@ Let's create a custom view step by step:
 ### 1. Basic View Structure
 
 ```typescript
+/** @jsx svg */
+import { svg } from 'sprotty/lib/lib/jsx';
 import { injectable } from 'inversify';
 import { VNode } from 'snabbdom';
 import { IView, RenderingContext, SNodeImpl, IViewArgs } from 'sprotty';
@@ -80,6 +134,8 @@ export class CustomNodeView implements IView {
 ## TSX Syntax and Conventions
 
 Sprotty uses TSX (TypeScript + JSX) for defining SVG elements. This allows you to write SVG declaratively with TypeScript expressions.
+
+> 📖 **Note**: If you haven't already, make sure you've set up the JSX pragma and imports as explained in the [Setting Up JSX for Custom Views](#setting-up-jsx-for-custom-views) section above. Without these, the JSX syntax shown below won't work.
 
 ### CSS Classes
 
