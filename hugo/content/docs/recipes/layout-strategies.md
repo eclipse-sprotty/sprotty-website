@@ -101,10 +101,10 @@ const clientLayoutModel: SGraph = {
 | `paddingBottom` | Bottom padding inside container | 0 |
 | `paddingLeft` | Left padding inside container | 0 |
 | `paddingRight` | Right padding inside container | 0 |
-| `vGap` | Vertical gap between elements | 0 |
-| `hGap` | Horizontal gap between elements | 0 |
-| `vAlign` | Vertical alignment (`top`, `center`, `bottom`) | `top` |
-| `hAlign` | Horizontal alignment (`left`, `center`, `right`) | `left` |
+| `vGap` | Vertical gap between elements (for `vbox` layout) | 0 |
+| `hGap` | Horizontal gap between elements (for `hbox` layout) | 0 |
+| `hAlign` | Horizontal alignment: `left`, `center`, `right` (for `vbox` layout only) | `left` |
+| `vAlign` | Vertical alignment: `top`, `center`, `bottom` (for `hbox` layout only) | `top` |
 
 ## Server-Only Layout Configuration
 
@@ -114,7 +114,8 @@ For complex diagrams requiring sophisticated layout algorithms, delegate layout 
 
 ```typescript
 import { ContainerModule } from 'inversify';
-import { TYPES, configureViewerOptions, ElkLayoutEngine } from 'sprotty';
+import { TYPES, configureViewerOptions } from 'sprotty';
+import { ElkLayoutEngine } from 'sprotty-elk/lib/inversify';
 
 const serverLayoutModule = new ContainerModule((bind, unbind, isBound, rebind) => {
     const context = { bind, unbind, isBound, rebind };
@@ -126,7 +127,7 @@ const serverLayoutModule = new ContainerModule((bind, unbind, isBound, rebind) =
     });
     
     // Bind layout engine (example with ELK)
-    bind(TYPES.ILayoutEngine).to(ElkLayoutEngine).inSingletonScope();
+    bind(TYPES.IModelLayoutEngine).to(ElkLayoutEngine).inSingletonScope();
 });
 ```
 
@@ -169,13 +170,9 @@ const serverLayoutModel: SGraph = {
 
 ### ELK Algorithm Options
 
-| Algorithm | Best For | Description |
-|-----------|----------|-------------|
-| `layered` | Hierarchical diagrams | Nodes arranged in layers (Sugiyama-style) |
-| `force` | Network diagrams | Force-directed layout |
-| `stress` | Large graphs | Stress-minimization layout |
-| `mrtree` | Tree structures | Multi-root tree layout |
-| `radial` | Centered layouts | Radial arrangement around center |
+ELK provides several layout algorithms optimized for different diagram types, including layered (hierarchical), force-directed, stress-minimization, tree, and radial layouts. Each algorithm supports extensive configuration options for fine-tuning the layout behavior.
+
+For a complete list of available algorithms and their configuration options, see the [Eclipse Layout Kernel documentation](https://www.eclipse.org/elk/reference.html).
 
 ## Hybrid Client-Server Layout
 
@@ -193,7 +190,7 @@ const hybridLayoutModule = new ContainerModule((bind, unbind, isBound, rebind) =
         needsServerLayout: true      // For macro-layout
     });
     
-    bind(TYPES.ILayoutEngine).to(ElkLayoutEngine).inSingletonScope();
+    bind(TYPES.IModelLayoutEngine).to(ElkLayoutEngine).inSingletonScope();
 });
 ```
 
@@ -285,129 +282,6 @@ const updateModel: UpdateModelAction = {
 };
 ```
 
-### Custom Bounds Computation
-
-```typescript
-@injectable()
-export class CustomBoundsPostProcessor implements IBoundsPostProcessor {
-    process(boundsData: BoundsData): BoundsData {
-        // Add custom spacing logic
-        boundsData.bounds.forEach(bounds => {
-            if (bounds.elementId.startsWith('node:')) {
-                // Add minimum padding to all nodes
-                bounds.newSize.width = Math.max(bounds.newSize.width, 100);
-                bounds.newSize.height = Math.max(bounds.newSize.height, 40);
-            }
-        });
-        
-        return boundsData;
-    }
-}
-
-// Register the post-processor
-bind(TYPES.IBoundsPostProcessor).to(CustomBoundsPostProcessor);
-```
-
-## Layout Debugging Techniques
-
-### 1. Visual Debugging
-
-Enable debug rendering to see layout boundaries:
-
-```typescript
-configureViewerOptions(context, {
-    needsClientLayout: true,
-    baseDiv: 'diagram',
-    // Enable debug features
-    popupFeature: { enabled: true },
-    debugMode: true
-});
-```
-
-```css
-/* Debug styles to visualize layout */
-.debug-bounds {
-    stroke: red;
-    stroke-width: 1;
-    stroke-dasharray: 2,2;
-    fill: none;
-    opacity: 0.5;
-}
-
-.debug-padding {
-    fill: rgba(255, 0, 0, 0.1);
-}
-```
-
-### 2. Layout Logging
-
-Add detailed logging to track layout computation:
-
-```typescript
-@injectable()
-export class DebuggingLayoutEngine implements ILayoutEngine {
-    
-    constructor(@inject(TYPES.ILogger) private logger: ILogger) {}
-    
-    layout(model: SModelRoot): Promise<SModelRoot> {
-        this.logger.log(this, 'Starting layout for model:', model.id);
-        
-        // Log node positions before layout
-        model.children.forEach(child => {
-            if (child instanceof SNodeImpl) {
-                this.logger.log(this, `Node ${child.id} before: pos(${child.position.x}, ${child.position.y}) size(${child.size.width}, ${child.size.height})`);
-            }
-        });
-        
-        return this.performLayout(model).then(result => {
-            // Log positions after layout
-            result.children.forEach(child => {
-                if (child instanceof SNodeImpl) {
-                    this.logger.log(this, `Node ${child.id} after: pos(${child.position.x}, ${child.position.y}) size(${child.size.width}, ${child.size.height})`);
-                }
-            });
-            
-            return result;
-        });
-    }
-    
-    private performLayout(model: SModelRoot): Promise<SModelRoot> {
-        // Your layout logic here
-        return Promise.resolve(model);
-    }
-}
-```
-
-### 3. Performance Monitoring
-
-Track layout performance to identify bottlenecks:
-
-```typescript
-@injectable() 
-export class PerformanceMonitoringLayoutEngine implements ILayoutEngine {
-    
-    async layout(model: SModelRoot): Promise<SModelRoot> {
-        const startTime = performance.now();
-        
-        try {
-            const result = await this.actualLayoutEngine.layout(model);
-            const duration = performance.now() - startTime;
-            
-            console.log(`Layout completed in ${duration.toFixed(2)}ms for ${model.children.length} elements`);
-            
-            if (duration > 100) {
-                console.warn('Layout took longer than 100ms - consider optimization');
-            }
-            
-            return result;
-        } catch (error) {
-            console.error('Layout failed:', error);
-            throw error;
-        }
-    }
-}
-```
-
 ## Best Practices
 
 ### 1. Choose the Right Strategy
@@ -444,34 +318,6 @@ export class ResponsiveNodeView implements IView {
             <rect width={dynamicWidth} height="40" class-responsive-node={true} />
             <text x="10" y="25">{node.content}</text>
         </g>;
-    }
-}
-```
-
-### 4. Error Handling
-
-```typescript
-@injectable()
-export class RobustLayoutEngine implements ILayoutEngine {
-    async layout(model: SModelRoot): Promise<SModelRoot> {
-        try {
-            return await this.performLayout(model);
-        } catch (error) {
-            // Fallback to simple positioning
-            console.warn('Layout failed, using fallback:', error);
-            return this.fallbackLayout(model);
-        }
-    }
-    
-    private fallbackLayout(model: SModelRoot): SModelRoot {
-        // Simple grid layout as fallback
-        let x = 50, y = 50;
-        model.children.forEach((child, index) => {
-            if (child instanceof SNodeImpl) {
-                child.position = { x: x + (index % 4) * 150, y: y + Math.floor(index / 4) * 100 };
-            }
-        });
-        return model;
     }
 }
 ```
