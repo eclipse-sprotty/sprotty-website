@@ -41,6 +41,10 @@ main:
         ref: "docs/recipes/communication-patterns"
       - name: Advanced Interactions
         ref: "docs/recipes/advanced-interactions"
+      - name: Animation and Transitions
+        ref: "docs/recipes/animation-transitions"
+      - name: Advanced Edge Routing
+        ref: "docs/recipes/advanced-edge-routing"
   - name: Sprotty-elk
     sub:
       - name: Introduction
