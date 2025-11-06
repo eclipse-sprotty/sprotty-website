@@ -9,31 +9,32 @@ Layout is a fundamental aspect of creating effective diagrams. Sprotty provides 
 
 Sprotty distinguishes between two complementary layout systems that work together to create the final diagram appearance:
 
-### 1. Client Layout (Micro-Layout)
+### 1. Micro-Layout
 
-**Client layout** handles the internal arrangement of elements within nodes and compartments. This includes:
+**Micro-layout** handles the internal arrangement of elements within nodes and compartments. This includes:
 
 - Label positioning within nodes
 - Icon and text alignment
 - Compartment content organization  
 - Child element spacing and sizing
 
-Client layout runs in the browser and has access to actual font metrics and CSS styling information, making it ideal for precise text and content positioning.
+The micro-layout engine runs in the browser and has access to actual font metrics and CSS styling information, making it ideal for precise text and content positioning.
 
-### 2. Server Layout (Macro-Layout)
+### 2. Macro-Layout
 
-**Server layout** determines the overall diagram structure and relationships:
+**The macro-layout engine** determines the overall diagram structure and relationships:
 
 - Node positioning in the diagram space
 - Edge routing between nodes
 - Global diagram organization
 - Cross-node spatial relationships
 
-Server layout typically uses sophisticated algorithms (like those in Eclipse Layout Kernel) to create aesthetically pleasing and readable diagram arrangements.
+Sprotty does not provide a macro-layout engine by default but an external engine running on the client-side or remotely on a server can be easily connected.
+The macro-layout engine typically uses sophisticated algorithms (like those in [Eclipse Layout Kernel](https://eclipse.dev/elk/)) to create aesthetically pleasing and readable diagram arrangements.
 
-## Client-Only Layout Configuration
+## Micro-Layout Only Configuration
 
-For diagrams where you want complete client-side control, configure Sprotty to handle all layout locally.
+For diagrams where you want only micro-layout control, you must enable the micro-layout engine in the viewer options, and specify layout options and positions directly in the model.
 
 ### Configuration
 
@@ -46,8 +47,8 @@ const layoutModule = new ContainerModule((bind, unbind, isBound, rebind) => {
     
     // Configure for client-side layout
     configureViewerOptions(context, {
-        needsClientLayout: true,     // Enable client layout computation
-        needsServerLayout: false,    // Disable server layout
+        needsClientLayout: true,     // Enable micro-layout computation
+        needsServerLayout: false,    // Disable macro-layout layout
         baseDiv: 'diagram-container'
     });
 });
@@ -64,7 +65,7 @@ const clientLayoutModel: SGraph = {
         {
             type: 'node:compartment',
             id: 'node1',
-            position: { x: 50, y: 50 },
+            position: { x: 50, y: 50 },  // The position of each element has to be set manually
             size: { width: 200, height: 120 },
             layout: 'vbox',              // Vertical layout for children
             layoutOptions: {
@@ -106,9 +107,9 @@ const clientLayoutModel: SGraph = {
 | `hAlign` | Horizontal alignment: `left`, `center`, `right` (for `vbox` layout only) | `left` |
 | `vAlign` | Vertical alignment: `top`, `center`, `bottom` (for `hbox` layout only) | `top` |
 
-## Server-Only Layout Configuration
+## Macro-Layout Only Configuration
 
-For complex diagrams requiring sophisticated layout algorithms, delegate layout to the server.
+For complex diagrams requiring sophisticated layout algorithms, delegate layout to an external layout engine. These engines are typically highly performant for layouting diagrams, but may lack micro-layout control beyond label placement.
 
 ### Configuration
 
@@ -122,8 +123,8 @@ const serverLayoutModule = new ContainerModule((bind, unbind, isBound, rebind) =
     
     // Configure for server-side layout
     configureViewerOptions(context, {
-        needsClientLayout: false,    // Disable client layout
-        needsServerLayout: true      // Enable server layout
+        needsClientLayout: false,    // Disable micro-layout engine
+        needsServerLayout: true      // Enable macro-layout engine
     });
     
     // Bind layout engine (example with ELK)
@@ -174,7 +175,7 @@ ELK provides several layout algorithms optimized for different diagram types, in
 
 For a complete list of available algorithms and their configuration options, see the [Eclipse Layout Kernel documentation](https://www.eclipse.org/elk/reference.html).
 
-## Hybrid Client-Server Layout
+## Hybrid Layout
 
 Combine both layout types for maximum flexibility and control.
 
@@ -286,8 +287,8 @@ const updateModel: UpdateModelAction = {
 
 ### 1. Choose the Right Strategy
 
-- **Client-only**: Simple diagrams with mostly static layouts
-- **Server-only**: Complex network diagrams requiring sophisticated algorithms  
+- **Micro-layout only**: Simple diagrams with mostly static layouts
+- **Macro-layout**: Complex network diagrams requiring sophisticated algorithms  
 - **Hybrid**: Rich content nodes in algorithmically-arranged diagrams
 
 ### 2. Optimize Performance
