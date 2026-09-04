@@ -13,7 +13,7 @@ The **external model** is used to transfer information between the model source 
 
 ## External Model
 
-The external model is tree of JSON-serializable objects. To facilitate its implementation, Sprotty provides a set of interfaces (in the *sprotty-protocol* package) that can be used to describe the external model. These interfaces have a class counterpart that is used in the internal model. The complete list of interfaces provided by Sprotty can be found [here](https://github.com/eclipse-sprotty/sprotty/blob/master/packages/sprotty-protocol/src/model.ts).
+The external model is tree of JSON-serializable objects. To facilitate its implementation, Sprotty provides a set of interfaces (in the *sprotty-protocol* package) that can be used to describe the external model. These interfaces have a class counterpart that is used in the internal model. The complete list of interfaces provided by Sprotty can be found [here](https://github.com/eclipse-sprotty/sprotty/blob/main/packages/sprotty-protocol/src/model.ts).
 
 ## Internal Model Elements
 

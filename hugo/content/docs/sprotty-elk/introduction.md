@@ -10,7 +10,7 @@ The `sprotty-elk` module provides a layout engine for Sprotty diagrams based on 
 
 In order to use ELK with Sprotty, several steps need to be done in order to inject the required components into the Sprotty container. If you are not already familiar with Sprotty's dependency injection, you should first read the [Sprotty documentation](../dependency_injection).
 
-A good example of how to use ELK with Sprotty can be found in the [random graph example](https://github.com/eclipse-sprotty/sprotty/blob/master/examples/random-graph/src/di.config.ts).
+A good example of how to use ELK with Sprotty can be found in the [random graph example](https://github.com/eclipse-sprotty/sprotty/blob/main/examples/random-graph/src/di.config.ts).
 
 ### Create a new Elk Factory
 

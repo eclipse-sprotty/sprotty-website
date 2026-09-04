@@ -21,4 +21,4 @@ If you are new to Sprotty, check out our [Getting Started]({{< ref "/docs/learn/
 
 ### Want to contribute?
 
-Sprotty is fully open-source! Head over to the [Sprotty repository](https://github.com/eclipse-sprotty/sprotty) and have a look at the [contribution guidelines](https://github.com/eclipse-sprotty/sprotty/blob/master/CONTRIBUTING.md) to join the development.
+Sprotty is fully open-source! Head over to the [Sprotty repository](https://github.com/eclipse-sprotty/sprotty) and have a look at the [contribution guidelines](https://github.com/eclipse-sprotty/sprotty/blob/main/CONTRIBUTING.md) to join the development.
