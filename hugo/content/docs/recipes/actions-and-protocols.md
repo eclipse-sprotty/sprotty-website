@@ -9,7 +9,7 @@ The core of this communication follows specific protocols. This Chapter will giv
 
 Actions are plain JSON serializable objects so that they can easily be passed through all kinds of APIs. They can be distinguished through their `KIND` string property.
 In this section, the most important actions for understanding the basic communication protocols are described.
-For more info on existing actions see [actions.ts](https://github.com/eclipse-sprotty/sprotty/blob/master/packages/sprotty-protocol/src/actions.ts)
+For more info on existing actions see [actions.ts](https://github.com/eclipse-sprotty/sprotty/blob/main/packages/sprotty-protocol/src/actions.ts)
 
 ### ComputedBoundsAction
 
